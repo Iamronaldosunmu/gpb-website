@@ -6,10 +6,10 @@ import Like from "../like";
 interface PrintItemProps {
   oldPrice: string;
   newPrice: string;
-  prductName: string;
+  pr0ductName: string;
 }
 
-const PrintItem = () => {
+const PrintItem: React.FC<PrintItemProps> = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   return (
