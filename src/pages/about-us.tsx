@@ -95,8 +95,8 @@ const AboutUs = () => {
               src="/assets/images/about-us-1.png"
             />
           </div>
-          <div className="grid w-full h-full gap-[30px] grid-cols-[1.16fr_0.84fr]">
-            <div className="w-full h-full">
+          <div className="grid w-full h-[480px] gap-[30px] grid-cols-[1.16fr_0.84fr]">
+            <div className="w-full h-[480px]">
               <img
                 className="w-full h-full object-cover"
                 src="/assets/images/about-us-1.png"
