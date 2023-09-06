@@ -1,5 +1,5 @@
 import Nav from "../components/nav";
-import SectionGrid from "../components/sectiongrid";
+// import SectionGrid from "../components/sectiongrid";
 import BottomFooter from "../sections/Footer/BottomFooter";
 import SubscribeForm from "../sections/Footer/SubscribeForm";
 import Clients from "../sections/home/Clients";
