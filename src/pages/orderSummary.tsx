@@ -11,7 +11,7 @@ const OrderSummary: React.FC = () => {
       color: "Change",
       exclusivity: true,
       imageUrl: "item1.jpg",
-      price: 1000000000,
+      price: 100000,
       isFree: true,
       shippingFee: 0,
     },
@@ -27,16 +27,18 @@ const OrderSummary: React.FC = () => {
   ];
   return (
     <>
-      <Nav />
       <Container className="mb-[5rem]">
+      <Nav />
         {" "}
         <div className="grid grid-cols-2 gap-4">
           <div className="cols-span-1">
             <Form />
           </div>
-          <div className="cols-span 1 flex h-full">
-            {" "}
-            <Cart items={items} />
+          <div className="">
+              <div className="cols-span 1 h-full">
+                {" "}
+                <Cart items={items} />
+              </div>
           </div>
         </div>
       </Container>
