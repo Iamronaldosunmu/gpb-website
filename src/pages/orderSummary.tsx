@@ -27,18 +27,17 @@ const OrderSummary: React.FC = () => {
   ];
   return (
     <>
+    <Nav />{" "}
       <Container className="mb-[5rem]">
-      <Nav />
-        {" "}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="cols-span-1">
+        
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="cols-span-1 justify-end">
             <Form />
           </div>
-          <div className="">
-              <div className="cols-span 1 h-full">
-                {" "}
-                <Cart items={items} />
-              </div>
+
+          <div className="cols-span 1 h-full">
+            {" "}
+            <Cart items={items} />
           </div>
         </div>
       </Container>

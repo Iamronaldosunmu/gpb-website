@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
-import img from "../Images/item.png";
 
 interface Item {
   name: string;
@@ -25,8 +24,8 @@ const Cart = ({ items }: { items: Item[] }) => {
   const totalCost = subTotal + totalShippingFee + tax;
 
   return (
-    <div className="flex h-full">
-      <div className="bg-red-100 flex-grow p-6 px-9 max-w-md  my-4">
+    <div className="flex h-full ">
+      <div className="bg-red-100 flex-grow p-6 px-9 max-w-md  mt-4">
         <div className="flex justify-between mb-1 mt-6  ">
           <h2 className="text-2xl font-semibold">Order Summary</h2>
           <a className="underline mx-4" href="#">
@@ -39,7 +38,7 @@ const Cart = ({ items }: { items: Item[] }) => {
             <div key={index} className="flex pb-9 ">
               <div className="w-1/3 ">
                 <img
-                  src={img}
+                  src="/assets/images/item.png"
                   alt={item.name}
                   className="w-20 h-20 object-cover"
                 />
