@@ -2,22 +2,25 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { defaultEase } from "../../utils/framer-default-animations";
 import Like from "../like";
+import { useNavigate } from "react-router-dom";
 
 interface ProductProps {
-	oldPrice?: string;
-	newPrice?: string;
-	productName?: string;
+	productName: string;
+	oldPrice: number;
+	newPrice: number;
 	// productImage?: string;
 }
 
-const Product: React.FC<ProductProps> = () => {
+const Product: React.FC<ProductProps> = ({ productName, oldPrice, newPrice }) => {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
+	const navigate = useNavigate();
 	return (
 		<div
+			onClick={() => navigate(`/shop/${productName}`)}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
-			className="w-[282px] h-[283px] overflow-hidden relative border border-[#3C3B3B] rounded-sm cursor-pointer"
+			className="relative z-0 w-[282px] shrink-0 overflow-hidden border border-[#3C3B3B] rounded-sm"
 		>
 			<div className="overflow-hidden scale-[1.01]">
 				<motion.img
@@ -38,10 +41,10 @@ const Product: React.FC<ProductProps> = () => {
 				className="px-5 h-[90px] flex flex-col justify-center text-center absolute bottom-0 w-full font-semibold text-base bg-white"
 			>
 				<div className="flex items-center justify-between">
-					<p>SHINE</p>
+					<p className="font-semibold text-[#232323]">{productName}</p>
 					<div>
-						<span className="font-lato">N80,000</span>
-						<span className="font-lato line-through text-[#5A3522] ml-2">N98,000</span>
+						<span className="font-lato">{`N${newPrice}`}</span>
+						<span className="font-lato line-through text-[#5A3522] ml-2">{`N${oldPrice}`}</span>
 					</div>
 				</div>
 				<div className="flex justify-between items-center mt-[18px] transition-all duration-500 ease-in-out">

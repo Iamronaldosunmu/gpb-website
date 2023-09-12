@@ -10,6 +10,50 @@
 	font-family: "Syne", sans-serif;
 }
 
-body {
-	box-sizing: border-box;
+img {
+	-webkit-user-drag: none;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+/* Select Input Styles */
+
+select {
+	outline: none;
+	-moz-appearance: none !important;
+	-webkit-appearance: none !important;
+	appearance: none !important;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+.select {
+	position: relative;
+	display: flex;
+	width: 100%;
+	overflow: hidden;
+}
+
+.select::after {
+	content: url("/assets/images/chevron-down.svg");
+	width: 24px;
+	height: 24px;
+	object-fit: cover;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	margin-right: 1rem;
+	pointer-events: none;
+}
+
+.none-select {
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
 }
