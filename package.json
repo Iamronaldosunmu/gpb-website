@@ -21,9 +21,9 @@
     "react-dom": "^18.2.0",
     "react-final-form": "^6.5.9",
     "react-hook-form": "7.43",
-    "react-router-dom": "^6.15.0",
-    "zod": "^3.20.6"
-    "react-hook-form": "^7.46.1",
+    "swiper": "^10.2.0",
+		"zod": "^3.22.2",
+		"zustand": "^4.4.1",
     "react-router-dom": "^6.15.0"
   },
   "devDependencies": {
