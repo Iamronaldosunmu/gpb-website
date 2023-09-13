@@ -14,13 +14,17 @@
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@types/locomotive-scroll": "^4.1.1",
     "framer-motion": "^10.16.2",
+    "locomotive-scroll": "^4.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-final-form": "^6.5.9",
     "react-hook-form": "7.43",
     "react-router-dom": "^6.15.0",
     "zod": "^3.20.6"
+    "react-hook-form": "^7.46.1",
+    "react-router-dom": "^6.15.0"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.3.1",

@@ -1,20 +1,38 @@
 import Container from "../../../components/container";
 
-const FeaturedIn = () => {
-    return (
-        <section className="w-full bg-black pt-[77px] pb-[90px]">
-            <Container>
-                <h2 className="text-white text-[40px] font-bold text-center">As featured In</h2>
-                <div className="w-full flex mt-[50px] justify-between items-center">
-                    <img src="/assets/images/vogue.png" />
-                    <img src="/assets/images/vogue.png" />
-                    <img src="/assets/images/vogue.png" />
-                    <img src="/assets/images/vogue.png" />
-                    <img src="/assets/images/vogue.png" />
-                </div>
-            </Container>
-        </section>
-    );
-}
+export const BrandLogoImage = ({ url }: { url: string }) => {
+  return <img className="h-[40px]" src={url} />;
+};
 
-export default FeaturedIn
+const FeaturedIn = () => {
+  const imageUrls = [
+    "/assets/logos/vogue.png",
+    "/assets/logos/elle.png",
+    "/assets/logos/bellanaija.png",
+    "/assets/logos/hapersbazaar.png",
+    "/assets/logos/businessday.png",
+  ];
+  return (
+    <section className="w-full bg-black pt-[77px] pb-[90px]">
+      <Container className="overflow-hidden relative">
+        <div className=" absolute left-0 bottom-0 h-[60px] w-[60px] z-10 bg-gradient-to-l from-[rgba(0,0,0,0)] to-[rgba(0,0,0,1)]"></div>
+        <div className=" absolute right-0 bottom-0 h-[60px] w-[60px] z-10 bg-gradient-to-r from-[rgba(0,0,0,0)] to-[rgba(0,0,0,1)]"></div>
+        <h2 className="text-white text-[40px] font-bold text-center">
+          As featured In
+        </h2>
+        <div className="min-w-[2251.94px]">
+          <div className="w-full flex mt-[50px] px-[40px] gap-[80px] items-center animate-scroll ">
+            {imageUrls.map((url, index) => (
+              <BrandLogoImage key={index} url={url} />
+            ))}
+            {imageUrls.map((url, index) => (
+              <BrandLogoImage key={index} url={url} />
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+};
+
+export default FeaturedIn;
