@@ -11,8 +11,11 @@ function App() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/order-summary" element={<OrderSummary />} />
       </Routes>
+      <div>
+      </div>
     </>
   );
 }
+
 
 export default App;
