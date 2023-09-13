@@ -17,7 +17,7 @@ const PrintItem: React.FC<PrintItemProps> = () => {
       <div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="overflow-hidden h-[468px]"
+        className="overflow-hidden w-full aspect-square"
       >
         <div className="overflow-hidden h-full">
           <motion.img
@@ -25,7 +25,7 @@ const PrintItem: React.FC<PrintItemProps> = () => {
               scale: isHovered ? 1.1 : 1,
               transition: { duration: 0.4, ease: defaultEase },
             }}
-            className="w-full h-full object-cover"
+            className="w-full aspect-square"
             src="/assets/patterns/blue-beauty.png"
           />
         </div>
@@ -50,7 +50,10 @@ const PrintItem: React.FC<PrintItemProps> = () => {
             <p className="">N98,700</p>
           </div>
         </div>
-        <div onClick={() => setIsLiked(!isLiked)} className="px-[11px] outline-0">
+        <div
+          onClick={() => setIsLiked(!isLiked)}
+          className="px-[11px] outline-0"
+        >
           <Like liked={isLiked} />
         </div>
       </div>
