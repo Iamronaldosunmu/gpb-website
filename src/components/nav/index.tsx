@@ -14,7 +14,7 @@ const Nav = () => {
   ];
 
   return (
-    <nav className="fixed top-0 right-0 left-0 bg-[#FDFDFD] z-50">
+    <nav className="fixed top-0 right-0 left-0 bg-[#FDFDFD] z-[200]">
       <div className="w-full py-[16px] border-b border-b-black">
         <Container className="flex items-center justify-between font-bold text-[32px]">
           <img className="w-[45px]" src="/assets/images/gpblogo.png" />
