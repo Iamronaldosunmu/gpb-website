@@ -1,8 +1,8 @@
-import Container from "../components/container";
-import Nav from "../components/nav";
-import TextContainer from "../components/textcontainer";
+import Container from "../../components/container";
+import Nav from "../../components/nav";
+import TextContainer from "../../components/textcontainer";
 
-const Clients = () => {
+const Client = () => {
   return (
     <main className="mt-[169px]">
       <Nav />
@@ -18,8 +18,10 @@ const Clients = () => {
                   "
             >
               PAULA LONDON
-                      </h1>
-                      <p className="text-[24px] mt-[20px] text-center">Prints exclusively designed by GRAPES PATTERN BANK</p>
+            </h1>
+            <p className="text-[24px] mt-[20px] text-center">
+              Prints exclusively designed by GRAPES PATTERN BANK
+            </p>
           </TextContainer>
         </Container>
       </div>
@@ -27,4 +29,4 @@ const Clients = () => {
   );
 };
 
-export default Clients;
+export default Client;
