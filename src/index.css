@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Syne:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -10,5 +11,90 @@
 
 input:-webkit-autofill {
   -webkit-text-fill-color: black;
-  -webkit-box-shadow: 0 0 0 30px transparent inset !important
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+}
+
+.image-container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 140px);
+  width: 100vw;
+  z-index: -1;
+  top: 140px;
+  left: 0;
+}
+
+.image-container img {
+  position: absolute;
+  height: 60vh;
+  width: auto;
+  transition: transform 1s ease-in-out, opacity 0.2s ease-in-out;
+  z-index: 98;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.04),
+    0 4px 8px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.04),
+    0 16px 32px rgba(0, 0, 0, 0.04), 0 32px 64px rgba(0, 0, 0, 0.04);
+}
+
+.image-container img.active {
+  z-index: 99;
+}
+
+.title-container {
+  position: relative;
+  display: block;
+  padding-top: 200px;
+}
+
+.title-container h1 {
+  font-size: 60px;
+  font-weight: 600;
+  transition: color 0.2s ease-in-out;
+}
+
+.title-container:hover h1 {
+  color: #bababa;
+  cursor: pointer;
+}
+
+.title-item:hover h1 {
+  color: #2d2d2d;
+}
+
+.gradient-fade {
+  height: 200px;
+  width: 100%;
+  background-image: linear-gradient();
+}
+
+.clients-page * {
+  font-family: "Lato", sans-serif;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  height: 32px;
+  width: 32px;
+  background-color: black;
+  border-radius: 100%;
+  z-index: 100;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styles for the Featured In Section */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
   }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+.animate-scroll {
+  animation: scroll 15s linear infinite;
+}
