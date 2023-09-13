@@ -73,7 +73,7 @@ const Form = () => {
       {page === "form" && (
         <form
           onSubmit={handleSubmit(handleFormSubmit)}
-          className="max-w-md  mx-auto p-4 pb-0 text-sm"
+          className="max-w-md  ml-auto p-4 pb-0 text-sm"
         >
           <div className="flex justify-between  mb-5 pb-1">
             <h2 className="font-bold text-2xl">Contact</h2>
@@ -184,7 +184,7 @@ const Form = () => {
             )}
           </div>
           <div className="flex justify-between">
-            <div className="mb-7 pb-7">
+            <div className="mb-7 pb-7 w-1/2">
               <label htmlFor="zipCode" className="block mb-2">
                 Zip Code
               </label>
@@ -268,7 +268,7 @@ const Form = () => {
             <button
               // disabled={!isValid}
               type="submit"
-              className="bg-black text-white px-6 py-2 text-center hover: cursor-pointer hover:scale-105 transform transition-transform"
+              className="bg-black text-white px-9 w-1/2 text-sm py-2 text-center hover: cursor-pointer hover:scale-105 transform transition-transform"
             >
               continue to shipping
             </button>

@@ -18,7 +18,7 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <div className="grid grid-cols-2 pt-6 ">
-      <div className="flex justify-start">
+      <div className="flex justify-start group">
         <div className="inline-block ">
           <FontAwesomeIcon
             className={
@@ -28,7 +28,7 @@ const Button = ({
             icon={faChevronLeft}
           />
         </div>
-        <button className="w-1/3 group ml-2" onClick={onLeftButtonClick}>
+        <button className="w-1/3 group ml-2 text-left" onClick={onLeftButtonClick}>
           {leftButtonLabel}
         </button>
       </div>

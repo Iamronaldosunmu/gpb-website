@@ -1,11 +1,9 @@
-import { useState } from "react";
+
 import { FieldValues, useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import BillingAddress from "../BillingAddress";
 import SaveInfo from "../SaveInfo";
-import OrderReview from "../OrderReview";
-import Button from "../Button";
 
 const schema = z.object({
   cardNo: z
@@ -38,15 +36,7 @@ const OnlinePaymentForm = () => {
     console.log(data);
   };
 
-  const [showReview, setShowReview] = useState(false);
 
-  const handleLeftButtonClick = () => {
-    console.log("back to shipping page");
-  };
-
-  const handleRightButtonClick = () => {
-    setShowReview(true);
-  };
 
   const formatCardNumber = (input: string) => {
     const numericInput = input.replace(/\D/g, "").slice(0, 16);
@@ -68,7 +58,7 @@ const OnlinePaymentForm = () => {
 
   return (
     <>
-      <div className="w-[27rem] mx-auto pt-7">
+      <div className="w-[27rem] ml-auto pt-7">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="rounded-lg border mb-8 bg-gray-200 mx-auto w-full p-5 text-sm"
@@ -157,15 +147,6 @@ const OnlinePaymentForm = () => {
         </form>
         <SaveInfo />
         <BillingAddress />
-        <Button
-          leftButtonLabel="return to shipping"
-          rightButtonLabel="continue to payment"
-          onLeftButtonClick={handleLeftButtonClick}
-          onRightButtonClick={handleRightButtonClick}
-          className=""
-        ></Button>
-
-        {showReview && <OrderReview />}
       </div>
     </>
   );
