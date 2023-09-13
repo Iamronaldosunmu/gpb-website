@@ -27,7 +27,9 @@ const OrderSummary: React.FC = () => {
   ];
   return (
     <>
-      <Nav />{" "}
+      <Container>
+        <Nav />{" "}
+      </Container>
       <Container className="mb-[5rem] mt-6 ">
         <div className="grid md:grid-cols-2 gap-4 mr-9">
           <div className="cols-span-1">

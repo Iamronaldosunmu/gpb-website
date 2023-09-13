@@ -4,7 +4,7 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 function Nav() {
   const navItems = ["Cart", "Information", "Shipping", "Payment"];
   return (
-    <nav className="p-4">
+    <nav className="p-4 pl-0">
       <div className="container ml-auto flex items-center justify-center relative">
         <button className=" absolute left-40 py-2 group">
           <FontAwesomeIcon
