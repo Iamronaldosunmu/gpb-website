@@ -4,7 +4,7 @@ import { interactionAnimations } from "../../../utils/framer-default-animations"
 
 const Hero = () => {
   return (
-    <section className="mt-[169px] relative">
+    <section className="relative mt-[169px]">
       <img
         className="w-full max-h-[600px] object-cover"
         src="/assets/images/heroimage.png"

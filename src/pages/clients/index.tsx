@@ -1,13 +1,9 @@
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import ClientImage from "../../components/ClientImage";
-import ClientItem from "../../components/ClientItem";
 import Title from "../../components/Title";
 import Container from "../../components/container";
 import Nav from "../../components/nav";
-import { motion } from "framer-motion";
-import TextContainer from "../../components/textcontainer";
-import Client from "./[name]";
-import { set } from "react-hook-form";
 
 const Clients = () => {
   const clients = [
@@ -61,48 +57,7 @@ const Clients = () => {
     },
   ];
 
-  const col1Items = clients
-    .map((client, index) => {
-      if (index % 3 == 0) return client;
-    })
-    .filter((val) => val)
-    .map((client, index) => {
-      return (
-        <ClientItem
-          name={client?.name}
-          index={index}
-          key={index}
-          image={client?.image}
-        />
-        // <div key={index} className="w-full flex flex-col">
-        //   <img
-        //     src={client?.image}
-        //     className="w-full"
-        //     style={{ height: index % 2 == 0 ? 412 : 749 }}
-        //   />
-        //   <p>{client?.name}</p>
-        // </div>
-      );
-    });
 
-  const getRowImages = (colNumber: number, reversed: boolean) => {
-    return clients
-      .map((client, index) => {
-        if (index % 3 == colNumber) return client;
-      })
-      .filter((val) => val)
-      .map((client, index) => {
-        return (
-          <ClientItem
-            name={client?.name}
-            index={index}
-            key={index}
-            image={client?.image}
-            reversed={reversed}
-          />
-        );
-      });
-  };
   const [rotationPosition, setRotation] = useState(
     new Array(clients.length).fill(0)
   );
@@ -118,7 +73,7 @@ const Clients = () => {
     return () => window.removeEventListener("mousemove", mousePosition);
   });
   const [activeIndex, setActiveIndex] = useState(-1);
-  const handleSetRotation = (itemIndex) => {
+  const handleSetRotation = (itemIndex: number) => {
     const newRotation =
       Math.random() * 7 * (Math.round(Math.random()) ? 1 : -1);
     const tempState = [...rotationPosition];
