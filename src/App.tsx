@@ -8,6 +8,7 @@ import Clients from "./pages/clients";
 import Shop from "./pages/shop";
 import PrintDetails from "./pages/print-details";
 import Cart from "./pages/cart";
+import Receipt from "./components/Receipt";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
 				/>
       </Routes>
       <div>
+        <Receipt />
       </div>
     </>
   );
