@@ -1,7 +1,6 @@
-import { useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import SectionGrid from "../../../components/sectiongrid";
-import { useRef, useEffect } from "react";
-import { motion } from "framer-motion";
 
 const AboutUs = () => {
 	const container = useRef(null);

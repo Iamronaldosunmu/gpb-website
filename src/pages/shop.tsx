@@ -1,5 +1,4 @@
 import Container from "../components/container";
-import Nav from "../components/nav";
 import MiniNav from "../components/shop/MiniNav";
 import ProductGrid from "../components/shop/ProductGrid";
 import Footer from "../sections/Footer";

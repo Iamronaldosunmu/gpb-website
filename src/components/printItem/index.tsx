@@ -4,9 +4,9 @@ import { defaultEase } from "../../utils/framer-default-animations";
 import Like from "../like";
 
 interface PrintItemProps {
-	oldPrice: string;
-	newPrice: string;
-	pr0ductName: string;
+	// oldPrice: string;
+	// newPrice: string;
+	// pr0ductName: string;
 }
 
 const PrintItem: React.FC<PrintItemProps> = () => {

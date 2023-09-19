@@ -14,6 +14,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { AnimatePresence } from "framer-motion";
 import Nav from "./components/nav";
+import Loader from "./pages/Loader";
 
 function App() {
 	useEffect(() => {
@@ -44,6 +45,10 @@ function App() {
 		>
 			{!routesWithoutNav.includes(router.pathname) && <Nav />}
 			<Routes>
+				<Route
+					path="/"
+					element={<Loader />}
+				/>
 				<Route
 					path="/home"
 					element={<Home />}
