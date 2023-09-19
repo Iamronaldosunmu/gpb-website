@@ -79,6 +79,7 @@ input:-webkit-autofill {
 .image-container img {
   position: absolute;
   height: 60vh;
+  max-width: 80vw;
   width: auto;
   transition: transform 1s ease-in-out, opacity 0.2s ease-in-out;
   z-index: 98;
@@ -86,6 +87,7 @@ input:-webkit-autofill {
     0 4px 8px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(0, 0, 0, 0.04),
     0 16px 32px rgba(0, 0, 0, 0.04), 0 32px 64px rgba(0, 0, 0, 0.04);
 }
+
 
 .image-container img.active {
   z-index: 99;
@@ -101,6 +103,11 @@ input:-webkit-autofill {
   font-size: 60px;
   font-weight: 600;
   transition: color 0.2s ease-in-out;
+}
+@media screen and (max-width: 767px) {
+  .title-container h1 {
+    font-size: 32px;
+  }
 }
 
 .title-container:hover h1 {
@@ -135,6 +142,11 @@ input:-webkit-autofill {
   align-items: center;
   justify-content: center;
 }
+@media screen and (max-width: 1023px) {
+  .custom-cursor {
+    display: none;
+  }
+}
 
 /* Styles for the Featured In Section */
 @keyframes scroll {
@@ -147,4 +159,28 @@ input:-webkit-autofill {
 }
 .animate-scroll {
   animation: scroll 15s linear infinite;
+}
+
+/* Styles for the mobile nav bar */
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 18px;
+}
+
+.nav-rect {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Media query for the product grid */
+@media screen and (min-width: 500px) {
+  .grid-size {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
 }

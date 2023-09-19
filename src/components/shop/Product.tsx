@@ -20,7 +20,7 @@ const Product: React.FC<ProductProps> = ({ productName, oldPrice, newPrice }) =>
 			onClick={() => navigate(`/shop/${productName}`)}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
-			className="relative z-0 w-[282px] shrink-0 overflow-hidden border border-[#3C3B3B] rounded-sm"
+			className="relative z-0 w-full  lg:max-w-[300px] shrink-0 overflow-hidden border border-[#3C3B3B] rounded-sm"
 		>
 			<div className="overflow-hidden scale-[1.01]">
 				<motion.img
@@ -28,7 +28,7 @@ const Product: React.FC<ProductProps> = ({ productName, oldPrice, newPrice }) =>
 						scale: isHovered ? 1.1 : 1,
 						transition: { duration: 0.4, ease: defaultEase },
 					}}
-					className="object-cover w-full h-full"
+					className="object-cover w-full aspect-[0.9] lg:aspect-auto lg:h-full"
 					src="/assets/patterns/blue-beauty.png"
 				/>
 			</div>

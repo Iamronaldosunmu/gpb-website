@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/home";
 import AboutUs from "./pages/about-us";
 import OrderSummary from "./pages/orderSummary";
@@ -10,14 +10,17 @@ import PrintDetails from "./pages/print-details";
 import Cart from "./pages/cart";
 import Lenis from "@studio-freight/lenis";
 import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { AnimatePresence } from "framer-motion";
+import Nav from "./components/nav";
 
 function App() {
 	useEffect(() => {
+		AOS.init({ once: true });
+	}, []);
+	useEffect(() => {
 		const lenis = new Lenis();
-
-		lenis.on("scroll", (e) => {
-			console.log(e);
-		});
 
 		function raf(time: any) {
 			lenis.raf(time);
@@ -26,8 +29,20 @@ function App() {
 
 		requestAnimationFrame(raf);
 	});
+	const routesWithoutNav = ["/"];
+	const router = useLocation();
+	const { pathname } = useLocation();
+
+	// Automatically scrolls to top whenever pathname changes
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [pathname]);
 	return (
-		<>
+		<AnimatePresence
+			mode="wait"
+			initial={true}
+		>
+			{!routesWithoutNav.includes(router.pathname) && <Nav />}
 			<Routes>
 				<Route
 					path="/home"
@@ -67,7 +82,7 @@ function App() {
 				/>
 			</Routes>
 			<div></div>
-		</>
+		</AnimatePresence>
 	);
 }
 

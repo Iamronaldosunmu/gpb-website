@@ -27,13 +27,13 @@ const TestimonialGroup = () => {
   ];
   return (
     <div className="w-full">
-      <Container className="py-[160px]">
-        <h2 className="text-center font-semibold text-[40px]">TESTIMONIALS</h2>
-        <p className="text-center text-[24px] mt-[8.1px]">
+      <Container className="py-[160px] flex lg:block flex-col items-center">
+        <h2 data-aos="fade-in" className="text-center font-semibold text-[32px] md:text-[40px]">TESTIMONIALS</h2>
+        <p data-aos="fade-in" className="text-center text-[16px] md:text-[24px] mt-[8.1px]">
           See what customers are saying
         </p>
 
-        <div className="w-full grid grid-cols-3 gap-[27px] mt-[68px]">
+        <div className="w-full flex flex-col lg:grid grid-cols-3 gap-[50px] lg:gap-[27px] mt-[68px] max-w-[450px] lg:max-w-none">
           {testimonialData.map((props, index) => (
             <Testimonial key={index} {...props} />
           ))}

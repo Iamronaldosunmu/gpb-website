@@ -5,12 +5,12 @@ const ProductGrid = () => {
 	return (
 		<Container className="mt-[61px] mb-[59px]">
 			<div className="flex self-end w-full justify-between items-center">
-				<div className="font-medium text-[23px] space-x-2 relative">
+				<div className="font-medium text-[18px] md:text-[23px] space-x-2 relative">
 					<span className="relative bottom-[3px]">53</span>
 					<span className="">Products</span>
 				</div>
 				<div className="flex items-center justify-center py-4 px-3 border border-[#181818] gap-x-1">
-					<span className="text-xl font-medium">Sort by: featured </span>
+					<span className="text-[18px] md:text-xl font-medium">Sort by: featured </span>
 					<img
 						className="w-6 h-6 object-cover"
 						src="/assets/images/chevron-down.svg"
@@ -18,7 +18,7 @@ const ProductGrid = () => {
 					/>
 				</div>
 			</div>
-			<section className="grid grid-cols-4 gap-x-[30px] gap-y-[116px] mt-[51px] mb-[110px]">
+			<section className="grid lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4 md:gap-x-[50px] lg:gap-x-[30px] gap-y-[40px] md:gap-y-[80px] lg:gap-y-[116px] mt-[51px] mb-[110px] grid-size">
 				{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((i) => (
 					<Product
 						key={i}
