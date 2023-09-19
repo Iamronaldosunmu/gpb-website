@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 
 interface ClientItemProps {
   image: string;

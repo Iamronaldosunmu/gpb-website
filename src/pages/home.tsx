@@ -1,5 +1,4 @@
 import PageContainer from "../components/PageContainer";
-import Nav from "../components/nav";
 import BottomFooter from "../sections/Footer/BottomFooter";
 import SubscribeForm from "../sections/Footer/SubscribeForm";
 import Clients from "../sections/home/Clients";
@@ -10,7 +9,6 @@ import Features from "../sections/home/features";
 import Hero from "../sections/home/hero";
 import ShopCollections from "../sections/home/shopcollections";
 import Testimonial from "../sections/home/testimonials";
-import { motion } from "framer ";
 
 const Home: React.FC = () => {
 	return (

@@ -184,3 +184,107 @@ input:-webkit-autofill {
     gap: 20px;
   }
 }
+
+// Styles for the loader
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+// @import "./_mixins.scss";
+@import url("https://fonts.googleapis.com/css?family=Oswald:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+}
+
+:root {
+  --main-color: #394437;
+  --secondary-color: #3d5549;
+  --bg-color: white;
+  --loader-color: #AF9E7F;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+
+  background-color: var(--bg-color);
+}
+
+.loader-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  padding-right: 50px;
+  padding-bottom: 50px;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  background-color: var(--loader-color);
+
+  .brand-name {
+    z-index: 9999;
+    margin-top: 0px;
+    margin-bottom: 1vw;
+    color: var(--secondary-color);
+    font-size: 15vw;
+    line-height: 15vw;
+    font-weight: 300;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+  }
+  .counter-container {
+    overflow: hidden;
+    height: 13vw;
+    min-height: 13vw;
+  }
+
+  h3 {
+    z-index: 9999;
+    margin-top: 0px;
+    margin-bottom: 1vw;
+    color: var(--secondary-color);
+    font-size: 13vw;
+    line-height: 13vw;
+    font-weight: 300;
+  }
+}
+.hero-container {
+  position: relative;
+  height: 100vh;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-title {
+    position: absolute;
+    bottom: 5vw;
+    left: 5vw;
+
+    font-size: clamp(72px, 15vw, 15vw);
+    color: white;
+    font-family: "Oswald", sans-serif;
+
+    text-transform: lowercase;
+    font-weight: 100;
+  }
+}
+
+.intro-container {
+  height: 100vh;
+  padding: 0 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+
+  p {
+    max-width: 800px;
+    color: var(--main-color);
+    font-size: 26px;
+    line-height: 2;
+    font-weight: 300;
+    text-align: center;
+  }
+}

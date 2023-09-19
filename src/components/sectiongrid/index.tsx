@@ -10,19 +10,19 @@ interface SectionGridProps {
 }
 
 const SectionGrid: React.FC<SectionGridProps> = ({ textSectionHeader, textSectionBgColor, textSectionContent, textSectionCtaButtonText, reversed, OtherSectionComponent }) => {
-	const [height, width] = useSize();
+	const [width] = useSize();
 	return (
 		<section className="w-full lg:grid grid-cols-1 lg:grid-cols-2 xl:min-h-[640px] grid-flow-dense">
 			<article
 				style={{
 					backgroundColor: textSectionBgColor,
 					gridColumnStart: reversed ? 2 : 1,
-					justifyContent: height < 1023 ? "center" : (reversed ? "flex-end" : "flex-start"),
+					justifyContent: width < 1023 ? "center" : reversed ? "flex-end" : "flex-start",
 				}}
 				className="w-full h-full flex items-center  py-[100px] xl:py-[130px] "
 			>
 				<div
-					style={height < 1023 ? {} : (reversed ? { paddingRight: height >= 1023 && height < 1280 ? 40 : "calc((100vw - 1220px)/2)" } : { paddingLeft: height >= 1023 && height < 1280 ? 40 : "calc((100vw - 1220px)/2)" })}
+					style={width < 1023 ? {} : reversed ? { paddingRight: width >= 1023 && width < 1280 ? 40 : "calc((100vw - 1220px)/2)" } : { paddingLeft: width >= 1023 && width < 1280 ? 40 : "calc((100vw - 1220px)/2)" }}
 					className="flex flex-col items-center lg:items-start gap-[36px] text-white px-[40px]"
 				>
 					<h2

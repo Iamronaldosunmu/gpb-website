@@ -3,23 +3,8 @@ import { useEffect, useRef } from "react";
 
 interface TextAnimationProps {
 	text: string;
-	lineHeight: number;
-	delay: number;
 	className: string;
 }
-
-// const animationVariants = {
-// 	initial: { y: 90, scale: 0.9 },
-// 	animate: {
-// 		y: 0,
-// 		transition: {
-// 			duration: 0.6,
-// 			ease: [0.43, 0.13, 0.23, 0.96],
-// 			delay: 0.2 + 0.05 * index,
-// 		},
-// 		scale: 1,
-// 	},
-// };
 
 const TextAnimation: React.FC<TextAnimationProps> = ({ text, className }) => {
 	const containerRef = useRef(null);

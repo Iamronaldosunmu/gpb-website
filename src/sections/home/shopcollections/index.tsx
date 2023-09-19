@@ -1,8 +1,6 @@
 import TextAnimation from "../../../components/TextAnimation";
 import Container from "../../../components/container";
 import PrintItem from "../../../components/printItem";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
 import "swiper/css";
 import 'swiper/css/navigation';
@@ -37,7 +35,7 @@ const ShopCollections = () => {
 					className="text-[24px] lg:text-[40px] font-medium text-center text-[#A34A21]  flex gap-[10px] justify-center"
 				/>
 
-				<div className="mt-[46px] hidden grid-cols-4 gap-[27px] lg:grid">
+				<div className="mt-[46px] grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[27px] grid">
 					<PrintItem />
 					<PrintItem />
 					<PrintItem />
