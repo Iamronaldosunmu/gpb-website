@@ -3,28 +3,17 @@ import { interactionAnimations } from "../../../utils/framer-default-animations"
 import { motion } from "framer-motion";
 
 const BottomFooter = () => {
-  const navItems = [
-    "Privacy Policy",
-    "Return Policy",
-    "Contact Us",
-    "Please Note",
-  ];
+
   return (
     <>
-      <div className="w-full py-[30px] border-b border-t mb-[5rem] border-t-black border-b-black flex justify-center gap-[30px] ">
-        {navItems.map((item, index) => (
-          <button className="text-[19px] " key={index}>
-            {item}
-          </button>
-        ))}
-      </div>
+
       <section className="w-full">
-        <div className="w-full bg-[#F4F1EE] pt-[120px] pb-[43px]">
-          <Container className="flex justify-between items-center">
-            <div className="flex-col flex">
-              <p className="font-semibold text-[24px]">GRAPES PATTERN BANK</p>
+        <div className="w-full bg-[#F4F1EE] pt-[40px] md:pt-[120px] pb-[36px] md:pb-[43px] ">
+          <Container className="flex flex-col justify-between gap-[40px] lg:gap-0">
+            <div className="flex-col flex w-full">
+              <p className="font-semibold text-[22px] text-center lg:text-left">GRAPES PATTERN BANK</p>
               <div className="mt-[30px]">
-                <div className="text-[20px] flex gap-[80px]">
+                <div className="text-[16px] md:text-[20px] flex gap-[48px] md:gap-[80px] flex-col lg:flex-row">
                   <div className="flex flex-col gap-[5px]">
                     <p className="">Address: </p>
                     <p>Lagos, Nigeria</p>

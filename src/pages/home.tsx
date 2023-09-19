@@ -1,39 +1,33 @@
-import { useRef } from "react";
+import PageContainer from "../components/PageContainer";
 import Nav from "../components/nav";
 import BottomFooter from "../sections/Footer/BottomFooter";
 import SubscribeForm from "../sections/Footer/SubscribeForm";
 import Clients from "../sections/home/Clients";
 import Fabrics from "../sections/home/Fabrics";
-import FeaturedIn, { BrandLogoImage } from "../sections/home/FeaturedIn";
+import FeaturedIn from "../sections/home/FeaturedIn";
 import AboutUs from "../sections/home/aboutus";
 import Features from "../sections/home/features";
 import Hero from "../sections/home/hero";
 import ShopCollections from "../sections/home/shopcollections";
 import Testimonial from "../sections/home/testimonials";
-import useLocomotiveScroll from "../hooks/useLocomotiveScroll";
+import { motion } from "framer ";
 
 const Home: React.FC = () => {
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-  // const [locomotiveRef] = useLocomotiveScroll({
-  //   ref: scrollRef, 
-  //   smooth: true, 
-  //   smoothMobile: true
-  // })
-  return (
-    <main data-scroll-container ref={scrollRef}>
-      <Nav />
-      <Hero />
-      <ShopCollections />
-      <AboutUs />
-      <Features />
-      <Fabrics />
-      <Clients />
-      <Testimonial />
-      <FeaturedIn />
-      <SubscribeForm />
-      <BottomFooter />
-    </main>
-  );
+	return (
+		<PageContainer>
+			{/* <Nav /> */}
+			<Hero />
+			<ShopCollections />
+			<AboutUs />
+			<Features />
+			<Fabrics />
+			<Clients />
+			<Testimonial />
+			<FeaturedIn />
+			<SubscribeForm />
+			<BottomFooter />
+		</PageContainer>
+	);
 };
 
 export default Home;

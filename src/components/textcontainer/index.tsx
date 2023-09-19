@@ -8,7 +8,7 @@ const TextContainer: React.FC<TextContainerProps> = ({
   children,
 }) => {
   return (
-    <div className={"max-w-[1015px] mx-auto w-full " + className}>
+    <div className={"max-w-[1015px] mx-auto w-full px-[20px] md:px-[40px] lg:px-0" + className}>
       {children}
     </div>
   );

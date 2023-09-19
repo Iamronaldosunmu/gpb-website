@@ -1,6 +1,10 @@
 import { useEffect, useRef } from "react";
 
-const ClientItem = ({ index, name, image }) => {
+interface ClientItemProps {
+  image: string;
+}
+
+const ClientItem = ({ image }: ClientItemProps) => {
   return (
     <div className="gallery-item-wrapper w-full h-full overflow-hidden">
       <div className="gallery-item w-full h-full relative overflow-hidden will-change-transform">
