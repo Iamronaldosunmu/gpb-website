@@ -18,13 +18,14 @@
     "framer-motion": "^10.16.2",
     "locomotive-scroll": "^4.1.4",
     "react": "^18.2.0",
+    "react-calendar": "^4.6.0",
     "react-dom": "^18.2.0",
     "react-final-form": "^6.5.9",
     "react-hook-form": "7.43",
+    "react-router-dom": "^6.15.0",
     "swiper": "^10.2.0",
-		"zod": "^3.22.2",
-		"zustand": "^4.4.1",
-    "react-router-dom": "^6.15.0"
+    "zod": "^3.22.2",
+    "zustand": "^4.4.1"
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.3.1",

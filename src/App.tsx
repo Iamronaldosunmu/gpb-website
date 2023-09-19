@@ -8,18 +8,38 @@ import Clients from "./pages/clients";
 import Shop from "./pages/shop";
 import PrintDetails from "./pages/print-details";
 import Cart from "./pages/cart";
+import Consultation from "./pages/consultation";
+import Membership from "./pages/membership";
 
 function App() {
-  return (
-    <>
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/about-us" element={<AboutUs />} />
-        <Route path="/order-summary" element={<OrderSummary />} />
-        <Route path="/get-a-quote" element={<GetAQuote />} />
-        <Route path="/clients/:name" element={<Client />} />
-        <Route path="/clients" element={<Clients />} />
-        <Route
+	return (
+		<>
+			<Routes>
+				<Route
+					path="/home"
+					element={<Home />}
+				/>
+				<Route
+					path="/about-us"
+					element={<AboutUs />}
+				/>
+				<Route
+					path="/order-summary"
+					element={<OrderSummary />}
+				/>
+				<Route
+					path="/get-a-quote"
+					element={<GetAQuote />}
+				/>
+				<Route
+					path="/clients/:name"
+					element={<Client />}
+				/>
+				<Route
+					path="/clients"
+					element={<Clients />}
+				/>
+				<Route
 					path="/shop"
 					element={<Shop />}
 				/>
@@ -31,12 +51,18 @@ function App() {
 					path="/cart"
 					element={<Cart />}
 				/>
-      </Routes>
-      <div>
-      </div>
-    </>
-  );
+				<Route
+					path="/consultation"
+					element={<Consultation />}
+				/>
+				<Route
+					path="/membership"
+					element={<Membership />}
+				/>
+			</Routes>
+			<div></div>
+		</>
+	);
 }
-
 
 export default App;
