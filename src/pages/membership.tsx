@@ -2,6 +2,7 @@ import { useState } from "react";
 import Container from "../components/container";
 import Nav from "../components/nav";
 import BottomFooter from "../sections/Footer/BottomFooter";
+import PageContainer from "../components/PageContainer";
 
 const Membership = () => {
 	const [subscriptions] = useState([
@@ -17,9 +18,8 @@ const Membership = () => {
 		},
 	]);
 	return (
-		<div className="mt-[200px]">
-			<Nav />
-			<Container className="text-center pt-[139px] pb-[266px]">
+		<PageContainer className="mt-[200px]">
+			<Container className="text-center pb-[266px]">
 				<div>
 					<h1 className="text-[40px] font-semibold">MEMBERSHIP</h1>
 					<span className="mt-4 text-2xl">Choose Your Membership Package</span>
@@ -61,7 +61,7 @@ const Membership = () => {
 				<div className="text-[#181818] text-2xl font-medium pt-[42px] pb-[54px] border-black border-b font-lato overflow-hidden">when you enroll in our subscription service, we’ll ensure your products arrive on your schedule. Simply choose your desired products and replenishment frequency, and adjust at any time.</div>
 			</Container>
 			<BottomFooter />
-		</div>
+		</PageContainer>
 	);
 };
 

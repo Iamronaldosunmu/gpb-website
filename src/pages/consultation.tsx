@@ -3,12 +3,12 @@ import Container from "../components/container";
 import Nav from "../components/nav";
 import TextContainer from "../components/textcontainer";
 import BottomFooter from "../sections/Footer/BottomFooter";
+import PageContainer from "../components/PageContainer";
 
 const Consultation = () => {
 	return (
-		<div className="mt-[200px]">
-			<Nav />
-			<Container className="text-center flex flex-col justify-center items-center my-[253px]">
+		<PageContainer className="mt-[200px]">
+			<Container className="text-center flex flex-col justify-center items-center mb-[253px]">
 				<h1 className="text-[64px] font-semibold">Consultation</h1>
 				<TextContainer className="mt-4">
 					<p className="text-[#000000D1] text-[32px] font-medium">A session for clients who are not sure on themes, fabrics & colours</p>
@@ -49,7 +49,7 @@ const Consultation = () => {
 				<p>The rock drive, Lekki phase 1,Lagos state., NGA</p>
 			</Container>
 			<BottomFooter />
-		</div>
+		</PageContainer>
 	);
 };
 
