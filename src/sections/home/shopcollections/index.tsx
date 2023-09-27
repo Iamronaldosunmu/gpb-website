@@ -67,6 +67,7 @@ const ShopCollections = () => {
 					{products?.slice(0, width >= 768 && width < 1024 ? 3 : 4).map((product) => (
 						<PrintItem
 							key={product.id}
+							id={product.id}
 							name={product.name}
 							price={product.price}
 							discountedPrice={product?.discountPrice}
