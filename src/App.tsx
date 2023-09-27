@@ -8,6 +8,8 @@ import Clients from "./pages/clients";
 import Shop from "./pages/shop";
 import PrintDetails from "./pages/print-details";
 import Cart from "./pages/cart";
+import Consultation from "./pages/consultation";
+import Membership from "./pages/membership";
 import Lenis from "@studio-freight/lenis";
 import { useEffect } from "react";
 import AOS from "aos";
@@ -119,6 +121,14 @@ function App() {
 					<Route
 						path="/cart"
 						element={<Cart />}
+					/>
+					<Route
+						path="/consultation"
+						element={<Consultation />}
+					/>
+					<Route
+						path="/membership"
+						element={<Membership />}
 					/>
 				</Routes>
 				{/* <InitData /> */}
