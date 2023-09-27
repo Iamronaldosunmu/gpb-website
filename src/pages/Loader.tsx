@@ -5,20 +5,6 @@ import { useEffect, useRef } from "react";
 
 import { TimelineDefinition } from "@motionone/dom/types/timeline/types";
 import { useNavigate } from "react-router-dom";
-import useProductStore from "../store/products";
-import { useProducts } from "../hooks/useProducts";
-import { useQuery } from "@tanstack/react-query";
-import axiosInstance from "../services/apiClient";
-
-// const preloadImages = (selector: string) => {
-//   return new Promise((resolve) => {
-//     imagesLoaded(
-//       document.querySelectorAll(selector),
-//       { background: true },
-//       resolve
-//     );
-//   });
-// };
 
 function getSectionHeight(element: HTMLUListElement) {
 	const { height } = element.getBoundingClientRect();
