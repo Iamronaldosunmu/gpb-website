@@ -20,39 +20,47 @@ const ShopCollections = () => {
 	return (
 		<section className="w-full py-[115px] lg:py-[140px] xl:py-[190px]">
 			<Container>
-				<motion.div onClick={() => navigate("/shop")} whileHover={{scale: 1.02}} className="cursor-pointer flex items-center justify-center  gap-[20px] group">
+				<motion.div
+					onClick={() => navigate("/shop")}
+					whileHover={{ scale: 1.02 }}
+					className="cursor-pointer flex items-center justify-center  gap-[20px] group"
+				>
 					<TextAnimation
 						text="Shop The Collection"
 						className="text-[24px] lg:text-[40px] font-medium text-center text-[#A34A21]  flex gap-[10px] justify-center"
 					/>
-					<svg
+					<div
 						data-aos="fade-up"
-						className="w-[15px] h-[15px] lg:w-[20px] lg:h-[20px] group-hover:translate-x-[5px] group-hover:-translate-y-[5px] group-hover:scale-110 transition-all"
-						width="15"
-						height="15"
-						viewBox="0 0 15 15"
-						fill="#A34A21"
-						xmlns="http://www.w3.org/2000/svg"
+						data-aos-delay="1000"
 					>
-						<path
-							d="M1 13.9881L13.5849 1.40318"
-							stroke="#A34A21"
-							stroke-width="2"
-							stroke-linecap="round"
-						/>
-						<path
-							d="M5.1748 1L13.7855 1"
-							stroke="#A34A21"
-							stroke-width="2"
-							stroke-linecap="round"
-						/>
-						<path
-							d="M14 9.39646L14 1.44808"
-							stroke="#A34A21"
-							stroke-width="2"
-							stroke-linecap="round"
-						/>
-					</svg>
+						<svg
+							className="w-[15px] h-[15px] lg:w-[20px] lg:h-[20px] group-hover:translate-x-[5px] group-hover:-translate-y-[5px] group-hover:scale-110 transition-all"
+							width="15"
+							height="15"
+							viewBox="0 0 15 15"
+							fill="#A34A21"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M1 13.9881L13.5849 1.40318"
+								stroke="#A34A21"
+								stroke-width="2"
+								stroke-linecap="round"
+							/>
+							<path
+								d="M5.1748 1L13.7855 1"
+								stroke="#A34A21"
+								stroke-width="2"
+								stroke-linecap="round"
+							/>
+							<path
+								d="M14 9.39646L14 1.44808"
+								stroke="#A34A21"
+								stroke-width="2"
+								stroke-linecap="round"
+							/>
+						</svg>
+					</div>
 				</motion.div>
 
 				<div className="mt-[46px] grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-[12px] md:gap-[27px] grid">
