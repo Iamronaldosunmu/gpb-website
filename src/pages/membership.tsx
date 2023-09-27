@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Container from "../components/container";
-import Nav from "../components/nav";
-import BottomFooter from "../sections/Footer/BottomFooter";
 import PageContainer from "../components/PageContainer";
+import Container from "../components/container";
+import BottomFooter from "../sections/Footer/BottomFooter";
 
 const Membership = () => {
 	const [subscriptions] = useState([
