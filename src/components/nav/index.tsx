@@ -23,8 +23,8 @@ const Nav = () => {
 
 	return (
 		<motion.nav
-			initial={{ height: 64.8 }}
-			animate={mobileNavOpen ? { height: "100%", transition: { duration: 0.3, ease: easeIn } } : { height: 64.8, transition: { delay: 0.5 } }}
+			initial={{ height: 64.8, opacity: 0 }}
+			animate={mobileNavOpen ? { height: "100%", opacity: 1,  transition: { duration: 0.3, ease: easeIn, opacity: {duration: 0.3} } } : { height: 64.8, opacity: 1, transition: { delay: 0.5, opacity: {duration: 0.3} } }}
 			className="fixed top-0 right-0 left-0 bg-[#FDFDFD] z-50 flex flex-col"
 		>
 			<div className="w-full py-[16px] border-b border-b-black bg-white">
