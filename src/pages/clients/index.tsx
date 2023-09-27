@@ -4,6 +4,7 @@ import ClientImage from "../../components/ClientImage";
 import Title from "../../components/Title";
 import Container from "../../components/container";
 import Nav from "../../components/nav";
+import PageContainer from "../../components/PageContainer";
 
 const Clients = () => {
 	const clients = [
@@ -106,7 +107,7 @@ const Clients = () => {
 		setCusorVariant("default");
 	};
 	return (
-		<>
+		<PageContainer>
 			<motion.div
 				className="custom-cursor"
 				variants={variants}
@@ -147,7 +148,7 @@ const Clients = () => {
 					</div>
 				</Container>
 			</main>
-		</>
+		</PageContainer>
 	);
 };
 

@@ -4,14 +4,16 @@ import { defaultEase } from "../../utils/framer-default-animations";
 import Like from "../like";
 
 interface PrintItemProps {
-	// oldPrice: string;
-	// newPrice: string;
-	// pr0ductName: string;
+	name: string;
+	price: string;
+	discountedPrice?: string;
+	image: string;
 }
 
-const PrintItem: React.FC<PrintItemProps> = () => {
+const PrintItem: React.FC<PrintItemProps> = ({ name, price, discountedPrice, image }) => {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
+	console.log(image);
 	return (
 		<div
 			data-aos="zoom-in"
@@ -28,8 +30,8 @@ const PrintItem: React.FC<PrintItemProps> = () => {
 							scale: isHovered ? 1.1 : 1,
 							transition: { duration: 0.4, ease: defaultEase },
 						}}
-						className="w-full aspect-square"
-						src="/assets/patterns/blue-beauty.png"
+						className="w-full object-cover aspect-square"
+						src={image || "/assets/patterns/blue-beauty.png"}
 					/>
 				</div>
 				<motion.div
@@ -45,17 +47,17 @@ const PrintItem: React.FC<PrintItemProps> = () => {
 					QUICK VIEW
 				</motion.div>
 			</div>
-			<div className="mt-[16px] flex justify-between items-center">
-				<div className="font-semibold">
-					<p>SHINE</p>
+			<div className="mt-[8px] md:mt-[16px] flex justify-between items-center">
+				<div className="text-[13px] md:text-[16px] font-semibold">
+					<p>{name}</p>
 					<div className="flex gap-[7px]">
-						<p>N80,000</p>
-						<p className="">N98,700</p>
+						<p className="price">N{discountedPrice ? parseInt(discountedPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</p>
+						{discountedPrice && <p className="line-through price">N{(parseInt(price))?.toLocaleString()}</p>}
 					</div>
 				</div>
 				<div
 					onClick={() => setIsLiked(!isLiked)}
-					className="px-[11px] outline-0"
+					className="px-[11px] outline-0 scale-90 md:scale-100"
 				>
 					<Like liked={isLiked} />
 				</div>

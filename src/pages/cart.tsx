@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PageContainer from "../components/PageContainer";
 import Form from "../components/cart/Form";
 import Container from "../components/container";
 import Nav from "../components/nav";
@@ -7,30 +8,31 @@ import MiniNav from "../components/shop/MiniNav";
 import Footer from "../sections/Footer";
 
 const Cart = () => {
+
 	return (
-		<main>
+		<PageContainer>
 			<Nav />
-			<Container className="mt-[200px]">
+			<Container className="mt-[100px] lg:mt-[200px]">
 				<MiniNav
 					classname="text-right"
 					paths={["Home", "Shop Print", "Cart"]}
 				/>
 				<Link
 					to="/shop"
-					className="flex gap-x-[10px] items-center mt-[30px]"
+					className="flex gap-[7px] md:gap-x-[10px] items-center mt-[13px] lg:mt-[116px]"
 				>
 					<img
-						className="w-6 h-6 object-cover"
+						className="md:w-6 md:h-6 w-[20px] h-[20px] object-cover"
 						src="/assets/images/chevron-right.svg"
 						alt=""
 					/>
-					<span className="text-[23px] text-[#3C3B3B] font-medium">Back to Shop</span>
+					<span className="text-[14px] lg:text-[23px] text-[#3C3B3B] font-medium">Back to Shop</span>
 				</Link>
 			</Container>
 			<Form />
 			<Recommended />
 			<Footer />
-		</main>
+		</PageContainer>
 	);
 };
 

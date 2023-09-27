@@ -6,16 +6,6 @@ import { useEffect, useRef } from "react";
 import { TimelineDefinition } from "@motionone/dom/types/timeline/types";
 import { useNavigate } from "react-router-dom";
 
-// const preloadImages = (selector: string) => {
-//   return new Promise((resolve) => {
-//     imagesLoaded(
-//       document.querySelectorAll(selector),
-//       { background: true },
-//       resolve
-//     );
-//   });
-// };
-
 function getSectionHeight(element: HTMLUListElement) {
 	const { height } = element.getBoundingClientRect();
 	const { childElementCount } = element;
@@ -31,6 +21,7 @@ const Loader = () => {
 	const imageRef = useRef<HTMLImageElement | null>(null);
 
 	const navigate = useNavigate();
+
 	useEffect(() => {
 		// Preload images
 		// Promise.all([preloadImages(".grid-item-media")]).then(() => {

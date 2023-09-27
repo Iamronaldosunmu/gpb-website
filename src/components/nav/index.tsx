@@ -1,20 +1,30 @@
 import { easeIn, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useSize from "../../hooks/useSize";
+import useCartStore from "../../store/cart";
 import { interactionAnimations } from "../../utils/framer-default-animations";
 import Container from "../container";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useSize from "../../hooks/useSize";
 
 const Nav = () => {
 	const navItems = [{ text: "Home", to: "/home" }, { text: "Shop", to: "/shop" }, { text: "About Us", to: "/about-us" }, { text: "Book" }, { text: "Membership" }, { text: "Clients", to: "/clients" }, { text: "Digital Printing" }];
 	const [mobileNavOpen, setMobileNavOpen] = useState(false);
 	const navigate = useNavigate();
 	const [width] = useSize();
+	const { pathname } = useLocation();
+	const { cart } = useCartStore();
+
+	const [itemJustAdded, setItemJustAdded] = useState(false);
+
+	useEffect(() => {
+		setItemJustAdded(true);
+		setTimeout(() => {setItemJustAdded(false)}, 180)
+	}, [cart.length]);
 
 	return (
 		<motion.nav
-			initial={{ height: 64.8 }}
-			animate={mobileNavOpen ? { height: "100%", transition: { duration: 0.3, ease: easeIn } } : { height: 64.8, transition: { delay: 0.5 } }}
+			initial={{ height: 64.8, opacity: 0 }}
+			animate={mobileNavOpen ? { height: "100%", opacity: 1,  transition: { duration: 0.3, ease: easeIn, opacity: {duration: 0.3} } } : { height: 64.8, opacity: 1, transition: { delay: 0.5, opacity: {duration: 0.3} } }}
 			className="fixed top-0 right-0 left-0 bg-[#FDFDFD] z-50 flex flex-col"
 		>
 			<div className="w-full py-[16px] border-b border-b-black bg-white">
@@ -30,11 +40,18 @@ const Nav = () => {
 							className="cursor-pointer"
 							src="/assets/images/person.png"
 						/>
-						<motion.img
+						<motion.div
 							{...interactionAnimations}
-							className="cursor-pointer"
-							src="/assets/images/cart.png"
-						/>
+							className="relative"
+							animate={{ scale: itemJustAdded ? 1.1 : 1 }}
+						>
+							<img
+								onClick={() => navigate("/cart")}
+								className="cursor-pointer"
+								src="/assets/images/cart.png"
+							/>
+							<p className="min-w-[20px] w-[20px] h-[20px] min-h-[20px] bg-[#AF9E7F] rounded-full absolute top-0 right-0 text-[12px] text-white flex items-center justify-center price">{cart?.length}</p>
+						</motion.div>
 						<motion.img
 							{...interactionAnimations}
 							className="cursor-pointer"
@@ -65,7 +82,7 @@ const Nav = () => {
 				{navItems.map((item: { text: string; to?: string }, index: number) => (
 					<button
 						// onClick={() => setActiveTab(item.text)}
-						className={`text-[19px] rounded-full relative `}
+						className={`text-[19px] rounded-full relative ${pathname.includes(item.to as string) && "font-semibold"} transition-all duration-300 relative group`}
 						key={index}
 					>
 						{/* {activeTab == item.text && <motion.div layoutId="active-pill" className="absolute  rounded-full bg-black h-[3px] w-full -bottom-1"></motion.div>} */}
@@ -75,6 +92,7 @@ const Nav = () => {
 						>
 							{item.text}
 						</Link>
+						<div className="w-0 group-hover:w-full transition-all duration-300 h-[1.5px] bg-black absolute -bottom-[2px]"></div>
 					</button>
 				))}
 			</div>
