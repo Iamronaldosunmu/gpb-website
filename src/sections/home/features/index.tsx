@@ -6,15 +6,15 @@ const Features = () => {
   const featureData = [
     {
       imageUrl: "/assets/patterns/featurepattern1.jpg",
-      text: "Hand-crafted in Portugal",
+      text: "Premium patterns uniquely designed for you",
     },
     {
       imageUrl: "/assets/patterns/featurepattern2.jpg",
-      text: "Made From Vegan Leather",
+      text: "Perfectly tailored fabrics to suit your taste",
     },
     {
       imageUrl: "/assets/patterns/featurepattern3.jpg",
-      text: "Patented In-Soles for Maximum Comfort",
+      text: "Expertise, Experience and legacy!",
     },
   ];
   return (
