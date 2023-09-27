@@ -2,17 +2,20 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { defaultEase } from "../../utils/framer-default-animations";
 import Like from "../like";
+import { useNavigate } from "react-router";
 
 interface PrintItemProps {
 	name: string;
 	price: string;
 	discountedPrice?: string;
 	image: string;
+	id: string;
 }
 
-const PrintItem: React.FC<PrintItemProps> = ({ name, price, discountedPrice, image }) => {
+const PrintItem: React.FC<PrintItemProps> = ({ name, price, discountedPrice, image, id }) => {
 	const [isHovered, setIsHovered] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
+	const navigate = useNavigate();
 	console.log(image);
 	return (
 		<div
@@ -35,6 +38,7 @@ const PrintItem: React.FC<PrintItemProps> = ({ name, price, discountedPrice, ima
 					/>
 				</div>
 				<motion.div
+					onClick={() => navigate(`/shop/${id}`)}
 					initial={{ y: 0 }}
 					animate={{
 						y: isHovered ? -42 : 0,

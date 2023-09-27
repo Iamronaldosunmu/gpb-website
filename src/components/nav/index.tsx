@@ -7,7 +7,7 @@ import { interactionAnimations } from "../../utils/framer-default-animations";
 import Container from "../container";
 
 const Nav = () => {
-	const navItems = [{ text: "Home", to: "/home" }, { text: "Shop", to: "/shop" }, { text: "About Us", to: "/about-us" }, { text: "Book" }, { text: "Membership" }, { text: "Clients", to: "/clients" }, { text: "Digital Printing" }];
+	const navItems = [{ text: "Home", to: "/home" }, { text: "Shop", to: "/shop" }, { text: "About Us", to: "/about-us" }, { text: "Book", to: "/consultation" }, { text: "Membership", to: "/membership" }, { text: "Clients", to: "/clients" }, { text: "Digital Printing" }];
 	const [mobileNavOpen, setMobileNavOpen] = useState(false);
 	const navigate = useNavigate();
 	const [width] = useSize();
