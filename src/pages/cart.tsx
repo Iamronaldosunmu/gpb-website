@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
+import PageContainer from "../components/PageContainer";
 import Form from "../components/cart/Form";
 import Container from "../components/container";
 import Nav from "../components/nav";
 import Recommended from "../components/shop-details/Recommended";
 import MiniNav from "../components/shop/MiniNav";
 import Footer from "../sections/Footer";
-import useProductStore from "../store/products";
-import PageContainer from "../components/PageContainer";
 
 const Cart = () => {
 

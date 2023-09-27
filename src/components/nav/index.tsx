@@ -82,7 +82,7 @@ const Nav = () => {
 				{navItems.map((item: { text: string; to?: string }, index: number) => (
 					<button
 						// onClick={() => setActiveTab(item.text)}
-						className={`text-[19px] rounded-full relative ${pathname.includes(item.to) && "font-semibold"} transition-all duration-300 relative group`}
+						className={`text-[19px] rounded-full relative ${pathname.includes(item.to as string) && "font-semibold"} transition-all duration-300 relative group`}
 						key={index}
 					>
 						{/* {activeTab == item.text && <motion.div layoutId="active-pill" className="absolute  rounded-full bg-black h-[3px] w-full -bottom-1"></motion.div>} */}

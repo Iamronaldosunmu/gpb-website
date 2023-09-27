@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
+import useCartStore from "../../store/cart";
+import useProductStore from "../../store/products";
 import Container from "../container";
 import CartList from "./CartList";
-import useProductStore, { Product } from "../../store/products";
-import useCartStore from "../../store/cart";
 
 const Form = () => {
 	const options = ["Nigeria", "Columbia", "United Kingdom"];

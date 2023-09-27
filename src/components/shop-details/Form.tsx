@@ -1,13 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
-import { FieldValues, useForm } from "react-hook-form";
-import { z } from "zod";
-import Like from "../like";
-import useProductStore from "../../store/products";
-import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { interactionAnimations } from "../../utils/framer-default-animations";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import { z } from "zod";
 import useCartStore from "../../store/cart";
+import useProductStore from "../../store/products";
+import { interactionAnimations } from "../../utils/framer-default-animations";
+import Like from "../like";
 
 const Form = () => {
 	const colorOptions = ["SATISFIED", "Change", "2 Changes", "3 Changes"];

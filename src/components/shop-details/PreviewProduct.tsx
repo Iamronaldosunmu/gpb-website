@@ -1,14 +1,12 @@
-import { FC, useState } from "react";
-import useCartStore from "../../store/cart";
-import useProductStore from "../../store/products";
-import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { FC, useState } from "react";
+import { useParams } from "react-router-dom";
+import useProductStore from "../../store/products";
 import { interactionAnimations } from "../../utils/framer-default-animations";
 
 interface Props {}
 
 const PreviewProduct: FC<Props> = () => {
-	const { cart } = useCartStore();
 	const { products } = useProductStore();
 	const { id } = useParams();
 	const product = products?.find((product) => product.id == id);
@@ -38,14 +36,15 @@ const PreviewProduct: FC<Props> = () => {
 			</div>
 			<div className="w-[489px] h-[622px] relative">
 				{product?.productImage.map((path, index) => (
-					<>
+			
 						<motion.img
+							key={path.url}
 							animate={{ opacity: selectedIndex == index ? 1 : 0, transition: { duration: 0.3 } }}
 							className="w-full h-full object-cover absolute"
 							src={product?.productImage[index].url}
 							alt=""
 						/>
-					</>
+				
 				))}
 			</div>
 		</div>

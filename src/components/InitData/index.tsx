@@ -1,7 +1,6 @@
-import { set } from "react-hook-form";
-import useProductStore from "../../store/products";
-import { useProducts } from "../../hooks/useProducts";
 import { useEffect } from "react";
+import { useProducts } from "../../hooks/useProducts";
+import useProductStore from "../../store/products";
 
 const InitData = () => {
 	const { setProducts } = useProductStore();
