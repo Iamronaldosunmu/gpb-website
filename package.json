@@ -28,7 +28,7 @@
     "lodash": "^4.17.21",
     "motion": "^10.16.2",
     "react": "^18.2.0",
-    "react-calendar": "^4.6.0",
+    "react-calendly": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-final-form": "^6.5.9",
     "react-hook-form": "7.43",

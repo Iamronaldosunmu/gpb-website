@@ -161,28 +161,9 @@ input:-webkit-autofill {
 	animation: scroll 15s linear infinite;
 }
 
-/* Custom Calendar Styles */
-.react-calendar {
-	font-family: "Syne", sans-serif;
-	background: #f8f4f1;
-	height: 310px;
-	border: none;
-	width: 100%;
-	max-width: 282px;
-}
-
-.react-calendar__navigation {
-	margin-bottom: 0;
-}
-
-.react-calendar__month-view__weekdays__weekday abbr {
-	text-decoration: none;
-}
-
-.react-calendar__tile--active,
-.react-calendar__tile--active:enabled:hover,
-.react-calendar__tile--active:enabled:focus {
-	background: #a34a21;
+.calendly-overlay .calendly-popup {
+	max-height: 800px;
+	overflow-y: hidden;
 }
 
 /* Styles for the mobile nav bar */
