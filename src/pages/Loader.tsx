@@ -5,6 +5,10 @@ import { useEffect, useRef } from "react";
 
 import { TimelineDefinition } from "@motionone/dom/types/timeline/types";
 import { useNavigate } from "react-router-dom";
+import useProductStore from "../store/products";
+import { useProducts } from "../hooks/useProducts";
+import { useQuery } from "@tanstack/react-query";
+import axiosInstance from "../services/apiClient";
 
 // const preloadImages = (selector: string) => {
 //   return new Promise((resolve) => {
@@ -31,6 +35,7 @@ const Loader = () => {
 	const imageRef = useRef<HTMLImageElement | null>(null);
 
 	const navigate = useNavigate();
+
 	useEffect(() => {
 		// Preload images
 		// Promise.all([preloadImages(".grid-item-media")]).then(() => {

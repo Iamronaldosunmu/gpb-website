@@ -1,3 +1,4 @@
+import PageContainer from "../components/PageContainer";
 import Container from "../components/container";
 import Nav from "../components/nav";
 import TextContainer from "../components/textcontainer";
@@ -6,8 +7,7 @@ import { motion } from "framer-motion";
 
 const AboutUs = () => {
 	return (
-		<main
-			data-scroll-container
+		<PageContainer
 			className="pt-[140px] md:pt-[200px]"
 		>
 			<Nav />
@@ -50,7 +50,7 @@ const AboutUs = () => {
 					</p>
 				</article>
 			</TextContainer>
-			<div className="w-full mt-[60px]">
+			<div className="w-full mt-[60px] block lg:hidden">
 				<img
 					className="w-full h-full object-cover"
 					src="/assets/images/about-us-1.png"
@@ -150,7 +150,7 @@ const AboutUs = () => {
 				</section>
 			</Container>
 			<Footer />
-		</main>
+		</PageContainer>
 	);
 };
 
