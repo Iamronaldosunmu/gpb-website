@@ -32,10 +32,10 @@ function App() {
 					path="/cart"
 					element={<Cart />}
 				/>
+        <Route path="/Receipt" element={<Receipt />} />
+
       </Routes>
-      <div>
-        <Receipt />
-      </div>
+
     </>
   );
 }

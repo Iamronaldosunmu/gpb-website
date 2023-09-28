@@ -4,9 +4,9 @@ import Payment from "../index";
 import Form from "../../Form/index";
 
 interface Props {
-  email: string;
-  address: string;
-  shippingAddressDetails: string;
+  email?: string;
+  address?: string;
+  shippingAddressDetails?: string;
 }
 
 const Shipping = ({ email, address, shippingAddressDetails }: Props) => {
@@ -26,30 +26,33 @@ const Shipping = ({ email, address, shippingAddressDetails }: Props) => {
   return (
     <>
       {page === "shipping" && (
-        <div className="w-[27rem] ml-auto max-w-md pt-4 flex-grow ">
-          <div className="mx-auto border text-sm border-black font-semibold w-full mb-12 ">
-            <div className=" flex p-4 pt-0 m-2 justify-between items-center">
+        <div className="p-4 ">
+          <div className=" border sm:text-sm text-xs  border-black font-semibold  mb-12 ">
+            <div className="flex justify-between items-center md:p-4 pt-0 m-2 mt-4">
               {" "}
-              <p>Contact</p>
-              <p>{email}</p>
+              <p className="mr-3">Contact</p>
+              <div className="mr-3">
+                  <p className="w-full break-all">{email}</p>
+              </div>
               <div>
                 <a href="">change</a>
                 <div className="border-b border-black"></div>
               </div>
             </div>
-            <div className="border-b mx-auto border-b-black"></div>
-            <div className="flex p-4 pt-0 m-2 justify-between items-center">
-              <p>ship to</p>
-              <p>{address}</p>
+
+            <div className="border-b border-b-black"></div>
+            <div className="flex md:p-4 pt-0 m-2 justify-between items-center">
+              <p className="mr-2 whitespace-nowrap">ship to</p>
+              <p className="mr-2">{address}</p>
               <div>
                 <a href="">change</a>
                 <div className="border-b border-black"></div>
               </div>
             </div>
           </div>
-          <div className="mb-20">
+          <div className="md:mb-20">
             <h2 className="text-2xl pb-5 mb-2 font-bold">Shipping Method</h2>
-            <div className="border border-black pt-7 px-7 h-[8rem] w-full">
+            <div className="border border-black pt-4 md:pt-7 md:px-7 px-3 h-[8rem]">
               {shippingAddressDetails}
             </div>
           </div>

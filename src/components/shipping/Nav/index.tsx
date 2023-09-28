@@ -4,18 +4,20 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 function Nav() {
   const navItems = ["Cart", "Information", "Shipping", "Payment"];
   return (
-    <nav className="p-4 pl-0">
+    <nav className="md:p-4  pl-0">
       <div className="container ml-auto flex items-center justify-center relative">
-        <button className=" absolute left-40 py-2 group">
-          <FontAwesomeIcon
-            className="mr-2 transition-transform transform translate-x-0  group-hover:translate-x-[-4px]"
-            icon={faChevronLeft}
-          />
-          Continue Shipping
-        </button>
-        <div>
-          <h2 className="font-bold text-lg mb-1 mx-4">GRAPES PATTERN BANK</h2>
-          <div className="text-1xl ">
+    
+          <button className=" absolute top-0 py-2 group lg:absolute lg:left-0 ">
+            <FontAwesomeIcon
+              className="mr-2 transition-transform transform translate-x-0  group-hover:translate-x-[-4px]"
+              icon={faChevronLeft}
+            />
+            Continue Shipping
+          </button>
+      
+        <div className="mt-14 lg:mt-0">
+          <h2 className="font-bold mb-1 mx-4 flex justify-center">GRAPES PATTERN BANK</h2>
+          <div className="text-xs md:text-lg flex justify-center ">
             <ul className="list-none p-0 font-semibold">
               {navItems.map((item, index) => (
                 <li className="cursor-pointer inline-block mr-1" key={index}>
@@ -32,3 +34,4 @@ function Nav() {
 }
 
 export default Nav;
+

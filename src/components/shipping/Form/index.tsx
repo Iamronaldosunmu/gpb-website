@@ -73,12 +73,12 @@ const Form = () => {
       {page === "form" && (
         <form
           onSubmit={handleSubmit(handleFormSubmit)}
-          className="max-w-md  ml-auto p-4 pb-0 text-sm"
+          className="p-4 pb-0 text-sm"
         >
           <div className="flex justify-between  mb-5 pb-1">
             <h2 className="font-bold text-2xl">Contact</h2>
-            <div>
-              <label htmlFor="login" className="text-sm ">
+            <div className="flex">
+              <label htmlFor="login" className="text-sm">
                 Have an account?{" "}
                 <input
                   id="login"
@@ -133,8 +133,8 @@ const Form = () => {
                 <p className="text-red-500">{errors.lastName.message}</p>
               )}
             </div>
-            <div className="flex justify-between">
-              <div className="mb-7 pb-7">
+            <div className="flex flex-col md:flex-row md:justify-between">
+              <div className="mb-7 pb-7 mr-2 ">
                 <label htmlFor="companyName" className="block mb-2">
                   Company's Name
                 </label>
@@ -148,7 +148,7 @@ const Form = () => {
                   <p className="text-red-500">{errors.companyName.message}</p>
                 )}
               </div>
-              <div className="mb-7 pb-7">
+              <div className="mb-7 pb-7 ml-2 flex-shrink-0">
                 <label htmlFor="referral" className="block mb-2">
                   How did you hear about us?
                 </label>
@@ -184,7 +184,7 @@ const Form = () => {
             )}
           </div>
           <div className="flex justify-between">
-            <div className="mb-7 pb-7 w-1/2">
+            <div className="mb-7 pb-7 w-1/2 mr-2 flex-shrink-0">
               <label htmlFor="zipCode" className="block mb-2">
                 Zip Code
               </label>
@@ -266,9 +266,8 @@ const Form = () => {
           </div>
           <div className="flex justify-end">
             <button
-              // disabled={!isValid}
               type="submit"
-              className="bg-black text-white px-9 w-1/2 text-sm py-2 text-center hover: cursor-pointer hover:scale-105 transform transition-transform"
+              className="bg-black text-white px-9 sm:w-1/2 w-full text-sm py-2 text-center hover: cursor-pointer hover:scale-105 transform transition-transform"
             >
               continue to shipping
             </button>

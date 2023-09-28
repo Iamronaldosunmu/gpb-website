@@ -29,9 +29,9 @@ const Payment = () => {
   return (
     <>
       {showPayment && (
-        <div className="w-[27rem] ml-auto">
-          <div className="w-full mx-auto my-8">
-            <h2 className="font-bold text-3xl mb-9 ">Payment</h2>
+        <div className="w-full p-4">
+          <div className="w-full my-8">
+            <h2 className="font-semibold md:text-3xl text-2xl mb-9 ">Payment</h2>
             <div className="border border-black text-xs font-semibold">
               <div className="flex p-2 m-2 justify-between ">
                 <div>
@@ -50,7 +50,7 @@ const Payment = () => {
                   <img
                     src="/assets/images/online.png"
                     alt=""
-                    className="ml- h-full"
+                    className="w-20 sm:w-full object-fit h-full "
                   />
                 </div>
               </div>
@@ -69,14 +69,15 @@ const Payment = () => {
                   <label htmlFor="offlinePayment">Offline Payment</label>
                 </div>
                 <div className="mx-2">
-                  <img src="/assets/images/offline.png" alt="" />
+                  <img src="/assets/images/offline.png " alt="" />
                 </div>
               </div>
             </div>
           </div>
         </div>
       )}
-      <div className="w-[27rem] ml-auto">
+      
+      <div className="w-full">
         {selectedPayment === "online" && <OnlinePaymentForm />}
         {selectedPayment === "offline" && <OfflinePayment />}
         {showButton && (
@@ -95,3 +96,4 @@ const Payment = () => {
 };
 
 export default Payment;
+
