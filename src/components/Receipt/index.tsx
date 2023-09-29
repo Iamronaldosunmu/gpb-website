@@ -4,7 +4,7 @@ import Order from "./Order";
 import OrderConfirmation from "./OrderConfirmation";
 import SubscribeForm from "../../sections/Footer/SubscribeForm";
 import DeliveryDetails from "./DeliveryDetails";
-import BottomFooter from "../../sections/Footer/BottomFooter";
+
 const items = [
 	{
 		name: "Item 1",
@@ -40,16 +40,16 @@ const billingAddress = {
 	duration: "3 days",
 };
 
-const paymentMethod = "Credit Card";
+const paymentMethod = ["Credit Card"];
 
 const Receipt = () => {
 	return (
 		<>
-			<div className="mx-20">
+			<div className="md:mx-20 sm:mx-10 mx-5">
 				<Nav />
 				<div className="mt-[150px]">
-					<div className="mb-20">
-						<h2 className="text-4xl font-semibold mb-8">Payment</h2>
+					<div className="mb-20 text-center lg:text-left">
+						<h2 className="text-4xl font-semibold mb-8 ">Payment</h2>
 						<BrowseButton />
 					</div>
 					<div className="flex justify-center mb-10">
@@ -58,10 +58,14 @@ const Receipt = () => {
 							orderNumber={10225}
 						/>
 					</div>
-					<div className="border border-black mb-7">
-						<Order items={items} />
+					<div className=" mb-7">
+						<div className="">
+							<Order items={items} />
+						</div>
+
+
 					</div>
-					<div className="border border-black">
+					<div className="lg:border border-black">
 						<DeliveryDetails
 							billingAddress={billingAddress}
 							deliveryAddress={deliveryAddress}
@@ -70,13 +74,12 @@ const Receipt = () => {
 					</div>
                     <div className="flex justify-center">
                     <BrowseButton />
-
                     </div>
 
 				</div>
 			</div>
 			<SubscribeForm />
-			<BottomFooter />
+			{/* <BottomFooter /> */}
 		</>
 	);
 };
