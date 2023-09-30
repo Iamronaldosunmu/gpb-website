@@ -1,26 +1,28 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useCartStore from "../../store/cart";
-import { defaultEase, interactionAnimations } from "../../utils/framer-default-animations";
-import Like from "../like";
+import useCartStore from "../../../store/cart";
+import useWishListStore from "../../../store/wishList";
+import { defaultEase, interactionAnimations } from "../../../utils/framer-default-animations";
 
-interface ProductProps {
+interface Props {
+	id: string;
+	name: string;
 	price: string;
+	quantity: number;
 	discountPrice?: string;
 	image: string;
-	name: string;
-	id: string;
 }
 
-const Product: React.FC<ProductProps> = ({ name, id, price, discountPrice, image }) => {
+const WishItem: React.FC<Props> = ({ name, id, price, discountPrice, image, quantity }) => {
 	const [isHovered, setIsHovered] = useState(false);
 	const navigate = useNavigate();
 	const { addToCart } = useCartStore();
+	const { removeFromWishList, incrementQuantity, decrementQuantity } = useWishListStore();
 	return (
 		<div
 			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
+			// onMouseLeave={() => setIsHovered(false)}
 			className="relative z-0 w-full  lg:max-w-[300px] shrink-0 overflow-hidden border border-[#3C3B3B] rounded-sm"
 		>
 			<div
@@ -55,22 +57,41 @@ const Product: React.FC<ProductProps> = ({ name, id, price, discountPrice, image
 				</div>
 				<div
 					onClick={(e) => e.stopPropagation()}
-					className="flex justify-between items-center mt-[18px] transition-all duration-500 ease-in-out"
+					className="flex justify-center gap-x-3 items-center mt-[18px] transition-all duration-500 ease-in-out"
 				>
+					<div className="border-[0.5px] border-black flex text-[#232323] items-center h-8">
+						<button
+							onClick={() => incrementQuantity(id)}
+							className="py-1 px-2 border-r border-black"
+						>
+							+
+						</button>
+						<div className="h-full font-lato font-semibold px-2 py-1 text-sm sm:text-base">{quantity}</div>
+						<button
+							onClick={() => decrementQuantity(id)}
+							className="py-1 px-2  border-l border-black"
+						>
+							-
+						</button>
+					</div>
 					<motion.button
 						{...interactionAnimations}
 						onClick={() => addToCart({ id, backgroundColor: "SATISFIED", exclusivity: "NO" })}
 						whileHover={{ scale: 1.05 }}
-						className="outline-0 text-[10px] md:text-[16px] bg-black py-1 px-[10px] md:px-[27px] text-white"
+						className="outline-0 text-[10px] md:text-[16px] bg-black py-1 px-[10px] md:px-[27px] xl:px-[22px] text-white"
 					>
 						Add To Cart
 					</motion.button>
-					<div className="px-[11px] outline-0 scale-80 md:scale-100">
-						<Like id={id} />
-					</div>
 				</div>
 			</motion.div>
+			<motion.img
+				{...interactionAnimations}
+				onClick={() => removeFromWishList(id)}
+				className="absolute top-5 right-3 cursor-pointer w-8 h-8 object-cover"
+				src="/assets/images/delete.svg"
+				alt=""
+			/>
 		</div>
 	);
 };
-export default Product;
+export default WishItem;

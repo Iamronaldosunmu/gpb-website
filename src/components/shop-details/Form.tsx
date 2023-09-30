@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { z } from "zod";
@@ -12,7 +12,6 @@ import Like from "../like";
 const Form = () => {
 	const colorOptions = ["SATISFIED", "Change", "2 Changes", "3 Changes"];
 	const exclusivityOptions = ["NO", "YES"];
-	const [isLiked, setIsLiked] = useState(false);
 	const { products } = useProductStore();
 	const { id } = useParams();
 	const product = products?.find((product) => product.id == id);
@@ -25,27 +24,26 @@ const Form = () => {
 		})
 		.required();
 
-	type FormData = {colour: "SATISFIED" | "Change" | "2 Changes" | "3 Changes", exclusivity: "YES" | "NO"};
+	type FormData = { colour: "SATISFIED" | "Change" | "2 Changes" | "3 Changes"; exclusivity: "YES" | "NO" };
 
 	// Validate all Fields not Just one
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset, 
-		watch
+		reset,
+		watch,
 	} = useForm<FormData>({ resolver: zodResolver(schema) });
 	useEffect(() => {
 		const cartItem = cart.find((item) => item.id == product?.id);
-		if (cartItem) reset({ colour: cartItem.backgroundColor, exclusivity: cartItem.exclusivity })
-		else
-		reset({colour: "SATISFIED", exclusivity: "NO"})
-	}, [reset])
+		if (cartItem) reset({ colour: cartItem.backgroundColor, exclusivity: cartItem.exclusivity });
+		else reset({ colour: "SATISFIED", exclusivity: "NO" });
+	}, [reset]);
 	const colour = watch("colour");
 	const exclusivity = watch("exclusivity");
 
 	const onSubmit = (data: FormData) => {
-		addToCart({id: product?.id as string, backgroundColor: data.colour, exclusivity: data.exclusivity })
+		addToCart({ id: product?.id as string, backgroundColor: data.colour, exclusivity: data.exclusivity });
 	};
 	const { price, discountPrice } = product || { price: "", discountPrice: "" };
 	return (
@@ -109,20 +107,17 @@ const Form = () => {
 					{errors.exclusivity && <p className="text-red-500 mt-1"> {errors.colour && <p className="text-red-500 mt-1">{errors.exclusivity.message}</p>}</p>}
 				</div>
 				<div className="w-full flex items-center gap-x-[18px]">
-					<motion.button 
+					<motion.button
 						{...interactionAnimations}
 						whileHover={{ scale: 1.02 }}
-						whileTap={{scale:0.96}}
+						whileTap={{ scale: 0.96 }}
 						type="submit"
 						className="w-full text-2xl font-semibold outline-0 bg-black py-[18px] text-white"
 					>
 						Add To Cart
 					</motion.button>
-					<div
-						onClick={() => setIsLiked(!isLiked)}
-						className="px-[11px] outline-0"
-					>
-						<Like liked={isLiked} />
+					<div className="px-[11px] outline-0">
+						<Like id={product?.id as string} />
 					</div>
 				</div>
 			</form>

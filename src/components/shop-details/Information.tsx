@@ -18,7 +18,7 @@ const Information: FC<Props> = ({ title, body }) => {
 			<div className="flex justify-between items-center">
 				<p className="text-[#FB7A7A] font-medium text-xl">{title}</p>
 				<img
-					className="w-[14px] h-[14px] object-cover origin-center transition-transform duration-300 hover:rotate-90"
+					className={`w-[14px] h-[14px] object-cover origin-center transition-transform duration-300 ${isActive && "rotate-90"}`}
 					src="/assets/images/plus.svg"
 					alt=""
 				/>

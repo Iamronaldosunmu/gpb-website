@@ -53,5 +53,9 @@
     "tailwindcss": "^3.3.3",
     "typescript": "^5.0.2",
     "vite": "^4.4.9"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/Iamronaldosunmu/gpb-website.git",
+  "author": "jason <jason.aghedo@gmail.com>",
+  "license": "MIT"
 }
