@@ -9,7 +9,7 @@ const CartList = () => {
 	const { cart, saveCart, removeFromCart } = useCartStore();
 	useEffect(() => {
 		saveCart();
-	}, [cart]);
+	}, [cart, saveCart]);
 	const { products } = useProductStore();
 	const [items, setItems] = useState(cart.map((item) => ({ id: item.id, checked: false })));
 

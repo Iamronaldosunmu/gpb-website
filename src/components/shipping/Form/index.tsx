@@ -3,6 +3,8 @@ import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Shipping from "../Pay/shipping";
+import { interactionAnimations } from "../../../utils/framer-default-animations";
+import { motion } from "framer-motion";
 
 const schema = z.object({
   email: z
@@ -73,7 +75,7 @@ const Form = () => {
       {page === "form" && (
         <form
           onSubmit={handleSubmit(handleFormSubmit)}
-          className="max-w-md  ml-auto p-4 pb-0 text-sm"
+          className="max-w-md lg:max-w-none  ml-auto p-4 pb-0 text-sm"
         >
           <div className="flex justify-between  mb-5 pb-1">
             <h2 className="font-bold text-2xl">Contact</h2>
@@ -133,8 +135,8 @@ const Form = () => {
                 <p className="text-red-500">{errors.lastName.message}</p>
               )}
             </div>
-            <div className="flex justify-between">
-              <div className="mb-7 pb-7">
+            <div className="flex gap-[30px]">
+              <div className="mb-7 pb-7 w-full">
                 <label htmlFor="companyName" className="block mb-2">
                   Company's Name
                 </label>
@@ -148,7 +150,7 @@ const Form = () => {
                   <p className="text-red-500">{errors.companyName.message}</p>
                 )}
               </div>
-              <div className="mb-7 pb-7">
+              <div className="mb-7 pb-7 w-full">
                 <label htmlFor="referral" className="block mb-2">
                   How did you hear about us?
                 </label>
@@ -183,8 +185,8 @@ const Form = () => {
               <p className="text-red-500">{errors.country.message}</p>
             )}
           </div>
-          <div className="flex justify-between">
-            <div className="mb-7 pb-7 w-1/2">
+          <div className="flex gap-[30px]">
+            <div className="mb-7 pb-7 w-full">
               <label htmlFor="zipCode" className="block mb-2">
                 Zip Code
               </label>
@@ -198,7 +200,7 @@ const Form = () => {
                 <p className="text-red-500">{errors.zipCode.message}</p>
               )}
             </div>
-            <div className="mb-7 pb-6 ">
+            <div className="mb-7 pb-6 w-full">
               <label htmlFor="state" className="block mb-2">
                 State
               </label>
@@ -257,9 +259,10 @@ const Form = () => {
           </div>
           <div className="mb-10">
             <label className="inline-flex items-center">
-              <input
+              <motion.input
+                {...interactionAnimations}
                 type="checkbox"
-                className="form-checkbox focus:ring-black-900 checked:bg-black-900 h-6 w-6 "
+                className="form-checkbox focus:ring-black-900 checked:bg-black-900 h-6 w-6 cursor-pointer"
               />
               <span className="ml-2">Save this information for next time</span>
             </label>

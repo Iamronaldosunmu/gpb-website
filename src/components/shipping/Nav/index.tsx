@@ -6,7 +6,7 @@ function Nav() {
   return (
     <nav className="p-4 pl-0">
       <div className="container ml-auto flex items-center justify-center relative">
-        <button className=" absolute left-40 py-2 group">
+        <button className=" absolute left-[20px] py-2 group">
           <FontAwesomeIcon
             className="mr-2 transition-transform transform translate-x-0  group-hover:translate-x-[-4px]"
             icon={faChevronLeft}
