@@ -6,18 +6,17 @@ import useProductStore, { Product } from "../../../store/products";
 
 const Cart = () => {
 	const { cart } = useCartStore();
-  const { products } = useProductStore();
-  const getSubTotal = () => {
-    const productArray = cart.map((item) => products?.find((product) => product.id === item.id));
-    let price = 0;
-    for (const product of productArray) {
-      price += parseInt(product?.discountPrice ? product.discountPrice! : product?.price as string);
-    }
-    return price;
-
-  }
-  const subTotal = getSubTotal();
-  const totalShippingFee = 0;
+	const { products } = useProductStore();
+	const getSubTotal = () => {
+		const productArray = cart.map((item) => products?.find((product) => product.id === item.id));
+		let price = 0;
+		for (const product of productArray) {
+			price += parseInt(product?.discountPrice ? product.discountPrice! : (product?.price as string));
+		}
+		return price;
+	};
+	const subTotal = getSubTotal();
+	const totalShippingFee = 0;
 	const taxRate = 0.1;
 	const tax = subTotal * taxRate;
 
