@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      "lato": ["Lato", "sans-serif"]
+    },
     extend: {
       textColor: {
           '#F7B797': '#F7B797', 

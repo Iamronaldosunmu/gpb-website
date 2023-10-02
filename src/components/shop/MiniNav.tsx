@@ -7,7 +7,7 @@ interface Props {
 
 const MiniNav: FC<Props> = ({ classname, paths = [] }) => {
 	return (
-		<div className={`text-2xl ${classname}`}>
+		<div className={`text-[14px] lg:text-2xl ${classname}`}>
 			<ul className="list-none p-0 font-semibold">
 				{paths.map((path, index) => (
 					<li

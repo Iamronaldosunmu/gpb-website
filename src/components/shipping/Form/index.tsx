@@ -1,72 +1,79 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Shipping from "../Pay/shipping";
+import { interactionAnimations } from "../../../utils/framer-default-animations";
+import { motion } from "framer-motion";
+import useUserDetailsStore, { UserDetails } from "../../../store/userDetails";
 
 const schema = z.object({
-  email: z
-    .string()
-    .email({ message: "The email format you entered is invalid" }),
-  firstName: z
-    .string()
-    .min(3, { message: "First Name must be at least 2 characters" }),
-  lastName: z
-    .string()
-    .min(3, { message: "Last Name must be at least 2 characters" }),
-  companyName: z
-    .string()
-    .min(2, { message: "Company name should not be less than 2 character" }),
-  referral: z.string(),
-  country: z.string().min(2, { message: "Country field is required" }),
-  zipCode: z.string().min(2, { message: "Zip code is required" }),
-  state: z.string().min(2, { message: "Message field is required" }),
-  cityName: z.string().min(2, { message: "City Name is required" }),
-  address: z.string().min(2, { message: "Your address field is required" }),
-  phone: z
-    .string()
-    .min(11, { message: "Phone number should be at least 11 characters" }),
+	email: z.string().email({ message: "The email format you entered is invalid" }),
+	firstName: z.string().min(3, { message: "First Name must be at least 2 characters" }),
+	lastName: z.string().min(3, { message: "Last Name must be at least 2 characters" }),
+	companyName: z.string().min(2, { message: "Company name should not be less than 2 character" }),
+	referral: z.string(),
+	country: z.string().min(2, { message: "Country field is required" }),
+	zipCode: z.string().min(2, { message: "Zip code is required" }),
+	state: z.string().min(2, { message: "Message field is required" }),
+	cityName: z.string().min(2, { message: "City Name is required" }),
+	address: z.string().min(2, { message: "Your address field is required" }),
+	phone: z.string().min(11, { message: "Phone number should be at least 11 characters" }),
 });
 
 type FormData = z.infer<typeof schema>;
 
 const Form = () => {
-  const [page, setPage] = useState("form");
+	const [page, setPage] = useState("form");
+	const { userDetails, setUserDetails } = useUserDetailsStore();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-    reset,
-  } = useForm<FormData>({ resolver: zodResolver(schema), mode: "onBlur" });
+	const {
+		register,
+		handleSubmit,
+		formState: { errors, isValid },
+		reset,
+	} = useForm<FormData>({ resolver: zodResolver(schema), mode: "onBlur" });
 
-  const [formData, setFormData] = useState<FormData>({
-    email: "",
-    firstName: "",
-    lastName: "",
-    companyName: "",
-    referral: "",
-    country: "",
-    zipCode: "",
-    state: "",
-    cityName: "",
-    address: "",
-    phone: "",
-  });
+	const [formData, setFormData] = useState<FormData>({
+		email: "",
+		firstName: "",
+		lastName: "",
+		companyName: "",
+		referral: "",
+		country: "",
+		zipCode: "",
+		state: "",
+		cityName: "",
+		address: "",
+		phone: "",
+	});
 
-  const handleFormSubmit = (data: FieldValues) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      ...data,
-    }));
+	const [saveInfo, setSaveInfo] = useState(false);
 
-    console.log(data);
+	useEffect(() => {
+		reset(userDetails);
+	}, [page]);
 
-    if (isValid) {
-      reset();
-      setPage("shipping");
+	const handleFormSubmit = (data: FieldValues) => {
+		setFormData((prevData) => ({
+			...prevData,
+			...data,
+		}));
+
+		setUserDetails(data as UserDetails);
+    console.log(userDetails);
+    
+    if (saveInfo) {
+      localStorage.setItem("userDetails", JSON.stringify(data));
     }
-  };
+
+		console.log(data);
+
+		if (isValid) {
+			// reset();
+			setPage("shipping");
+		}
+	};
 
   return (
     <div>
@@ -257,10 +264,13 @@ const Form = () => {
           </div>
           <div className="mb-10">
             <label className="inline-flex items-center">
-              <input
-                type="checkbox"
-                className="form-checkbox focus:ring-black-900 checked:bg-black-900 h-6 w-6 "
-              />
+            <motion.input
+								{...interactionAnimations}
+								type="checkbox"
+								checked={saveInfo}
+								onChange={(e) => setSaveInfo(e.target.checked)}
+								className="form-checkbox focus:ring-black-900 checked:bg-black-900 h-6 w-6 cursor-pointer"
+							/>
               <span className="ml-2">Save this information for next time</span>
             </label>
           </div>
@@ -276,15 +286,15 @@ const Form = () => {
         
       )}
 
-      {page === "shipping" && (
-        <Shipping
-          email={formData.email}
-          address={formData.address}
-          shippingAddressDetails="shipping method details"
-        />
-      )}
-    </div>
-  );
+			{page === "shipping" && (
+				<Shipping
+					email={formData.email}
+					address={formData.address}
+					shippingAddressDetails="shipping method details"
+				/>
+			)}
+		</div>
+	);
 };
 
 export default Form;

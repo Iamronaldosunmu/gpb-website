@@ -1,3 +1,4 @@
+import TextAnimation from "../../../components/TextAnimation";
 import Container from "../../../components/container";
 import Feature from "../../../components/feature";
 
@@ -5,23 +6,22 @@ const Features = () => {
   const featureData = [
     {
       imageUrl: "/assets/patterns/featurepattern1.jpg",
-      text: "Hand-crafted in Portugal",
+      text: "Premium patterns uniquely designed for you",
     },
     {
       imageUrl: "/assets/patterns/featurepattern2.jpg",
-      text: "Made From Vegan Leather",
+      text: "Perfectly tailored fabrics to suit your taste",
     },
     {
       imageUrl: "/assets/patterns/featurepattern3.jpg",
-      text: "Patented In-Soles for Maximum Comfort",
+      text: "Expertise, Experience and legacy!",
     },
   ];
   return (
-    <div className="py-[195px]">
-      <h2 className="font-medium text-[40px] text-center mb-[95px]">
-        This Comfort Is Custom
-      </h2>
-      <Container className="flex justify-between">
+    <div className="py-[150px] xl:py-[195px]">
+      <TextAnimation text="This Comfort Is Custom" className="flex overflow-hidden gap-[10px] justify-center font-medium text-[24px] md:text-[28px] lg:text-[34px] xl:text-[40px] text-center mb-[95px]"/>
+        
+      <Container className="flex justify-between flex-col gap-[60px] lg:gap-0 lg:flex-row">
         {featureData.map((item) => (
           <Feature imageUrl={item.imageUrl} description={item.text} />
         ))}

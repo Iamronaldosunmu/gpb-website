@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Nav from "../components/shipping/Nav";
 import Form from "../components/shipping/Form";
-// import BottomFooter from "../sections/Footer/BottomFooter";
+import BottomFooter from "../sections/Footer/BottomFooter";
 import Container from "../components/container";
 import Cart from "../components/shipping/Cart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,7 +28,6 @@ const OrderSummary: React.FC = () => {
 			shippingFee: 5,
 		},
 	];
-
 	const [openModal, setOpenModal] = useState(false);
 
 	// Function to open the modal
@@ -40,11 +39,10 @@ const OrderSummary: React.FC = () => {
 	const closeModalHandler = () => {
 		setOpenModal(false);
 	};
-
 	return (
 		<>
-			<Container className="md:px-20 px-5">
-				<Nav />
+			<Container className="mt-[200px] w-full md:px-20 px-5">
+				<Nav />{" "}
 			</Container>
 			<button
 				className="lg:hidden bg-gray-200 block mt-9 w-full text-left py-3 px-5 group"
@@ -72,7 +70,7 @@ const OrderSummary: React.FC = () => {
 					</div>
 				</div>
 			</Container>
-			{/* <BottomFooter /> */}
+			<BottomFooter />
 		</>
 	);
 };
