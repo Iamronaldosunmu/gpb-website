@@ -1,12 +1,11 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Shipping from "../Pay/shipping";
-import { interactionAnimations } from "../../../utils/framer-default-animations";
-import { motion } from "framer-motion";
 import useUserDetailsStore, { UserDetails } from "../../../store/userDetails";
-import { loadStripe } from "@stripe/stripe-js";
+import { interactionAnimations } from "../../../utils/framer-default-animations";
+import Shipping from "../Pay/shipping";
 
 const schema = z.object({
 	email: z.string().email({ message: "The email format you entered is invalid" }),
