@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import useSize from "../../hooks/useSize";
+import { motion } from "framer-motion";
+import { interactionAnimations } from "../../utils/framer-default-animations";
 
 interface SectionGridProps {
 	textSectionBgColor: string;
@@ -7,10 +10,12 @@ interface SectionGridProps {
 	textSectionCtaButtonText: string;
 	reversed?: boolean;
 	OtherSectionComponent: JSX.Element;
+	buttonPath: string;
 }
 
-const SectionGrid: React.FC<SectionGridProps> = ({ textSectionHeader, textSectionBgColor, textSectionContent, textSectionCtaButtonText, reversed, OtherSectionComponent }) => {
+const SectionGrid: React.FC<SectionGridProps> = ({ textSectionHeader, textSectionBgColor, textSectionContent, textSectionCtaButtonText, reversed, OtherSectionComponent, buttonPath }) => {
 	const [width] = useSize();
+	const navigate = useNavigate();
 	return (
 		<section className="w-full lg:grid grid-cols-1 lg:grid-cols-2 xl:min-h-[640px] grid-flow-dense">
 			<article
@@ -43,12 +48,14 @@ const SectionGrid: React.FC<SectionGridProps> = ({ textSectionHeader, textSectio
 						</p>
 					))}
 
-					<button
+					<motion.button
+						{...interactionAnimations}
+						onClick={() => navigate(buttonPath)}
 						data-aos="zoom-in"
-						className={`text-[16px] md:text-[18px] lg:text-[22px] xl:text-[24px] py-[18px] px-[35px] border w-fit hover:bg-white transition-all duration-300 hover:text-[${textSectionBgColor}]`}
+						className={`text-[16px] md:text-[18px] lg:text-[22px] xl:text-[24px] py-[18px] px-[35px] border w-fit  transition-all duration-300 hover:text-[${textSectionBgColor}] uppercase`}
 					>
 						{textSectionCtaButtonText}
-					</button>
+					</motion.button>
 				</div>
 			</article>
 

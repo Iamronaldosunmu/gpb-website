@@ -65,8 +65,12 @@ input:-webkit-autofill {
 }
 
 .image-container {
+  display: none;
 	position: fixed;
-	display: flex;
+
+  @media screen  and (min-width: 1024px) {
+    display: flex;
+  }
 	justify-content: center;
 	align-items: center;
 	height: calc(100vh - 140px);
@@ -95,8 +99,12 @@ input:-webkit-autofill {
 
 .title-container {
 	position: relative;
-	display: block;
+	display: none;
 	padding-top: 200px;
+  
+  @media screen  and (min-width: 1024px) {
+    display: block;
+  }
 }
 
 .title-container h1 {

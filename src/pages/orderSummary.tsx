@@ -7,27 +7,8 @@ import Cart from "../components/shipping/Cart";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
+
 const OrderSummary: React.FC = () => {
-	const items = [
-		{
-			name: "Item 1",
-			color: "Change",
-			exclusivity: true,
-			imageUrl: "item1.jpg",
-			price: 100000,
-			isFree: true,
-			shippingFee: 0,
-		},
-		{
-			name: "Item 2",
-			color: "Change",
-			exclusivity: false,
-			imageUrl: "item2.jpg",
-			price: 15000,
-			isFree: false,
-			shippingFee: 5,
-		},
-	];
 	const [openModal, setOpenModal] = useState(false);
 
 	// Function to open the modal
@@ -56,17 +37,14 @@ const OrderSummary: React.FC = () => {
 			</button>
 			{openModal && (
 				<div className="fixed top-0 left-0 w-full max-h-full bg-gray-800 bg-opacity-50 z-50 flex items-center justify-center overflow-y-auto">
-					<Cart
-						items={items}
-						closeModal={closeModalHandler}
-					/>
+					<Cart closeModal={closeModalHandler} />
 				</div>
 			)}
 			<Container className="mb-[5rem] mt-6">
 				<div className="grid lg:grid-cols-2 gap-4 lg:px-20 md:px-10 sm:px-5">
 					<div className="cols-span-1 w-full">{<Form />}</div>
 					<div className="cols-span 1 h-full ml-9 hidden lg:block">
-						<Cart items={items} />
+						<Cart />
 					</div>
 				</div>
 			</Container>

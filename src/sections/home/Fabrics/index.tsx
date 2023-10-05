@@ -10,13 +10,14 @@ const Fabrics = () => {
 	return (
 		<SectionGrid
 			textSectionHeader="#GPBFABRICS"
+			buttonPath="/get-a-quote"
 			textSectionBgColor="#A12E2E"
 			textSectionContent={[
 				`We have over 150 different fabrics that we are able to print on digitally
       Ranging from silks to cottons, swimwear fabrics, polyesters, viscose , suede etc.`,
 				`All our fabrics are pre and post treated to offer excellent wash fastness and Durability with digital printing.`,
 			]}
-			textSectionCtaButtonText="Clients"
+			textSectionCtaButtonText="GET A QUOTE"
 			OtherSectionComponent={
 				<div
 					ref={container}

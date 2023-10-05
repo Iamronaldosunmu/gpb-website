@@ -63,7 +63,7 @@ const ShopCollections = () => {
 					</div>
 				</motion.div>
 
-				<div className="mt-[46px] grid-cols-2 md:grid-cols-3 lg:grid-cols-4  gap-[12px] md:gap-[27px] grid">
+				<div className="mt-[46px] grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-[30px]  gap-[12px] md:gap-[27px] grid">
 					{products?.slice(0, width >= 768 && width < 1024 ? 3 : 4).map((product) => (
 						<PrintItem
 							key={product.id}
