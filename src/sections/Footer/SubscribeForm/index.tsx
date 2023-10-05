@@ -1,12 +1,11 @@
-import { FormEvent } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { z } from "Zod";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import Container from "../../../components/container";
 import axiosInstance from "../../../services/apiClient";
-import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
-import { z } from "Zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { AnimatePresence, motion } from "framer-motion";
 
 interface EmailNewsletterPayload {
 	data: {

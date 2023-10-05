@@ -15,11 +15,8 @@ const Client = () => {
 	const navigate = useNavigate();
 	const infiniteCarouselRef = useRef(null);
 	const [totalWidth, setTotalWidth] = useState(0);
-	const [renderedImages, setRenderedImages] = useState(false);
+	const [renderedImages] = useState(false);
 	const imageRefs = useRef([]);
-	const forceUpdate = () => {
-		setRenderedImages(!renderedImages);
-	};
 
 	useEffect(() => {
 		imageRefs.current = imageRefs.current.slice(0, clients?.find((client) => client?.id == id)?.images?.length);
@@ -38,7 +35,7 @@ const Client = () => {
 		setTimeout(() => {
 			let totalContainerWidth = 0;
 			for (const item of imageRefs.current) {
-				totalContainerWidth += item.clientWidth;
+				totalContainerWidth += (item as HTMLDivElement | HTMLImageElement).clientWidth;
 			}
 			console.log(totalContainerWidth);
 			setTotalWidth(totalContainerWidth);
@@ -77,7 +74,7 @@ const Client = () => {
 			<div className="w-full overflow-hidden mb-[40px] md:mb-[80px] lg:mb-[129px]">
 				<motion.div
 					initial={{ x: 0 }}
-					animate={{x: -totalWidth, transition: {duration: totalWidth / 150, repeat: Infinity, ease: "linear"}}}
+					animate={{ x: -totalWidth, transition: { duration: totalWidth / 150, repeat: Infinity, ease: "linear" } }}
 					ref={infiniteCarouselRef}
 					className="flex min-w-fit"
 				>
@@ -88,7 +85,7 @@ const Client = () => {
 							console.log;
 							return (
 								<img
-									ref={(el) => (imageRefs.current[index] = el)}
+									ref={(el) => ((imageRefs.current as HTMLImageElement[])[index] = el as HTMLImageElement)}
 									className="h-[350px] min-h-[350px] md:min-h-[450px] md:h-[450px] lg:h-[520px] lg:min-h-[520px]"
 									src={image.url}
 								/>
@@ -96,7 +93,7 @@ const Client = () => {
 						})}
 					{clients
 						?.find((client) => client?.id == id)
-						?.images.map((image, index: number) => {
+						?.images.map((image) => {
 							return (
 								<img
 									className="h-[350px] min-h-[350px] md:min-h-[450px] md:h-[450px] lg:h-[520px] lg:min-h-[520px]"
@@ -104,7 +101,6 @@ const Client = () => {
 								/>
 							);
 						})}
-
 				</motion.div>
 			</div>
 			<BottomFooter />

@@ -5,7 +5,8 @@ import React from "react";
 type PageContainerProps = {
 	className?: string;
 	children: JSX.Element | JSX.Element[];
-} & React.HTMLProps<HTMLDivElement>;
+	style: React.CSSProperties;
+};
 const PageContainer = ({ className, children, ...props }: PageContainerProps) => {
 	return (
 		<motion.main
