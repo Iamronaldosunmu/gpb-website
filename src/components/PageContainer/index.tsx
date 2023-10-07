@@ -5,7 +5,7 @@ import React from "react";
 type PageContainerProps = {
 	className?: string;
 	children: JSX.Element | JSX.Element[];
-	style: React.CSSProperties;
+	style?: React.CSSProperties;
 };
 const PageContainer = ({ className, children, ...props }: PageContainerProps) => {
 	return (
