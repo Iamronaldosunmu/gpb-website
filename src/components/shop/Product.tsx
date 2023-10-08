@@ -47,8 +47,8 @@ const Product: React.FC<ProductProps> = ({ name, id, price, discountPrice, image
 				<div className="flex text-[10px] md:text-[16px] items-center justify-between flex-wrap">
 					<p className="font-semibold text-[#232323]">{name}</p>
 					<div className="flex">
-						<p className="price">N{discountPrice ? parseInt(discountPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</p>
-						{discountPrice && <p className="hidden md:inline-block font-lato line-through text-[#5A3522] ml-2">N{parseInt(price)?.toLocaleString()}</p>}
+						<p className="price">₦{discountPrice ? parseInt(discountPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</p>
+						{discountPrice && <p className="hidden md:inline-block font-lato line-through text-[#5A3522] ml-2">₦{parseInt(price)?.toLocaleString()}</p>}
 						{/* <span className="font-lato">{`N${newPrice}`}</span>
 						<span className="hidden md:inline-block font-lato line-through text-[#5A3522] ml-2">{`N${oldPrice}`}</span> */}
 					</div>
