@@ -19,7 +19,7 @@ const WishList = () => {
 	return (
 		<>
 			<Container className="mt-[100px] lg:mt-[200px]">
-				<h1 className="text-[32px] font-bold bg-white lg:pl-[73px] text-center lg:text-left">Shop Prints</h1>
+				{/* <h1 className="text-[32px] font-bold bg-white lg:pl-[73px] text-center lg:text-left">Shop Prints</h1> */}
 				<div className="mt-[100px]">
 					<div className="border-black border-b pb-[30px] text-center">
 						<h2 className="text-[32px] font-semibold">My WishList</h2>

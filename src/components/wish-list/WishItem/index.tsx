@@ -59,7 +59,7 @@ const WishItem: React.FC<Props> = ({ name, id, price, discountPrice, image, quan
 					onClick={(e) => e.stopPropagation()}
 					className="flex justify-center gap-x-3 items-center mt-[18px] transition-all duration-500 ease-in-out"
 				>
-					<div className="border-[0.5px] border-black flex text-[#232323] items-center h-8">
+					{/* <div className="border-[0.5px] border-black flex text-[#232323] items-center h-8">
 						<button
 							onClick={() => incrementQuantity(id)}
 							className="py-1 px-2 border-r border-black"
@@ -73,7 +73,7 @@ const WishItem: React.FC<Props> = ({ name, id, price, discountPrice, image, quan
 						>
 							-
 						</button>
-					</div>
+					</div> */}
 					<motion.button
 						{...interactionAnimations}
 						onClick={() => addToCart({ id, backgroundColor: "SATISFIED", exclusivity: "NO" })}
