@@ -1,20 +1,23 @@
 import { motion } from "framer-motion";
 import { pageTransition } from "../../utils/framer-default-animations";
+import React from "react";
 
-interface PageContainerProps {
+type PageContainerProps = {
 	className?: string;
 	children: JSX.Element | JSX.Element[];
-}
-const PageContainer = ({ className, children }: PageContainerProps) => {
+	style?: React.CSSProperties;
+};
+const PageContainer = ({ className, children, ...props }: PageContainerProps) => {
 	return (
-	<motion.main
-		data-scroll-container
-		className={className}
-		{...pageTransition}
-	>
-		{children}
-	</motion.main>
-	)
+		<motion.main
+			data-scroll-container
+			className={className}
+			{...pageTransition}
+			{...props}
+		>
+			{children}
+		</motion.main>
+	);
 };
 
 export default PageContainer;

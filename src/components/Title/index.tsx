@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface TitleProps {
 	name: string;
@@ -7,9 +8,11 @@ interface TitleProps {
 	setIndex: Dispatch<SetStateAction<number>>;
 	textEnter: () => void;
 	textLeave: () => void;
+	id: string;
 }
 
-const Title: React.FC<TitleProps> = ({ name, index, setRotation, setIndex, textEnter, textLeave }) => {
+const Title: React.FC<TitleProps> = ({ name, index, setRotation, setIndex, textEnter, textLeave, id }) => {
+	const navigate = useNavigate();
 	return (
 		<div
 			onMouseEnter={() => {
@@ -21,6 +24,7 @@ const Title: React.FC<TitleProps> = ({ name, index, setRotation, setIndex, textE
 			className="title-item"
 		>
 			<h1
+				onClick={() => navigate(`/clients/${id}`)}
 				className="w-fit"
 				onMouseEnter={textEnter}
 				onMouseLeave={textLeave}

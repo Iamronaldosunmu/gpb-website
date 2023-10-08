@@ -3,7 +3,7 @@ import Home from "./pages/home";
 import AboutUs from "./pages/about-us";
 import OrderSummary from "./pages/orderSummary";
 import GetAQuote from "./pages/get-a-quote";
-import Client from "./pages/clients/[name]";
+import Client from "./pages/clients/[id]";
 import Clients from "./pages/clients";
 import Shop from "./pages/shop";
 import PrintDetails from "./pages/print-details";
@@ -104,7 +104,7 @@ function App() {
 						element={<GetAQuote />}
 					/>
 					<Route
-						path="/clients/:name"
+						path="/clients/:id"
 						element={<Client />}
 					/>
 					<Route

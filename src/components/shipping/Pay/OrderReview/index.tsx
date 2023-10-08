@@ -1,5 +1,4 @@
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+
 import Button from "../Button";
 
 const OrderReview = () => {
@@ -11,8 +10,8 @@ const OrderReview = () => {
   };
   return (
     <div>
-      <div className="pb-9 mb-10">
-        <h2 className="font-bold text-3xl mb-1 mt-9 pt-9">
+      <div className="pb-9 mb-10 p-4">
+        <h2 className="font-semibold md:text-3xl text-2xl mb-7 mt-9 pt-9">
           Review and place order
         </h2>
         <p className=" text-sm mb-5">

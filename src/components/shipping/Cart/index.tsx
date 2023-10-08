@@ -1,10 +1,10 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useCartStore from "../../../store/cart";
-import { Link } from "react-router-dom";
 import useProductStore, { Product } from "../../../store/products";
+import { Link } from "react-router-dom";
 
-const Cart = () => {
+const Cart = ({ closeModal }: { closeModal?: (arg: boolean) => void }) => {
 	const { cart } = useCartStore();
 	const { products } = useProductStore();
 	const getSubTotal = () => {
@@ -24,8 +24,16 @@ const Cart = () => {
 
 	return (
 		<div className="flex h-full ">
-			<div className="bg-red-100 flex-grow p-6 px-9 max-w-md lg:max-w-none  mt-4">
-				<div className="flex justify-between items-center mb-1 mt-6  ">
+			<div className="bg-red-100 flex-grow p-6 px-9 max-w-md  mt-4">
+				<div className="flex justify-end pt-8 mt-10 md:mt-0">
+					<button
+						className="lg:hidden"
+						onClick={() => closeModal?.(false)}
+					>
+						X
+					</button>
+				</div>
+				<div className="flex justify-between mb-1 mt-6  ">
 					<h2 className="text-2xl font-semibold">Order Summary</h2>
 					<Link
 						className="underline mx-4"
@@ -39,22 +47,23 @@ const Cart = () => {
 					{cart.map((item, index) => (
 						<div
 							key={index}
-							className="flex pb-9 "
+							className="grid grid-cols-3 pb-9 "
 						>
-							<div className="w-1/3 ">
+							<div className="w-2/3 flex col-span-2">
 								<img
 									src={products?.find((product: Product) => product.id === item.id)?.productImage[0].url || ""}
 									alt={products?.find((product: Product) => product.id === item.id)?.name || ""}
-									className="w-20 h-20 object-cover"
+									className="w-20 h-20 object-cover flex-shrink-0 sm:mr-5 mr-2"
 								/>
+								<div className="flex-shrink-0">
+									<h3 className="text-base font-semibold">{products?.find((product: Product) => product.id === item.id)?.name || ""}</h3>
+									<p className="text-xs">COLOR : {item.backgroundColor}</p>
+									<p className="text-xs">EXCLUSIVITY : {item.exclusivity ? "YES" : "NO"}</p>
+								</div>
 							</div>
-							<div className="w-3/4">
-								<h3 className="text-base font-semibold">{products?.find((product: Product) => product.id === item.id)?.name || ""}</h3>
-								<p className="text-xs">COLOR : {item.backgroundColor}</p>
-								<p className="text-xs">EXCLUSIVITY : {item.exclusivity}</p>
-							</div>
-							<div>
-								<p className="text-sm font-semibold price">₦{parseInt(products?.find((product: Product) => product.id === item.id)?.discountPrice || (products?.find((product: Product) => product.id === item.id)?.price as string)).toLocaleString()}</p>
+
+							<div className="flex flex-shrink justify-end">
+							<p className="text-sm font-semibold price">₦{parseInt(products?.find((product: Product) => product.id === item.id)?.discountPrice || (products?.find((product: Product) => product.id === item.id)?.price as string)).toLocaleString()}</p>
 							</div>
 						</div>
 					))}
@@ -78,7 +87,7 @@ const Cart = () => {
 					</div>
 					<div>
 						<p>₦{subTotal.toLocaleString()}</p>
-						<p>{totalShippingFee > 0 ? `₦${totalShippingFee}` : "Free"}</p>
+						<p>{totalShippingFee > 0 ? `N${totalShippingFee}` : "Free"}</p>
 						<p>₦{tax.toLocaleString()}</p>
 					</div>
 				</div>
@@ -88,7 +97,7 @@ const Cart = () => {
 						<p className="text-2xl font-bold">Total</p>
 					</div>
 					<div>
-						<p>₦{totalCost.toLocaleString()}</p>
+						<p>N{totalCost.toLocaleString()}</p>
 					</div>
 				</div>
 				<div className="flex justify-center">

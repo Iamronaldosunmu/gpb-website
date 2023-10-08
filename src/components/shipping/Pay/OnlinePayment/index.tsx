@@ -58,12 +58,12 @@ const OnlinePaymentForm = () => {
 
   return (
     <>
-      <div className="w-[27rem] ml-auto pt-7">
+      <div className="w-full p-4">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="rounded-lg border mb-8 bg-gray-200 mx-auto w-full p-5 text-sm"
+          className="rounded-lg border mb-8 bg-gray-200  sm:p-5 py-10 text-sm"
         >
-          <div className="pt-4 px-2">
+          <div className="xs:px-5 px-2">
             <div className="mb-4 pb-3">
               <label htmlFor="cardNo">Card number</label>
               <Controller

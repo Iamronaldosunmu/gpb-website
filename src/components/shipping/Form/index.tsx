@@ -1,11 +1,11 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Shipping from "../Pay/shipping";
-import { interactionAnimations } from "../../../utils/framer-default-animations";
-import { motion } from "framer-motion";
 import useUserDetailsStore, { UserDetails } from "../../../store/userDetails";
+import { interactionAnimations } from "../../../utils/framer-default-animations";
+import Shipping from "../Pay/shipping";
 
 const schema = z.object({
 	email: z.string().email({ message: "The email format you entered is invalid" }),
@@ -25,7 +25,8 @@ type FormData = z.infer<typeof schema>;
 
 const Form = () => {
 	const [page, setPage] = useState("form");
-	const { userDetails, setUserDetails } = useUserDetailsStore();
+  const { userDetails, setUserDetails } = useUserDetailsStore();
+  
 
 	const {
 		register,
@@ -48,10 +49,14 @@ const Form = () => {
 		phone: "",
 	});
 
-	const [saveInfo, setSaveInfo] = useState(false);
+	const [saveInfo, setSaveInfo] = useState(!!localStorage.getItem("userDetails"));
 
 	useEffect(() => {
 		reset(userDetails);
+	}, [page]);
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
 	}, [page]);
 
 	const handleFormSubmit = (data: FieldValues) => {
@@ -61,10 +66,12 @@ const Form = () => {
 		}));
 
 		setUserDetails(data as UserDetails);
-    console.log(userDetails);
-    
-    if (saveInfo) {
-      localStorage.setItem("userDetails", JSON.stringify(data));
+		console.log(userDetails);
+
+		if (saveInfo) {
+			localStorage.setItem("userDetails", JSON.stringify(data));
+    } else {
+      localStorage.removeItem("userDetails");
     }
 
 		console.log(data);
@@ -80,14 +87,14 @@ const Form = () => {
 			{page === "form" && (
 				<form
 					onSubmit={handleSubmit(handleFormSubmit)}
-					className="max-w-md lg:max-w-none  ml-auto p-4 pb-0 text-sm"
+					className="p-4 pb-0 text-sm"
 				>
 					<div className="flex justify-between  mb-5 pb-1">
 						<h2 className="font-bold text-2xl">Contact</h2>
-						<div>
+						<div className="flex">
 							<label
 								htmlFor="login"
-								className="text-sm "
+								className="text-sm"
 							>
 								Have an account?{" "}
 								<input
@@ -146,8 +153,8 @@ const Form = () => {
 							/>
 							{errors.lastName && <p className="text-red-500">{errors.lastName.message}</p>}
 						</div>
-						<div className="flex gap-[30px]">
-							<div className="mb-7 pb-7 w-full">
+						<div className="flex flex-col md:flex-row md:justify-between gap-[20px]">
+							<div className="mb-7 pb-7 mr-2 flex-grow">
 								<label
 									htmlFor="companyName"
 									className="block mb-2"
@@ -162,7 +169,7 @@ const Form = () => {
 								/>
 								{errors.companyName && <p className="text-red-500">{errors.companyName.message}</p>}
 							</div>
-							<div className="mb-7 pb-7 w-full">
+							<div className="mb-7 pb-7 flex-shrink-0 flex-grow">
 								<label
 									htmlFor="referral"
 									className="block mb-2"
@@ -199,8 +206,8 @@ const Form = () => {
 						</select>
 						{errors.country && <p className="text-red-500">{errors.country.message}</p>}
 					</div>
-					<div className="flex gap-[30px]">
-						<div className="mb-7 pb-7 w-full">
+					<div className="flex flex-col md:flex-row md:justify-between gap-[20px]">
+						<div className="mb-7 pb-7 mr-2 flex-shrink-0 flex-grow">
 							<label
 								htmlFor="zipCode"
 								className="block mb-2"
@@ -215,7 +222,7 @@ const Form = () => {
 							/>
 							{errors.zipCode && <p className="text-red-500">{errors.zipCode.message}</p>}
 						</div>
-						<div className="mb-7 pb-6 w-full">
+						<div className="mb-7 pb-6 flex-grow">
 							<label
 								htmlFor="state"
 								className="block mb-2"
@@ -290,9 +297,8 @@ const Form = () => {
 					</div>
 					<div className="flex justify-end">
 						<button
-							// disabled={!isValid}
 							type="submit"
-							className="bg-black text-white px-9 w-1/2 text-sm py-2 text-center hover: cursor-pointer hover:scale-105 transform transition-transform"
+							className="bg-black text-white px-9 sm:w-1/2 w-full text-sm py-2 text-center hover: cursor-pointer hover:scale-105 transform transition-transform"
 						>
 							continue to shipping
 						</button>
@@ -302,9 +308,10 @@ const Form = () => {
 
 			{page === "shipping" && (
 				<Shipping
+					goToForm={() => setPage("form")}
 					email={formData.email}
 					address={formData.address}
-					shippingAddressDetails="shipping method details"
+					shippingAddressDetails="The items will be delivered digitally via email"
 				/>
 			)}
 		</div>

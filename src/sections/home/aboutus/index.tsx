@@ -13,6 +13,7 @@ const AboutUs = () => {
 			textSectionHeader="Learn Our Story"
 			textSectionContent={["Grapes pattern bank is a design and media agency that offers surface  pattern and design printing services "]}
 			textSectionCtaButtonText="READ MORE"
+			buttonPath="/about-us"
 			OtherSectionComponent={
 				<div
 					ref={container}

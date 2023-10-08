@@ -4,8 +4,8 @@ import SaveInfo from "../SaveInfo";
 const OfflinePayment = () => {
   return (
     <>
-      <div className="pt-7 w-full ml-auto">
-        <div className="rounded-lg border mb-8 bg-gray-200 ml-auto w-full px-9 pt-9 pb-3  font-semibold">
+      <div className="pt-7 p-4 w-full ">
+        <div className="rounded-lg border mb-8 bg-gray-200  w-full md:px-9 sm:px-4 px-2 pt-9 pb-5">
           <div>
             <p>GRAPEHALL LTD</p>
           </div>
@@ -33,9 +33,11 @@ const OfflinePayment = () => {
           </div>
           <p>Or you could send a screen shot of the order summary page</p>
         </div>
+        <SaveInfo />
+        <BillingAddress />
       </div>
-      <SaveInfo />
-      <BillingAddress />
+      
+      
     </>
   );
 };

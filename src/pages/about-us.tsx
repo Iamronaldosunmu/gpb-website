@@ -1,4 +1,5 @@
 import PageContainer from "../components/PageContainer";
+import ParallaxImage from "../components/ParallaxImage";
 import Container from "../components/container";
 import Nav from "../components/nav";
 import TextContainer from "../components/textcontainer";
@@ -7,9 +8,7 @@ import { motion } from "framer-motion";
 
 const AboutUs = () => {
 	return (
-		<PageContainer
-			className="pt-[140px] md:pt-[200px]"
-		>
+		<PageContainer className="pt-[140px] md:pt-[200px]">
 			<Nav />
 			<TextContainer className="flex flex-col gap-[80px] text-center lg:text-left">
 				<h1 className="text-center font-medium text-[40px] flex flex-wrap gap-x-[10px] justify-center overflow-hidden">
@@ -51,10 +50,7 @@ const AboutUs = () => {
 				</article>
 			</TextContainer>
 			<div className="w-full mt-[60px] block lg:hidden">
-				<img
-					className="w-full h-full object-cover"
-					src="/assets/images/about-us-1.png"
-				/>
+				<ParallaxImage src="/assets/images/about-us-1.png" />
 			</div>
 			<Container className="hidden lg:block">
 				<section className="mt-[153px] h-[1000px] grid grid-cols-[0.94fr_1.06fr] gap-[32px]">
@@ -88,9 +84,16 @@ const AboutUs = () => {
 					</div>
 				</section>
 			</Container>
-			<TextContainer className="flex flex-col gap-[80px] mt-[180px]">
-				<h1 className="text-center font-medium text-[40px]  mb-[40px]">How we work</h1>
-				<article className="text-[24px] gap-[40px] flex flex-col">
+			<TextContainer className="flex flex-col gap-[80px] mt-[80px] md:mt-[100px] lg:mt-[180px] text-center lg:text-left">
+				<h1
+					className="text-center font-medium text-[40px] mb-[40px]"
+					data-aos="fade-up"
+					data-aos-duration="700"
+					data-aos-delay="300"
+				>
+					How we work
+				</h1>
+				<article className="text-[16px] md:text-[24px] gap-[40px] mt-[40px] flex flex-col">
 					<p
 						data-aos="fade-up"
 						data-aos-duration="700"
@@ -117,8 +120,11 @@ const AboutUs = () => {
 					</p>
 				</article>
 			</TextContainer>
+			<div className="w-full mt-[60px] block lg:hidden">
+				<ParallaxImage src="/assets/images/about-us-2.jpg" />
+			</div>
 			<Container>
-				<section className="mt-[153px] h-[1000px] grid grid-rows-[0.45fr_0.55fr] grid-cols-1 gap-[32px]">
+				<section className="mt-[153px] h-[1000px] grid-rows-[0.45fr_0.55fr] grid-cols-1 gap-[32px] hidden lg:grid">
 					<div className="w-full h-[570px]">
 						<img
 							className="w-full h-full object-cover"
