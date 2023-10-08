@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import CartItem from "./CartItem";
 import { motion } from "framer-motion";
-import { interactionAnimations } from "../../utils/framer-default-animations";
+import { child, container, interactionAnimations } from "../../utils/framer-default-animations";
 import useCartStore from "../../store/cart";
 import useProductStore from "../../store/products";
 
@@ -36,8 +36,8 @@ const CartList = () => {
 					/>
 					<p className="font-medium">Cart</p>
 					<p className="text-[#3C3B3B]">|</p>
-					{!items.some(item => item.checked) && <p className="text-[#2d2c2cb5]">{`${items.length} item${items.length !== 1 ? "s" : ""} `}</p>}
-					{items.some(item => item.checked) && <p className="text-[#2d2c2cb5]">{`${items.filter(item => item.checked).length} item${items.length > 1 ? "s" : ""} selected`}</p>}
+					{!items.some((item) => item.checked) && <p className="text-[#2d2c2cb5]">{`${items.length} item${items.length !== 1 ? "s" : ""} `}</p>}
+					{items.some((item) => item.checked) && <p className="text-[#2d2c2cb5]">{`${items.filter((item) => item.checked).length} item${items.length > 1 ? "s" : ""} selected`}</p>}
 				</div>
 				<motion.div
 					{...interactionAnimations}
@@ -46,7 +46,7 @@ const CartList = () => {
 						for (const item of items) {
 							if (item.checked) checkedItems.push(item);
 						}
-						setItems(items.filter(item => !item.checked))
+						setItems(items.filter((item) => !item.checked));
 						checkedItems.forEach((item) => removeFromCart(item.id));
 					}}
 					className="flex items-center gap-x-1 cursor-pointer"
@@ -59,23 +59,34 @@ const CartList = () => {
 					<p className="font-semibold">Remove</p>
 				</motion.div>
 			</div>
-			<div className="mt-[60px] flex flex-col gap-y-[25px] md:gap-y-[60px]">
+			<motion.div
+				variants={container}
+				initial="hidden"
+				animate="show"
+				className="mt-[60px] flex flex-col gap-y-[25px] md:gap-y-[60px]"
+			>
 				{cart?.map((cartItem) => (
-					<CartItem
-						id={cartItem.id}
-						productName={products?.find((product) => product.id === cartItem.id)?.name || ""}
-						backgroundColor={cartItem.backgroundColor}
-						exclusivity={cartItem.exclusivity}
-						oldPrice={products?.find((product) => product.id === cartItem.id)?.price || "0"}
-						newPrice={products?.find((product) => product.id === cartItem.id)?.discountPrice || "0"}
-						selectItem={(e) => selectItem(e, cartItem.id)}
-						removeItem={() => removeFromCart(cartItem.id)}
-						checked={items.find((a) => a.id === cartItem.id)?.checked || false}
-						image={products?.find((product) => product.id === cartItem.id)?.productImage[0].url || ""}
-					/>
+					<motion.div variants={child}>
+						<CartItem
+							id={cartItem.id}
+							productName={products?.find((product) => product.id === cartItem.id)?.name || ""}
+							backgroundColor={cartItem.backgroundColor}
+							exclusivity={cartItem.exclusivity}
+							oldPrice={products?.find((product) => product.id === cartItem.id)?.price || "0"}
+							newPrice={products?.find((product) => product.id === cartItem.id)?.discountPrice || "0"}
+							selectItem={(e) => selectItem(e, cartItem.id)}
+							removeItem={() => removeFromCart(cartItem.id)}
+							checked={items.find((a) => a.id === cartItem.id)?.checked || false}
+							image={products?.find((product) => product.id === cartItem.id)?.productImage[0].url || ""}
+						/>
+					</motion.div>
 				))}
-				{cart.length == 0 && <div className="w-full h-[200px] flex items-center justify-center "><p>No Items in the cart</p></div>}
-			</div>
+				{cart.length == 0 && (
+					<div className="w-full h-[200px] flex items-center justify-center ">
+						<p>No Items in the cart</p>
+					</div>
+				)}
+			</motion.div>
 		</div>
 	);
 };
