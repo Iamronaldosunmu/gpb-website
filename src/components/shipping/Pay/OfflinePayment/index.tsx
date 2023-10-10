@@ -1,5 +1,5 @@
-import BillingAddress from "../BillingAddress";
-import SaveInfo from "../SaveInfo";
+// import BillingAddress from "../BillingAddress";
+// import SaveInfo from "../SaveInfo";
 
 const OfflinePayment = () => {
   return (
@@ -33,8 +33,8 @@ const OfflinePayment = () => {
           </div>
           <p>Or you could send a screen shot of the order summary page</p>
         </div>
-        <SaveInfo />
-        <BillingAddress />
+        {/* <SaveInfo />
+        <BillingAddress /> */}
       </div>
       
       

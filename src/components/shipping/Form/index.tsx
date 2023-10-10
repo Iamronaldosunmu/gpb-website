@@ -6,6 +6,14 @@ import { z } from "zod";
 import useUserDetailsStore, { UserDetails } from "../../../store/userDetails";
 import { interactionAnimations } from "../../../utils/framer-default-animations";
 import Shipping from "../Pay/shipping";
+import useCartStore from "../../../store/cart";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import axiosInstance from "../../../services/apiClient";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe("pk_test_51NsMsRBCo90vBq7i6bIjf5DE8ITOGlPLpIzYcjHXGUbiVU0rzsiAuYKbnpfKIUNgElOXJ1vQrTNE55DKMoyoXeGK00qCc1RHki");
 
 const schema = z.object({
 	email: z.string().email({ message: "The email format you entered is invalid" }),
@@ -21,12 +29,17 @@ const schema = z.object({
 	phone: z.string().min(11, { message: "Phone number should be at least 11 characters" }),
 });
 
+interface CheckoutPayload {
+	email: string;
+	customerDetails: { firstName: string; lastName: string; companyName: string; advertisingChannel: string; Country: string; zipCode: string; state: string; City: string; address: string; phone: string };
+	productInfo: { colour: string; productId: string; exclusivity: boolean }[];
+}
+
 type FormData = z.infer<typeof schema>;
 
 const Form = () => {
 	const [page, setPage] = useState("form");
-  const { userDetails, setUserDetails } = useUserDetailsStore();
-  
+	const { userDetails, setUserDetails } = useUserDetailsStore();
 
 	const {
 		register,
@@ -50,6 +63,20 @@ const Form = () => {
 	});
 
 	const [saveInfo, setSaveInfo] = useState(!!localStorage.getItem("userDetails"));
+	const { cart } = useCartStore();
+
+	const checkout = async (data: CheckoutPayload) => {
+		const res = await axiosInstance.post("/orders", data);
+		return res.data;
+	};
+
+	const [clientSecret, setClientSecret] = useState("");
+
+	const generateClientSecret = useMutation(checkout, {
+		// onSuccess: (data) => {
+		// 	setClientSecret(data.clientSecret);
+		// },
+	});
 
 	useEffect(() => {
 		reset(userDetails);
@@ -59,7 +86,7 @@ const Form = () => {
 		window.scrollTo(0, 0);
 	}, [page]);
 
-	const handleFormSubmit = (data: FieldValues) => {
+	const handleFormSubmit = async (data: FieldValues) => {
 		setFormData((prevData) => ({
 			...prevData,
 			...data,
@@ -70,11 +97,35 @@ const Form = () => {
 
 		if (saveInfo) {
 			localStorage.setItem("userDetails", JSON.stringify(data));
-    } else {
-      localStorage.removeItem("userDetails");
-    }
+		} else {
+			localStorage.removeItem("userDetails");
+		}
 
-		console.log(data);
+		const payload = {
+			email: data.email,
+			customerDetails: {
+				firstName: data.firstName,
+				lastName: data.lastName,
+				companyName: data.companyName,
+				advertisingChannel: data.referral,
+				Country: data.country,
+				zipCode: data.zipCode,
+				state: data.state,
+				City: data.cityName,
+				address: data.address,
+				phoneNumber: data.phone,
+			},
+			productInfo: cart?.map((item) => ({
+				colour: item.backgroundColor,
+				productId: item.id,
+				exclusivity: item.exclusivity == "YES" ? "true" : "false",
+			})),
+		};
+		console.log(payload);
+
+		const result = await generateClientSecret.mutateAsync(payload);
+		console.log(result);
+		setClientSecret(result.clientSecret)
 
 		if (isValid) {
 			// reset();
@@ -300,19 +351,31 @@ const Form = () => {
 							type="submit"
 							className="bg-black text-white px-9 sm:w-1/2 w-full text-sm py-2 text-center hover: cursor-pointer hover:scale-105 transform transition-transform"
 						>
-							continue to shipping
+							{generateClientSecret.isLoading ? "Loading... " : "continue to shipping"}
 						</button>
 					</div>
 				</form>
 			)}
 
-			{page === "shipping" && (
-				<Shipping
-					goToForm={() => setPage("form")}
-					email={formData.email}
-					address={formData.address}
-					shippingAddressDetails="The items will be delivered digitally via email"
-				/>
+			{page === "shipping" && clientSecret && (
+				<Elements
+					stripe={stripePromise}
+					options={{
+						// passing the client secret obtained in step 3
+						clientSecret,
+						// Fully customizable with appearance API.
+						appearance: {
+							/*...*/
+						},
+					}}
+				>
+					<Shipping
+						goToForm={() => setPage("form")}
+						email={formData.email}
+						address={formData.address}
+						shippingAddressDetails="The items will be delivered digitally via email"
+					/>
+				</Elements>
 			)}
 		</div>
 	);

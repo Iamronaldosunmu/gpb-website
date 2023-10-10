@@ -3,23 +3,13 @@ import Button from "../Button";
 import Payment from "../index";
 import Form from "../../Form/index";
 import { loadStripe } from "@stripe/stripe-js";
-
+import { PaymentElement } from "@stripe/react-stripe-js";
 interface Props {
 	email?: string;
 	address?: string;
 	shippingAddressDetails?: string;
 	goToForm?: () => void;
 }
-
-const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
-const options = {
-	// passing the client secret obtained in step 3
-	clientSecret: "32841d6768791dc6b7cd4f763133f59a17aca0c7626ff554a3580f07129854b11fa581c9883ec1eec7f88e78cf57f2efe8b7ef6249d9b2bc1bbf6c8e42506d03617ff29d3b149533c86214ffb8b8c80b9a0bd3f370412b81738979f870d5306ce11ba5236a2551e9c5d1fc96bdbb4ccea54f27ed5f631fc7730a6ba204390284",
-	// Fully customizable with appearance API.
-	appearance: {
-		/*...*/
-	},
-};
 
 const Shipping = ({ email, shippingAddressDetails, goToForm }: Props) => {
 	const [showPayment, setShowPayment] = useState(false);

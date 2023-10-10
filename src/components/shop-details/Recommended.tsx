@@ -37,7 +37,7 @@ const Recommended = () => {
 						<Product
 							name={item.name}
 							discountPrice={item.discountPrice}
-							image={item.productImage[0].url}
+							image={item.productImage ? item.productImage[0].url : ""}
 							id={item.id}
 							price={item.price}
 						/>

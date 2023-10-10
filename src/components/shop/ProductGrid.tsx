@@ -32,7 +32,7 @@ const ProductGrid = () => {
 						name={product.name}
 						price={product.price}
 						discountPrice={product?.discountPrice}
-						image={product.productImage[0].url}
+						image={product.productImage ? product.productImage[0].url : ""}
 					/>
 				))}
 			</section>

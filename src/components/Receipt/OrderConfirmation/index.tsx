@@ -1,16 +1,16 @@
 interface Props {
-	name: string;
-	orderNumber: number;
+	name?: string;
+	orderNumber?: number;
 }
 
 const OrderConfirmation = ({ name, orderNumber }: Props) => {
 	return (
-		<div className="flex flex-col items-center">
-			<p className="text-3xl font-semibold">Thank you, {name}</p>
-			<p className="text-1xl">You'll receive a confirmation email soon</p>
-			<div className="flex">
-				<p className="text-sm">Order number: {orderNumber}</p>
+		<div className="flex flex-col justify-center items-center">
+			<div className=" flex  justify-center items-center">
+				<p className="text-xl lg:text-3xl font-semibold text-center">Thank you {name} 🎉🎉</p>
 			</div>
+			<p className="text-md lg:text-lg text-center">You'll receive a confirmation email soon</p>
+			{orderNumber && <p className="text-sm">Order number: {orderNumber}</p>}
 		</div>
 	);
 };

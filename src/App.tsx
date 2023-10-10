@@ -22,6 +22,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import InitData from "./components/InitData";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
+import PaymentStatus from "./pages/complete";
+import Receipt from "./pages/receipt";
 
 function App() {
 	useEffect(() => {
@@ -129,6 +131,14 @@ function App() {
 					<Route
 						path="/membership"
 						element={<Membership />}
+					/>
+					<Route
+						path="/complete"
+						element={<PaymentStatus />}
+					/>
+					<Route
+						path="/receipt"
+						element={<Receipt />}
 					/>
 				</Routes>
 				{/* <InitData /> */}

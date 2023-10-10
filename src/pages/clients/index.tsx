@@ -14,7 +14,7 @@ const Clients = () => {
 	const { clients } = useClientStore();
 
 	const clientData = clients?.map((client: Client) => ({
-		image: client.images[0],
+		image: client.images ? client.images[0] : "",
 		name: client.name,
 		id: client.id,
 	}));
@@ -151,7 +151,7 @@ const Clients = () => {
 						>
 							<figure className="w-full rounded-[10px] overflow-hidden">
 								<img
-									src={client?.images[0].url}
+									src={client.images ? client.images[0] : ""}
 									className="w-full aspect-[0.8] object-cover"
 								/>
 							</figure>

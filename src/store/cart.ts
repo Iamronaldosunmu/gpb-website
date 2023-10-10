@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface CartItem {
+export interface CartItem {
 	id: string;
 	backgroundColor: "SATISFIED" | "Change" | "2 Changes" | "3 Changes";
 	exclusivity: "YES" | "NO";
@@ -11,6 +11,7 @@ interface CartStore {
 	addToCart: (product: CartItem) => void;
 	removeFromCart: (id: string) => void;
 	saveCart: () => void;
+	clearCart: () => void;
 }
 
 const useCartStore = create<CartStore>((set, get) => ({
@@ -27,6 +28,10 @@ const useCartStore = create<CartStore>((set, get) => ({
 		set((state) => ({ cart: state.cart.filter((p) => p.id !== id) }));
 	},
 	saveCart: () => localStorage.setItem("cart", JSON.stringify(get().cart)),
+	clearCart: () => {
+		set(() => ({ cart: [] }))
+		
+	}
 }));
 
 export default useCartStore;

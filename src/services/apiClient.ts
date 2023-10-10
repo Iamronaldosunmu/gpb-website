@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const axiosInstance = axios.create({
-    baseURL: "https://gpb-strapi-demo.onrender.com/api", 
-})
+	baseURL: "https://strapi-demo-2-0.onrender.com/api",
+});
 
 export default axiosInstance;

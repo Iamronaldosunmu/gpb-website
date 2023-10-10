@@ -63,7 +63,7 @@ const Cart = ({ closeModal }: { closeModal?: (arg: boolean) => void }) => {
 							</div>
 
 							<div className="flex flex-shrink justify-end">
-							<p className="text-sm font-semibold price">₦{parseInt(products?.find((product: Product) => product.id === item.id)?.discountPrice || (products?.find((product: Product) => product.id === item.id)?.price as string)).toLocaleString()}</p>
+								<p className="text-sm font-semibold price">₦{parseInt(products?.find((product: Product) => product.id === item.id)?.discountPrice || (products?.find((product: Product) => product.id === item.id)?.price as string)).toLocaleString()}</p>
 							</div>
 						</div>
 					))}
@@ -97,7 +97,7 @@ const Cart = ({ closeModal }: { closeModal?: (arg: boolean) => void }) => {
 						<p className="text-2xl font-bold">Total</p>
 					</div>
 					<div>
-						<p>N{totalCost.toLocaleString()}</p>
+						<p>₦{totalCost.toLocaleString()}</p>
 					</div>
 				</div>
 				<div className="flex justify-center">

@@ -7,6 +7,7 @@ interface ButtonProps {
   onLeftButtonClick: () => void;
   onRightButtonClick: () => void;
   className?: string;
+  rightButtonDisabled?: boolean;
 }
 
 const Button = ({
@@ -14,6 +15,7 @@ const Button = ({
   rightButtonLabel,
   onLeftButtonClick,
   onRightButtonClick,
+  rightButtonDisabled,
   className,
 }: ButtonProps) => {
   return (
@@ -34,10 +36,11 @@ const Button = ({
       </div>
       <div className="flex justify-end flex-shrink-0">
         <button
+            disabled={rightButtonDisabled}
           type="submit"
           onClick={onRightButtonClick}
           className={
-            "bg-black text-white px-2 lg:px-2  md:px-8 py-3 w-full md:text-sm lg:text-sm text-xs text-center font-semibold  hover: cursor-pointer hover:scale-105 transform transition-transform" +
+            "bg-black text-white px-2 lg:px-2  md:px-8 py-3 w-full md:text-sm lg:text-sm text-xs text-center font-semibold  hover: cursor-pointer hover:scale-105 transform transition-transform disabled:opacity-70" +
             className
           }
         >

@@ -15,7 +15,7 @@ const PreviewProduct: FC<Props> = () => {
 	return (
 		<div className="flex gap-x-[33px]">
 			<div className="flex flex-col justify-end items-center space-y-[31px]">
-				{product?.productImage.map((image, index) => (
+				{product?.productImage?.map((image, index) => (
 					<div className="relative">
 						<motion.img
 							{...interactionAnimations}
@@ -35,7 +35,7 @@ const PreviewProduct: FC<Props> = () => {
 				))}
 			</div>
 			<div className="w-[489px] h-[622px] relative">
-				{product?.productImage.map((path, index) => (
+				{product?.productImage?.map((path, index) => (
 			
 						<motion.img
 							key={path.url}

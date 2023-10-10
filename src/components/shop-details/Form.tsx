@@ -16,7 +16,7 @@ const Form = () => {
 	const { products } = useProductStore();
 	const { id } = useParams();
 	const product = products?.find((product) => product.id == id);
-	const { addToCart, cart } = useCartStore();
+	const { addToCart, cart, saveCart } = useCartStore();
 
 	const schema = z
 		.object({
@@ -25,27 +25,29 @@ const Form = () => {
 		})
 		.required();
 
-	type FormData = {colour: "SATISFIED" | "Change" | "2 Changes" | "3 Changes", exclusivity: "YES" | "NO"};
+	type FormData = { colour: "SATISFIED" | "Change" | "2 Changes" | "3 Changes"; exclusivity: "YES" | "NO" };
+	useEffect(() => {
+		saveCart()
+	}, [cart])
 
 	// Validate all Fields not Just one
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
-		reset, 
-		watch
+		reset,
+		watch,
 	} = useForm<FormData>({ resolver: zodResolver(schema) });
 	useEffect(() => {
 		const cartItem = cart.find((item) => item.id == product?.id);
-		if (cartItem) reset({ colour: cartItem.backgroundColor, exclusivity: cartItem.exclusivity })
-		else
-		reset({colour: "SATISFIED", exclusivity: "NO"})
-	}, [reset])
+		if (cartItem) reset({ colour: cartItem.backgroundColor, exclusivity: cartItem.exclusivity });
+		else reset({ colour: "SATISFIED", exclusivity: "NO" });
+	}, [reset]);
 	const colour = watch("colour");
 	const exclusivity = watch("exclusivity");
 
 	const onSubmit = (data: FormData) => {
-		addToCart({id: product?.id as string, backgroundColor: data.colour, exclusivity: data.exclusivity })
+		addToCart({ id: product?.id as string, backgroundColor: data.colour, exclusivity: data.exclusivity });
 	};
 	const { price, discountPrice } = product || { price: "", discountPrice: "" };
 	return (
@@ -53,10 +55,10 @@ const Form = () => {
 			<div className="mt-4 flex items-center">
 				<span className="text-[#232323] text-[32px] font-semibold mr-9">{product?.name}</span>
 				<div>
-					{/* <p className="price">N{discountPrice ? parseInt(discountPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</p>
-					{discountPrice && <p className="hidden md:inline-block font-lato line-through text-[#5A3522] ml-2">N{parseInt(price)?.toLocaleString()}</p>} */}
-					<span className="text-[#080808] font-semibold font-lato mr-2 price">N{discountPrice ? parseInt(discountPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</span>
-					{discountPrice && <span className="text-[#BE3F00] font-semibold line-through font-lato price">N{discountPrice ? parseInt(discountPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</span>}
+					{/* <p className="price">₦{discountPrice ? parseInt(discountPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</p>
+					{discountPrice && <p className="hidden md:inline-block font-lato line-through text-[#5A3522] ml-2">₦{parseInt(price)?.toLocaleString()}</p>} */}
+					<span className="text-[#080808] font-semibold font-lato mr-2 price">₦{discountPrice ? parseInt(discountPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</span>
+					{discountPrice && <span className="text-[#BE3F00] font-semibold line-through font-lato price">₦{discountPrice ? parseInt(discountPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</span>}
 				</div>
 			</div>
 			<form
@@ -109,10 +111,10 @@ const Form = () => {
 					{errors.exclusivity && <p className="text-red-500 mt-1"> {errors.colour && <p className="text-red-500 mt-1">{errors.exclusivity.message}</p>}</p>}
 				</div>
 				<div className="w-full flex items-center gap-x-[18px]">
-					<motion.button 
+					<motion.button
 						{...interactionAnimations}
 						whileHover={{ scale: 1.02 }}
-						whileTap={{scale:0.96}}
+						whileTap={{ scale: 0.96 }}
 						type="submit"
 						className="w-full text-2xl font-semibold outline-0 bg-black py-[18px] text-white"
 					>

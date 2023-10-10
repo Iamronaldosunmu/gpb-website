@@ -5,6 +5,8 @@ import OrderConfirmation from "./OrderConfirmation";
 import SubscribeForm from "../../sections/Footer/SubscribeForm";
 import DeliveryDetails from "./DeliveryDetails";
 import BottomFooter from "../../sections/Footer/BottomFooter";
+import Container from "../container";
+import useCartStore from "../../store/cart";
 const items = [
 	{
 		name: "Item 1",
@@ -43,23 +45,24 @@ const billingAddress = {
 const paymentMethod = "Credit Card";
 
 const Receipt = () => {
+	const { cart } = useCartStore();
 	return (
 		<>
-			<div className="mx-20">
+			<Container className="mt-[100px] lg:mt-[250px]">
 				<Nav />
 				<div className="mt-[150px]">
 					<div className="mb-20">
-						<h2 className="text-4xl font-semibold mb-8">Payment</h2>
+						<h2 className="text-4xl font-semibold mb-8">Payment Successful!</h2>
 						<BrowseButton />
 					</div>
 					<div className="flex justify-center mb-10">
 						<OrderConfirmation
-							name="rrrrrrrrr rrreeeeeeee"
-							orderNumber={10225}
+							// name=""
+							// orderNumber={10225}
 						/>
 					</div>
-					<div className="border border-black mb-7">
-						<Order items={items} />
+					<div className="lg:border border-black mb-7">
+						<Order items={cart} />
 					</div>
 					<div className="border border-black">
 						<DeliveryDetails
@@ -74,7 +77,7 @@ const Receipt = () => {
                     </div>
 
 				</div>
-			</div>
+			</Container>
 			<SubscribeForm />
 			<BottomFooter />
 		</>

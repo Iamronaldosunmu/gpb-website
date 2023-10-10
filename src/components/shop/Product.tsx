@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { defaultEase, interactionAnimations } from "../../utils/framer-default-animations";
 import Like from "../like";
@@ -17,7 +17,11 @@ const Product: React.FC<ProductProps> = ({ name, id, price, discountPrice, image
 	const [isHovered, setIsHovered] = useState(false);
 	const [isLiked, setIsLiked] = useState(false);
 	const navigate = useNavigate();
-	const { addToCart } = useCartStore();
+	const { addToCart, cart, saveCart } = useCartStore();
+	useEffect(() => {
+		saveCart();
+	}, [cart]);
+
 	return (
 		<div
 			onClick={() => navigate(`/shop/${id}`)}

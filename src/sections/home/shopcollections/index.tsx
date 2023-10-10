@@ -71,7 +71,7 @@ const ShopCollections = () => {
 							name={product.name}
 							price={product.price}
 							discountedPrice={product?.discountPrice}
-							image={product.productImage[0].url}
+							image={product.productImage ? product.productImage[0]?.url : ""}
 						/>
 					))}
 				</div>
