@@ -24,6 +24,7 @@ import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import PaymentStatus from "./pages/complete";
 import Receipt from "./pages/receipt";
+import WishList from "./pages/wish-list";
 
 function App() {
 	useEffect(() => {
@@ -123,6 +124,10 @@ function App() {
 					<Route
 						path="/cart"
 						element={<Cart />}
+					/>
+					<Route
+						path="/wish-list"
+						element={<WishList />}
 					/>
 					<Route
 						path="/consultation"

@@ -14,7 +14,6 @@ const PrintDetails = () => {
 	// Fetch Data by id and put Product name into Mininav
 	const [liked, setLiked] = useState(false);
 
-
 	return (
 		<main>
 			<Nav />

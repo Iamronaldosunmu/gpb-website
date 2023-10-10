@@ -5,6 +5,7 @@ import useSize from "../../hooks/useSize";
 import useCartStore from "../../store/cart";
 import { interactionAnimations } from "../../utils/framer-default-animations";
 import Container from "../container";
+import useWishListStore from "../../store/wishList";
 
 const Nav = () => {
 	const navItems = [{ text: "Home", to: "/home" }, { text: "Shop", to: "/shop" }, { text: "About Us", to: "/about-us" }, { text: "Book", to: "/consultation" }, { text: "Membership", to: "/membership" }, { text: "Clients", to: "/clients" }, { text: "Digital Printing" }];
@@ -13,13 +14,24 @@ const Nav = () => {
 	const [width] = useSize();
 	const { pathname } = useLocation();
 	const { cart } = useCartStore();
+	const { wishList } = useWishListStore();
 
 	const [itemJustAdded, setItemJustAdded] = useState(false);
+	const [itemJustLiked, setItemJustLiked] = useState(false);
 
 	useEffect(() => {
 		setItemJustAdded(true);
-		setTimeout(() => {setItemJustAdded(false)}, 180)
+		setTimeout(() => {
+			setItemJustAdded(false);
+		}, 180);
 	}, [cart.length]);
+
+	useEffect(() => {
+		setItemJustLiked(true);
+		setTimeout(() => {
+			setItemJustLiked(false);
+		}, 180);
+	}, [wishList.length]);
 
 	return (
 		<>
@@ -53,11 +65,19 @@ const Nav = () => {
 							/>
 							<p className="min-w-[20px] w-[20px] h-[20px] min-h-[20px] bg-[#AF9E7F] rounded-full absolute top-0 right-0 text-[12px] text-white flex items-center justify-center price">{cart?.length}</p>
 						</motion.div>
-						<motion.img
+
+						<motion.div
 							{...interactionAnimations}
-							className="cursor-pointer"
-							src="/assets/images/favorite.png"
-						/>
+							className="relative"
+							animate={{ scale: itemJustLiked ? 1.1 : 1 }}
+						>
+							<motion.img
+								className="cursor-pointer"
+								onClick={() => navigate("/wish-list")}
+								src="/assets/images/favorite.png"
+							/>
+							<p className="min-w-[20px] w-[20px] h-[20px] min-h-[20px] bg-[#AF9E7F] rounded-full absolute top-0 right-0 text-[12px] text-white flex items-center justify-center price">{wishList?.length}</p>
+						</motion.div>
 					</div>
 					<motion.div
 						whileTap={{ scale: 0.85 }}

@@ -19,7 +19,8 @@ const useCartStore = create<CartStore>((set, get) => ({
 	addToCart: (product) =>
 		set((state) => {
 			if (state.cart.find((p) => p.id === product.id)) {
-				return { cart: [...state.cart.filter(cartItem => product.id != cartItem.id), product] };
+				console.log(product);
+				return { cart: [...state.cart.filter((cartItem) => product.id != cartItem.id), product] };
 			} else {
 				return { cart: [...state.cart, product] };
 			}

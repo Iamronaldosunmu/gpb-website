@@ -14,9 +14,7 @@ interface PrintItemProps {
 
 const PrintItem: React.FC<PrintItemProps> = ({ name, price, discountedPrice, image, id }) => {
 	const [isHovered, setIsHovered] = useState(false);
-	const [isLiked, setIsLiked] = useState(false);
 	const navigate = useNavigate();
-	console.log(image);
 	return (
 		<div
 			data-aos="zoom-in"
@@ -59,11 +57,8 @@ const PrintItem: React.FC<PrintItemProps> = ({ name, price, discountedPrice, ima
 						{discountedPrice && <p className="line-through price">₦{(parseInt(price))?.toLocaleString()}</p>}
 					</div>
 				</div>
-				<div
-					onClick={() => setIsLiked(!isLiked)}
-					className="px-[11px] outline-0 scale-90 md:scale-100"
-				>
-					<Like liked={isLiked} />
+				<div className="px-[11px] outline-0 scale-90 md:scale-100">
+					<Like id={id} />
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { z } from "zod";
@@ -12,7 +12,6 @@ import Like from "../like";
 const Form = () => {
 	const colorOptions = ["SATISFIED", "Change", "2 Changes", "3 Changes"];
 	const exclusivityOptions = ["NO", "YES"];
-	const [isLiked, setIsLiked] = useState(false);
 	const { products } = useProductStore();
 	const { id } = useParams();
 	const product = products?.find((product) => product.id == id);
@@ -120,11 +119,8 @@ const Form = () => {
 					>
 						Add To Cart
 					</motion.button>
-					<div
-						onClick={() => setIsLiked(!isLiked)}
-						className="px-[11px] outline-0"
-					>
-						<Like liked={isLiked} />
+					<div className="px-[11px] outline-0">
+						<Like id={product?.id as string} />
 					</div>
 				</div>
 			</form>
