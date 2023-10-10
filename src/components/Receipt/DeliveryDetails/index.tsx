@@ -11,7 +11,7 @@ interface Address{
 interface DeliveryDetailsProps{
     deliveryAddress: Address;
     billingAddress: Address;
-    paymentMethod: string[];
+    paymentMethod: string;
 }
 
 

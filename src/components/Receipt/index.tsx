@@ -7,26 +7,6 @@ import DeliveryDetails from "./DeliveryDetails";
 import BottomFooter from "../../sections/Footer/BottomFooter";
 import Container from "../container";
 import useCartStore from "../../store/cart";
-const items = [
-	{
-		name: "Item 1",
-		color: "Change",
-		exclusivity: true,
-		imageUrl: "item1.jpg",
-		price: 100000,
-		isFree: true,
-		shippingFee: 0,
-	},
-	{
-		name: "Item 2",
-		color: "Change",
-		exclusivity: false,
-		imageUrl: "item2.jpg",
-		price: 15000,
-		isFree: false,
-		shippingFee: 5,
-	},
-];
 
 const deliveryAddress = {
 	name: "John Doe",
@@ -62,7 +42,7 @@ const Receipt = () => {
 						/>
 					</div>
 					<div className="lg:border border-black mb-7">
-						<Order items={cart} />
+						<Order />
 					</div>
 					<div className="border border-black">
 						<DeliveryDetails

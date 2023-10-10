@@ -1,9 +1,7 @@
 import { useState } from "react";
+import Form from "../../Form/index";
 import Button from "../Button";
 import Payment from "../index";
-import Form from "../../Form/index";
-import { loadStripe } from "@stripe/stripe-js";
-import { PaymentElement } from "@stripe/react-stripe-js";
 interface Props {
 	email?: string;
 	address?: string;

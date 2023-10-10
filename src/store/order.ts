@@ -1,6 +1,5 @@
-import { Order } from "@stripe/stripe-js";
-import { CartItem } from "./cart";
 import { create } from "zustand";
+import { CartItem } from "./cart";
 
 export interface OrderStore {
 	order: CartItem[];

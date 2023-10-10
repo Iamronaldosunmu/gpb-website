@@ -1,17 +1,16 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { useMutation } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
+import axiosInstance from "../../../services/apiClient";
+import useCartStore, { CartItem } from "../../../store/cart";
 import useUserDetailsStore, { UserDetails } from "../../../store/userDetails";
 import { interactionAnimations } from "../../../utils/framer-default-animations";
 import Shipping from "../Pay/shipping";
-import useCartStore from "../../../store/cart";
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import axiosInstance from "../../../services/apiClient";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe("pk_test_51NsMsRBCo90vBq7i6bIjf5DE8ITOGlPLpIzYcjHXGUbiVU0rzsiAuYKbnpfKIUNgElOXJ1vQrTNE55DKMoyoXeGK00qCc1RHki");
 
@@ -31,8 +30,8 @@ const schema = z.object({
 
 interface CheckoutPayload {
 	email: string;
-	customerDetails: { firstName: string; lastName: string; companyName: string; advertisingChannel: string; Country: string; zipCode: string; state: string; City: string; address: string; phone: string };
-	productInfo: { colour: string; productId: string; exclusivity: boolean }[];
+	customerDetails: { firstName: string; lastName: string; companyName: string; advertisingChannel: string; Country: string; zipCode: string; state: string; City: string; address: string; phoneNumber: string };
+	productInfo: { colour: CartItem["backgroundColor"]; productId: string; exclusivity: string }[];
 }
 
 type FormData = z.infer<typeof schema>;
@@ -125,7 +124,7 @@ const Form = () => {
 
 		const result = await generateClientSecret.mutateAsync(payload);
 		console.log(result);
-		setClientSecret(result.clientSecret)
+		setClientSecret(result.clientSecret);
 
 		if (isValid) {
 			// reset();

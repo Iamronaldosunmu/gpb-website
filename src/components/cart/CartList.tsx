@@ -71,7 +71,7 @@ const CartList = () => {
 						selectItem={(e) => selectItem(e, cartItem.id)}
 						removeItem={() => removeFromCart(cartItem.id)}
 						checked={items.find((a) => a.id === cartItem.id)?.checked || false}
-						image={products?.find((product) => product.id === cartItem.id)?.productImage ? products?.find((product) => product.id === cartItem.id)?.productImage[0].url : ""}
+						image={products?.find((product) => product.id === cartItem.id)?.productImage ? products?.find((product) => product.id === cartItem.id)?.productImage[0].url as string : ""}
 					/>
 				))}
 				{cart.length == 0 && <div className="w-full h-[200px] flex items-center justify-center "><p>No Items in the cart</p></div>}

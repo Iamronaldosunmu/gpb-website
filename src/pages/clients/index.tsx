@@ -106,7 +106,7 @@ const Clients = () => {
 							{clientData?.map(({ image }, index) => (
 								<ClientImage
 									key={index}
-									image={image.url}
+									image={(image as { url: string })?.url}
 									active={activeIndex == index}
 									rotationPosition={rotationPosition[index]}
 								/>
@@ -151,7 +151,7 @@ const Clients = () => {
 						>
 							<figure className="w-full rounded-[10px] overflow-hidden">
 								<img
-									src={client.images ? client.images[0] : ""}
+									src={client.images ? (client.images[0] as unknown as string) : ""}
 									className="w-full aspect-[0.8] object-cover"
 								/>
 							</figure>
