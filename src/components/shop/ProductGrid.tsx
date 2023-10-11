@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useState } from "react";
 import useProductStore from "../../store/products";
 import { container, interactionAnimations } from "../../utils/framer-default-animations";
