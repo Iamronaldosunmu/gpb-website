@@ -1,15 +1,13 @@
+import { motion } from "framer-motion";
 import PageContainer from "../components/PageContainer";
 import ParallaxImage from "../components/ParallaxImage";
 import Container from "../components/container";
-import Nav from "../components/nav";
 import TextContainer from "../components/textcontainer";
 import Footer from "../sections/Footer";
-import { motion } from "framer-motion";
 
 const AboutUs = () => {
 	return (
 		<PageContainer className="pt-[140px] md:pt-[200px]">
-			<Nav />
 			<TextContainer className="flex flex-col gap-[80px] text-center lg:text-left">
 				<h1 className="text-center font-medium text-[40px] flex flex-wrap gap-x-[10px] justify-center overflow-hidden">
 					{"About Grapes Pattern Bank".split(" ").map((word, index) => (
@@ -53,31 +51,27 @@ const AboutUs = () => {
 				<ParallaxImage src="/assets/images/about-us-1.png" />
 			</div>
 			<Container className="hidden lg:block">
-				<section className="mt-[153px] h-[1000px] grid grid-cols-[0.94fr_1.06fr] gap-[32px]">
-					<div className="w-full h-full">
-						<img
-							className="w-full h-full object-cover"
+				<section className="mt-[153px] h-[1000px] grid grid-cols-[0.94fr_1.06fr] gap-[20px]">
+					<div className="w-full h-[1000px]">
+						<ParallaxImage
 							src="/assets/images/about-us-1.png"
 						/>
 					</div>
-					<div className="grid w-full h-full gap-[60px] grid-rows-[1.16fr_1fr]">
-						<div className="w-full h-full">
-							<img
-								className="w-full h-full object-cover"
-								src="/assets/images/about-us-1.png"
+					<div className="grid w-full h-[1000px] gap-[20px]">
+						<div className="w-full h-[490px]">
+							<ParallaxImage
+								src="/assets/images/about-us-img-3.jpg"
 							/>
 						</div>
-						<div className="w-full h-full grid grid-cols-[1fr_1fr] gap-[35px]">
-							<div className="w-full h-full">
-								<img
-									className="w-full h-full object-cover"
-									src="/assets/images/about-us-1.png"
+						<div className="w-full h-[480px] grid grid-cols-[1fr_1fr] gap-[20px]">
+							<div className="w-full h-[485px]">
+								<ParallaxImage
+									src="/assets/images/about-us-img-4.jpg"
 								/>
 							</div>
-							<div className="w-full h-full">
-								<img
-									className="w-full h-full object-cover"
-									src="/assets/images/about-us-1.png"
+							<div className="w-full h-[485px]">
+								<ParallaxImage
+									src="/assets/images/about-us-img-5.jpg"
 								/>
 							</div>
 						</div>
@@ -128,14 +122,14 @@ const AboutUs = () => {
 					<div className="w-full h-[570px]">
 						<img
 							className="w-full h-full object-cover"
-							src="/assets/images/about-us-1.png"
+							src="/assets/images/about-us-2.jpg"
 						/>
 					</div>
 					<div className="grid w-full h-[480px] gap-[30px] grid-cols-[1.16fr_0.84fr]">
 						<div className="w-full h-[480px]">
 							<img
 								className="w-full h-full object-cover"
-								src="/assets/images/about-us-1.png"
+								src="/assets/images/about-us-img-6.jpg"
 							/>
 						</div>
 						<div className="w-full h-full grid grid-cols-[1fr_1fr] gap-[30px]">

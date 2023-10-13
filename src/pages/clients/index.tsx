@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ClientImage from "../../components/ClientImage";
+import PageContainer from "../../components/PageContainer";
 import Title from "../../components/Title";
 import Container from "../../components/container";
-import Nav from "../../components/nav";
-import PageContainer from "../../components/PageContainer";
-import { interactionAnimations } from "../../utils/framer-default-animations";
 import useSize from "../../hooks/useSize";
 import useClientStore, { Client } from "../../store/clients";
-import { useNavigate } from "react-router-dom";
+import { interactionAnimations } from "../../utils/framer-default-animations";
 
 const Clients = () => {
 	const { clients } = useClientStore();
@@ -85,7 +84,6 @@ const Clients = () => {
 					/>
 				</motion.div>
 				<main className="mt-[169px] clients-page">
-					<Nav />
 
 					<Container className="mb-[200px]">
 						<div className="title-container">

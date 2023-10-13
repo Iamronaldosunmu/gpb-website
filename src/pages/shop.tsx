@@ -7,7 +7,6 @@ import Footer from "../sections/Footer";
 const Shop = () => {
 	return (
 		<PageContainer className=" mt-[100px] lg:mt-[200px]">
-			{/* <Nav /> */}
 			<Container>
 				<div className="text-[24px] md:text-[32px] font-bold bg-white lg:pl-[73px] text-center lg:text-left">Shop Print</div>
 				<MiniNav

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import useProductStore from "../../store/products";
-import { container, interactionAnimations } from "../../utils/framer-default-animations";
 import Container from "../container";
 import Product from "./Product";
 import { motion } from "framer-motion";
@@ -32,24 +31,26 @@ const ProductGrid = () => {
 				className="grid grid-cols-2 gap-x-[12px] lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4 md:gap-x-[50px] lg:gap-x-[30px] gap-y-[20px] md:gap-y-[80px] lg:gap-y-[116px] mt-[51px] mb-[110px] grid-size"
 			>
 				{products?.slice(0, page * 8).map((product, index) => (
-					<Product
-						key={index}
-						id={product.id}
-						name={product.name}
-						price={product.price}
-						discountPrice={product?.discountPrice}
-						image={product.productImage ? product.productImage[0].url : ""}
-					/>
-					<motion.div variants={child}>
+					<>
 						<Product
 							key={index}
 							id={product.id}
 							name={product.name}
 							price={product.price}
 							discountPrice={product?.discountPrice}
-							image={product.productImage[0].url}
+							image={product.productImage ? product.productImage[0].url : ""}
 						/>
-					</motion.div>
+						<motion.div variants={child}>
+							<Product
+								key={index}
+								id={product.id}
+								name={product.name}
+								price={product.price}
+								discountPrice={product?.discountPrice}
+								image={product.productImage ? product.productImage[0].url : ""}
+							/>
+						</motion.div>
+					</>
 				))}
 			</motion.section>
 			{products?.length > page * 8 && (

@@ -51,7 +51,7 @@ const Cart = ({ closeModal }: { closeModal?: (arg: boolean) => void }) => {
 						>
 							<div className="w-2/3 flex col-span-2">
 								<img
-									src={products?.find((product: Product) => product.id === item.id)?.productImage[0].url || ""}
+									src={products?.find((product: Product) => product.id === item.id)?.productImage ? products?.find((product: Product) => product.id === item.id)?.productImage[0].url : ""}
 									alt={products?.find((product: Product) => product.id === item.id)?.name || ""}
 									className="w-20 h-20 object-cover flex-shrink-0 sm:mr-5 mr-2"
 								/>

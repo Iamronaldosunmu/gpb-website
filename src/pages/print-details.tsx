@@ -1,22 +1,26 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Container from "../components/container";
 import Like from "../components/like";
-import Nav from "../components/nav";
 import Form from "../components/shop-details/Form";
 import Information from "../components/shop-details/Information";
 import PreviewProduct from "../components/shop-details/PreviewProduct";
 import Recommended from "../components/shop-details/Recommended";
 import MiniNav from "../components/shop/MiniNav";
 import Footer from "../sections/Footer";
+import useCartStore from "../store/cart";
+import useProductStore from "../store/products";
 
 const PrintDetails = () => {
 	// Fetch Data by id and put Product name into Mininav
 	const [liked, setLiked] = useState(false);
+	const { id } = useParams();
+	const { products } = useProductStore();
+	const product = products?.find((product) => product.id == id);
+	const { addToCart, cart, saveCart } = useCartStore();
 
 	return (
 		<main>
-			<Nav />
 			<Container className="mt-[100px] lg:mt-[200px]">
 				<div className="text-center md:text-left text-[24px] md:text-[32px] font-bold bg-white lg:pl-[73px]">Print Details</div>
 				<Link
@@ -50,9 +54,9 @@ const PrintDetails = () => {
 			<Container className="block lg:hidden">
 				<div className="w-full max-w-full overflow-x-scroll pr-[20px] mt-[30px] pb-[20px]">
 					<section className="pr-[20px] md:px-[40px] flex ">
-						{["/assets/patterns/purple-hallow.png", "/assets/patterns/purple-hallow.png", "/assets/patterns/purple-hallow.png", "/assets/patterns/purple-hallow.png"].map((image) => (
+						{product?.productImage?.map((image) => (
 							<img
-								src={image}
+								src={image.url}
 								className="min-w-[160px] mr-[18px] h-[160px] w-[160px]"
 							/>
 						))}
@@ -66,79 +70,8 @@ const PrintDetails = () => {
 						<span className="line-through">N90,000</span>
 					</p>
 				</div>
-				<div className="flex flex-col gap-[24px]">
-					<div className="text-xl w-full font-medium overflow-hidden">
-						<label
-							htmlFor="colour"
-							className="block text-[#3C3B3B] font-semibold font-lato text-[14px]"
-						>
-							COLOUR : Satisfied
-						</label>
-						<div className="select">
-							<select
-								id="colour"
-								className="mt-[10px] py-[9px] px-4 border border-[#181818] w-full text-[14px]"
-							>
-								{["options"].map((option) => (
-									<option
-										key={option}
-										value={option}
-									>
-										{option}
-									</option>
-								))}
-							</select>
-						</div>
-					</div>
-					<div className="text-xl w-full font-medium overflow-hidden">
-						<label
-							htmlFor="colour"
-							className="block text-[#3C3B3B] font-semibold font-lato text-[14px]"
-						>
-							COLOUR : Satisfied
-						</label>
-						<div className="select">
-							<select
-								id="colour"
-								className="mt-[10px] py-[9px] px-4 border border-[#181818] w-full text-[14px]"
-							>
-								{["options"].map((option) => (
-									<option
-										key={option}
-										value={option}
-									>
-										{option}
-									</option>
-								))}
-							</select>
-						</div>
-					</div>
-				</div>
-				<div className="flex mt-[24px] items-center gap-[21px]">
-					<button
-						onClick={() => {}}
-						type="submit"
-						className="w-full text-[16px] lg:text-2xl font-semibold outline-0 bg-black py-[10px] md:py-[18px] text-white"
-					>
-						Add To Cart
-					</button>
-					<span
-						className="scale-[0.8]"
-						onClick={() => setLiked(!liked)}
-					>
-						<Like liked={liked} />
-					</span>
-				</div>
-				<div>
-					<Information
-						title="Details"
-						body="Once you purchase this print you purchase all its available colour variations. Visualizations for one colour variation will be shared with you to help you choose your preferred scale. When you decide on a scale, your print is then Re-adjusted and sent to your mail. If it happens that you fall in love with more than one scaling option, we're happy to offer each scale variation to you for ₦5000/$15/£10."
-					/>
-					<Information
-						title="Details"
-						body="Once you purchase this print you purchase all its available colour variations. Visualizations for one colour variation will be shared with you to help you choose your preferred scale. When you decide on a scale, your print is then Re-adjusted and sent to your mail. If it happens that you fall in love with more than one scaling option, we're happy to offer each scale variation to you for ₦5000/$15/£10."
-					/>
-				</div>
+				<Form />
+
 			</Container>
 			<Recommended />
 			<Footer />

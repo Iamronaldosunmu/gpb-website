@@ -26,8 +26,8 @@ const Form = () => {
 
 	type FormData = { colour: "SATISFIED" | "Change" | "2 Changes" | "3 Changes"; exclusivity: "YES" | "NO" };
 	useEffect(() => {
-		saveCart()
-	}, [cart])
+		saveCart();
+	}, [cart]);
 
 	// Validate all Fields not Just one
 	const {
@@ -62,19 +62,19 @@ const Form = () => {
 			</div>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
-				className="mt-[61px] flex flex-col justify-center gap-y-[51px] w-full"
+				className="mt-[61px] flex flex-col justify-center gap-[24px] lg:gap-y-[51px] w-full "
 			>
 				<div className="text-xl w-full font-medium overflow-hidden">
 					<label
 						htmlFor="colour"
-						className="block text-[#3C3B3B] font-semibold font-lato"
+						className="block text-[#3C3B3B] font-semibold font-lato text-[14px] md:text-xl w-full"
 					>
 						COLOUR : {colour}
 					</label>
 					<div className="select">
 						<select
 							id="colour"
-							className="mt-[22px] py-[9px] px-4 border border-[#181818] w-full"
+							className="mt-[10px] md:mt-[22px] py-[9px] px-4 border border-[#181818] text-[14px] md:text-xl w-full"
 							{...register("colour", { required: true })}
 						>
 							{colorOptions.map((option) => (
@@ -87,19 +87,19 @@ const Form = () => {
 							))}
 						</select>
 					</div>
-					{errors.colour && <p className="text-red-500 mt-1">{errors.colour.message}</p>}
+					{errors.colour && <p className="text-red-500 mt-1 text-[14px] md:text-[16px]">{errors.colour.message}</p>}
 				</div>
-				<div className="text-xl font-medium">
+				<div className="text-xl font-medium overflow-hidden">
 					<label
 						htmlFor="colour"
-						className="block text-[#3C3B3B] font-semibold font-lato"
+						className="block text-[#3C3B3B] font-semibold font-lato text-[14px]"
 					>
 						EXCLUSIVITY : {exclusivity}
 					</label>
 					<div className="select">
 						<select
 							id="exclusivity"
-							className="mt-[22px] py-[9px] px-4 border border-[#181818] w-full"
+							className="mt-[10px] md:mt-[22px] py-[9px] px-4 border border-[#181818] w-full text-[14px] md:text-xl"
 							{...register("exclusivity", { required: true })}
 						>
 							{exclusivityOptions.map((option) => (
@@ -109,17 +109,17 @@ const Form = () => {
 					</div>
 					{errors.exclusivity && <p className="text-red-500 mt-1"> {errors.colour && <p className="text-red-500 mt-1">{errors.exclusivity.message}</p>}</p>}
 				</div>
-				<div className="w-full flex items-center gap-x-[18px]">
+				<div className="w-full flex items-center gap-x-[21px]">
 					<motion.button
 						{...interactionAnimations}
 						whileHover={{ scale: 1.02 }}
 						whileTap={{ scale: 0.96 }}
 						type="submit"
-						className="w-full text-2xl font-semibold outline-0 bg-black py-[18px] text-white"
+						className="w-full text-[16px] md:text-2xl font-semibold outline-0 bg-black py-[10px] md:py-[18px] text-white"
 					>
 						Add To Cart
 					</motion.button>
-					<div className="px-[11px] outline-0">
+					<div className="px-[11px] outline-0 scale-[0.8]">
 						<Like id={product?.id as string} />
 					</div>
 				</div>

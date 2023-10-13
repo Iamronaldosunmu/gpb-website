@@ -13,7 +13,6 @@ import Testimonial from "../sections/home/testimonials";
 const Home: React.FC = () => {
 	return (
 		<PageContainer>
-			{/* <Nav /> */}
 			<Hero />
 			<ShopCollections />
 			<AboutUs />
