@@ -30,10 +30,10 @@ const SubscribeForm = () => {
 		resolver: zodResolver(newsletterValidationSchema),
 	});
 
-	const onSubscribe = () => {
-		const email = "ronaldosunmu@gmail.com";
+	const onSubscribe = (data) => {
+
 		subscribeToNewsletterMutation.mutate(
-			{ data: { email } },
+			{ data: { email: data.email } },
 			{
 				onSuccess: () => {
 					setFinalMessage("Thanks For Subscribibng!");
