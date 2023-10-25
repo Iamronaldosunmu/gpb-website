@@ -32,14 +32,14 @@ const ProductGrid = () => {
 			>
 				{products?.slice(0, page * 8).map((product, index) => (
 					<>
-						<Product
+						{/* <Product
 							key={index}
 							id={product.id}
 							name={product.name}
 							price={product.price}
 							discountPrice={product?.discountPrice}
 							image={product.productImage ? product.productImage[0].url : ""}
-						/>
+						/> */}
 						<motion.div variants={child}>
 							<Product
 								key={index}

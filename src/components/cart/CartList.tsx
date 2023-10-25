@@ -71,8 +71,8 @@ const CartList = () => {
 						productName={products?.find((product) => product.id === cartItem.id)?.name || ""}
 						backgroundColor={cartItem.backgroundColor}
 						exclusivity={cartItem.exclusivity}
-						oldPrice={products?.find((product) => product.id === cartItem.id)?.price || "0"}
-						newPrice={products?.find((product) => product.id === cartItem.id)?.discountPrice || "0"}
+						oldPrice={products?.find((product) => product.id === cartItem.id)?.discountPrice ? products?.find((product) => product.id === cartItem.id)?.price as string : ""}
+						newPrice={products?.find((product) => product.id === cartItem.id)?.discountPrice ? products?.find((product) => product.id === cartItem.id)?.discountPrice as string: products?.find((product) => product.id === cartItem.id)?.price as string}
 						selectItem={(e) => selectItem(e, cartItem.id)}
 						removeItem={() => removeFromCart(cartItem.id)}
 						checked={items.find((a) => a.id === cartItem.id)?.checked || false}
