@@ -3,7 +3,7 @@ import { FC, useState } from "react";
 
 interface Props {
 	title: string;
-	body: React.ReactNode[];
+	body: React.ReactNode[] | string;
 }
 
 const MobileDeliveryDetails: FC<Props> = ({ title, body }) => {

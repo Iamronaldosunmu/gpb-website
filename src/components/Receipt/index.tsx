@@ -1,12 +1,11 @@
+import BottomFooter from "../../sections/Footer/BottomFooter";
+import SubscribeForm from "../../sections/Footer/SubscribeForm";
+import Container from "../container";
 import Nav from "../nav";
 import BrowseButton from "./BrowseButton";
+import DeliveryDetails from "./DeliveryDetails";
 import Order from "./Order";
 import OrderConfirmation from "./OrderConfirmation";
-import SubscribeForm from "../../sections/Footer/SubscribeForm";
-import DeliveryDetails from "./DeliveryDetails";
-import BottomFooter from "../../sections/Footer/BottomFooter";
-import Container from "../container";
-import useCartStore from "../../store/cart";
 
 const deliveryAddress = {
 	name: "John Doe",
@@ -25,7 +24,7 @@ const billingAddress = {
 const paymentMethod = "Credit Card";
 
 const Receipt = () => {
-	const { cart } = useCartStore();
+
 	return (
 		<>
 			<Container className="mt-[100px] lg:mt-[250px]">

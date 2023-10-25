@@ -1,9 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { z } from "zod";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 import Container from "../../../components/container";
 import axiosInstance from "../../../services/apiClient";
 
@@ -30,7 +30,7 @@ const SubscribeForm = () => {
 		resolver: zodResolver(newsletterValidationSchema),
 	});
 
-	const onSubscribe = (data) => {
+	const onSubscribe = (data: EmailNewsletterPayload["data"]) => {
 
 		subscribeToNewsletterMutation.mutate(
 			{ data: { email: data.email } },
@@ -38,8 +38,8 @@ const SubscribeForm = () => {
 				onSuccess: () => {
 					setFinalMessage("Thanks For Subscribibng!");
 				},
-				onError: (error : any) => {
-					if (error.response.status === 400) {
+				onError: (error) => {
+					if ((error as any).response.status === 400) {
 						console.log(error);
 						setFinalMessage("You Are Already In The Loop!");
 					}

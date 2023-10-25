@@ -14,11 +14,11 @@ interface Props {
 	image: string;
 }
 
-const WishItem: React.FC<Props> = ({ name, id, price, discountPrice, image, quantity }) => {
+const WishItem: React.FC<Props> = ({ name, id, price, discountPrice, image }) => {
 	const [isHovered, setIsHovered] = useState(false);
 	const navigate = useNavigate();
 	const { addToCart } = useCartStore();
-	const { removeFromWishList, incrementQuantity, decrementQuantity } = useWishListStore();
+	const { removeFromWishList } = useWishListStore();
 	return (
 		<div
 			onMouseEnter={() => setIsHovered(true)}

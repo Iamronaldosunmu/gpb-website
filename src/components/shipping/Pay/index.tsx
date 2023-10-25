@@ -1,11 +1,11 @@
-import { useState, ChangeEvent } from "react";
-import OnlinePaymentForm from "./OnlinePayment";
-import OfflinePayment from "./OfflinePayment";
-import Button from "./Button";
-import OrderReview from "./OrderReview";
-import { useStripe, useElements } from "@stripe/react-stripe-js";
-import useOrderStore from "../../../store/order";
+import { useElements, useStripe } from "@stripe/react-stripe-js";
+import { useState } from "react";
 import useCartStore from "../../../store/cart";
+import useOrderStore from "../../../store/order";
+import Button from "./Button";
+import OfflinePayment from "./OfflinePayment";
+import OnlinePaymentForm from "./OnlinePayment";
+import OrderReview from "./OrderReview";
 
 const Payment = () => {
 	const [selectedPayment, setSelectedPayment] = useState("");
@@ -17,10 +17,11 @@ const Payment = () => {
 
 	const stripe = useStripe();
 	const elements = useElements();
-	const [errorMessage, setErrorMessage] = useState(null);
+	const [errorMessage, setErrorMessage] = useState("");
 	const [loading, setLoading] = useState(false);
 
-	const handleSelectedPayment = (event: ChangeEvent<HTMLInputElement>) => {
+	//@ts-ignore
+	const handleSelectedPayment = (event : any) => {
 		setSelectedPayment(event.target.value);
 	};
 
@@ -33,6 +34,7 @@ const Payment = () => {
 		setShowButton(false);
 	};
 
+	//@ts-ignore
 	const handleFormSubmit = async (event: any) => {
 		event.preventDefault();
 
@@ -57,7 +59,7 @@ const Payment = () => {
 			// This point will only be reached if there is an immediate error when
 			// confirming the payment. Show error to your customer (for example, payment
 			// details incomplete)
-			setErrorMessage(error?.message);
+			setErrorMessage(error?.message as string);
 		} else {
 			// Your customer will be redirected to your `return_url`. For some payment
 			// methods like iDEAL, your customer will be redirected to an intermediate

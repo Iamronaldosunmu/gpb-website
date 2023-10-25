@@ -1,23 +1,18 @@
-import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Container from "../components/container";
-import Like from "../components/like";
 import Form from "../components/shop-details/Form";
 import Information from "../components/shop-details/Information";
 import PreviewProduct from "../components/shop-details/PreviewProduct";
 import Recommended from "../components/shop-details/Recommended";
 import MiniNav from "../components/shop/MiniNav";
 import Footer from "../sections/Footer";
-import useCartStore from "../store/cart";
 import useProductStore from "../store/products";
 
 const PrintDetails = () => {
 	// Fetch Data by id and put Product name into Mininav
-	const [liked, setLiked] = useState(false);
 	const { id } = useParams();
 	const { products } = useProductStore();
 	const product = products?.find((product) => product.id == id);
-	const { addToCart, cart, saveCart } = useCartStore();
 
 	return (
 		<main>

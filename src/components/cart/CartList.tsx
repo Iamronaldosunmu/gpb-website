@@ -1,9 +1,9 @@
-import { ChangeEvent, useEffect, useState } from "react";
-import CartItem from "./CartItem";
 import { motion } from "framer-motion";
-import { child, container, interactionAnimations } from "../../utils/framer-default-animations";
+import { ChangeEvent, useEffect, useState } from "react";
 import useCartStore from "../../store/cart";
 import useProductStore from "../../store/products";
+import { container, interactionAnimations } from "../../utils/framer-default-animations";
+import CartItem from "./CartItem";
 
 const CartList = () => {
 	const { cart, saveCart, removeFromCart } = useCartStore();
