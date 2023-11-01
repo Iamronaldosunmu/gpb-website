@@ -13,7 +13,7 @@ const Nav = () => {
 		{ text: "Shop", to: "/shop" },
 		{ text: "About Us", to: "/about-us" },
 		{ text: "Book", to: "/consultation" },
-		{ text: "Membership", to: "/membership" },
+		// { text: "Membership", to: "/membership" },
 		{ text: "Clients", to: "/clients" },
 		{ text: "Digital Printing", to: "/get-a-quote" },
 	];
