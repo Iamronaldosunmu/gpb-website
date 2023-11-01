@@ -86,14 +86,14 @@ const SubscribeForm = () => {
 										animate={{ opacity: 1, transition: { duration: 0.3 } }}
 										exit={{ opacity: 0 }}
 									>
-										"Keeping You Up To Date..."
+										Keeping You Up To Date...
 									</motion.span>
 								) : (
 									<motion.span
 										initial={{ opacity: 0, scale: 0.95 }}
 										animate={{ opacity: 1, scale: 0.95, transition: { duration: 0.3 } }}
 									>
-										"Submit"
+										Submit
 									</motion.span>
 								)}
 							</button>
