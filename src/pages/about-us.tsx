@@ -120,28 +120,24 @@ const AboutUs = () => {
 			<Container>
 				<section className="mt-[153px] h-[1000px] grid-rows-[0.45fr_0.55fr] grid-cols-1 gap-[32px] hidden lg:grid">
 					<div className="w-full h-[570px]">
-						<img
-							className="w-full h-full object-cover"
+						<ParallaxImage
 							src="/assets/images/about-us-2.jpg"
 						/>
 					</div>
 					<div className="grid w-full h-[480px] gap-[30px] grid-cols-[1.16fr_0.84fr]">
 						<div className="w-full h-[480px]">
-							<img
-								className="w-full h-full object-cover"
+							<ParallaxImage
 								src="/assets/images/about-us-img-6.jpg"
 							/>
 						</div>
 						<div className="w-full h-full grid grid-cols-[1fr_1fr] gap-[30px]">
 							<div className="w-full h-full">
-								<img
-									className="w-full h-full object-cover"
+								<ParallaxImage
 									src="/assets/images/about-us-1.png"
 								/>
 							</div>
 							<div className="w-full h-full">
-								<img
-									className="w-full h-full object-cover"
+								<ParallaxImage
 									src="/assets/images/about-us-1.png"
 								/>
 							</div>
