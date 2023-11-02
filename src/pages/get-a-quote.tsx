@@ -1,10 +1,11 @@
 import BottomFooter from "../sections/Footer/BottomFooter";
-import GetAQuoteForm from "../sections/GetAQuote";
+// import GetAQuoteForm from "../sections/GetAQuote";
+import Form from "../components/GetAQuote/form";
 
 const GetAQuote = () => {
   return (
     <main className="pt-[200px]">
-      <GetAQuoteForm />
+      <Form/>
       <BottomFooter />
     </main>
   );
