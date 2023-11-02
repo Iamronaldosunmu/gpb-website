@@ -10,15 +10,15 @@ const Hero = () => {
 		<section className="relative mt-[90px] lg:mt-[169px] md:flex">
 			<ParallaxImage
 				containerClassName="w-full max-h-[350px] md:max-h-[400px] lg:max-h-[450px] xl:max-h-[600px] h-[600px] object-cover "
-				src="/assets/images/banner.jpg"
+				src="/assets/images/banner.webp"
 			/>
 			<ParallaxImage
 				containerClassName="w-full max-h-[350px] md:max-h-[400px] lg:max-h-[450px] xl:max-h-[600px] h-[600px] object-cover hidden md:block"
-				src="/assets/images/banner.jpg"
+				src="/assets/images/banner.webp"
 			/>
 			<ParallaxImage
 				containerClassName="w-full max-h-[350px] md:max-h-[400px] lg:max-h-[450px] xl:max-h-[600px] h-[600px] object-cover hidden lg:block"
-				src="/assets/images/banner.jpg"
+				src="/assets/images/banner.webp"
 			/>
 
 			<div className="absolute top-0 right-0 left-0 bottom-0 bg-gradient-to-b from-[rgba(0,0,0,0)] from-[60.21%] to-[rgba(0,0,0,0.78)] z-10"></div>

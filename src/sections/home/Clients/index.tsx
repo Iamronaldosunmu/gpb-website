@@ -18,7 +18,7 @@ const Clients = () => {
 					<motion.img
 						style={{ scale }}
 						className="w-full h-full object-cover scale-[1.005]"
-						src="/assets/images/about-us-img.jpg"
+						src="/assets/images/gpbhome2.jpg"
 					/>
 				</div>
 			}
