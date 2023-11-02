@@ -1,4 +1,4 @@
-import { useElements, useStripe } from "@stripe/react-stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 import { useState } from "react";
 import useCartStore from "../../../store/cart";
 import useOrderStore from "../../../store/order";
@@ -6,8 +6,16 @@ import Button from "./Button";
 import OfflinePayment from "./OfflinePayment";
 import OnlinePaymentForm from "./OnlinePayment";
 import OrderReview from "./OrderReview";
+import { Stripe, loadStripe } from "@stripe/stripe-js";
 
-const Payment = () => {
+const stripePromise = loadStripe("pk_test_51NsMsRBCo90vBq7i6bIjf5DE8ITOGlPLpIzYcjHXGUbiVU0rzsiAuYKbnpfKIUNgElOXJ1vQrTNE55DKMoyoXeGK00qCc1RHki");
+
+interface PaymentProps {
+	clientSecret?: string;
+	clientSecretLoading: boolean;
+	submitData: () => void;
+}
+const Payment = ({ clientSecret, clientSecretLoading, submitData }: PaymentProps) => {
 	const [selectedPayment, setSelectedPayment] = useState("");
 	const [showPayment, setShowPayment] = useState(true);
 	const [showButton, setShowButton] = useState(true);
@@ -15,14 +23,17 @@ const Payment = () => {
 	const { setOrder } = useOrderStore();
 	const { cart } = useCartStore();
 
-	const stripe = useStripe();
-	const elements = useElements();
+	const [stripe, setStripe] = useState<Stripe>();
+	const [elements, setElements] = useState(null);
 	const [errorMessage, setErrorMessage] = useState("");
 	const [loading, setLoading] = useState(false);
 
 	//@ts-ignore
-	const handleSelectedPayment = (event : any) => {
+	const handleSelectedPayment = async (event: any) => {
 		setSelectedPayment(event.target.value);
+		if (event.target.value == "online" && !clientSecret) {
+			await submitData()
+		}
 	};
 
 	const handleLeftButtonClick = () => {
@@ -125,7 +136,26 @@ const Payment = () => {
 				onSubmit={handleFormSubmit}
 				className="w-full"
 			>
-				{selectedPayment === "online" && <OnlinePaymentForm />}
+				{selectedPayment === "online" && clientSecret && (
+					<Elements
+						stripe={stripePromise}
+						options={{
+							// passing the client secret obtained in step 3
+							clientSecret,
+							// Fully customizablFe with appearance API.
+							appearance: {
+								/*...*/
+							},
+						}}
+					>
+						<OnlinePaymentForm setStripe={setStripe} setElements={setElements} />
+					</Elements>
+				)}
+				{clientSecretLoading && <div className="w-full p-4">
+				<div className="rounded-lg border mb-8 bg-gray-200  sm:p-5 py-10 text-sm">
+					Loading Stripe...
+				</div>
+			</div>}
 				{errorMessage && <div className="text-red-600 text-[14px]">{errorMessage}</div>}
 				{selectedPayment === "offline" && <OfflinePayment />}
 				{showButton && (

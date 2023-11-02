@@ -1,6 +1,14 @@
-import { PaymentElement } from "@stripe/react-stripe-js";
+import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useEffect } from "react";
 
-const OnlinePaymentForm = () => {
+//@ts-ignore
+const OnlinePaymentForm = ({ setStripe, setElements }) => {
+	const stripe = useStripe();
+	const elements = useElements();
+	useEffect(() => {
+		setStripe(stripe);
+		setElements(elements);
+	}, [stripe, elements]);
 	return (
 		<>
 			<div className="w-full p-4">

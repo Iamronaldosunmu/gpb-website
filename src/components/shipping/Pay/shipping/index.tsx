@@ -2,14 +2,20 @@ import { useState } from "react";
 import Form from "../../Form/index";
 import Button from "../Button";
 import Payment from "../index";
+
 interface Props {
 	email?: string;
 	address?: string;
 	shippingAddressDetails?: string;
 	goToForm?: () => void;
+	submitData: () => void;
+	clientSecret?: string;
+	clientSecretLoading: boolean;
 }
 
-const Shipping = ({ email, shippingAddressDetails, goToForm }: Props) => {
+
+
+const Shipping = ({ email, shippingAddressDetails, goToForm, submitData, clientSecretLoading, clientSecret }: Props) => {
 	const [showPayment, setShowPayment] = useState(false);
 	const [page, setPage] = useState("shipping");
 	const [showButton, setShowButton] = useState(true);
@@ -18,7 +24,8 @@ const Shipping = ({ email, shippingAddressDetails, goToForm }: Props) => {
 		setPage("form");
 		setShowButton(false);
 	};
-	const handleRightButtonClick = () => {
+	const handleRightButtonClick =  () => {
+		
 		setShowPayment(true);
 		setShowButton(false);
 	};
@@ -68,7 +75,7 @@ const Shipping = ({ email, shippingAddressDetails, goToForm }: Props) => {
 						{showButton && (
 							<Button
 								leftButtonLabel="return to information"
-								rightButtonLabel="continue to payment"
+								rightButtonLabel={clientSecretLoading ? "Loading..." : "continue to payment"}
 								onLeftButtonClick={handleLeftButtonClick}
 								onRightButtonClick={handleRightButtonClick}
 								className=""
@@ -79,11 +86,16 @@ const Shipping = ({ email, shippingAddressDetails, goToForm }: Props) => {
 			)}
 			{page === "form" && (
 				<div>
-					<Form />
+					<Form
+						page={page}
+						setPage={setPage}
+					/>
 				</div>
 			)}
 
-			{showPayment && <Payment />}
+			{showPayment && (
+				<Payment clientSecret={clientSecret} clientSecretLoading={clientSecretLoading} submitData={submitData} />
+			)}
 		</>
 	);
 };

@@ -10,6 +10,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 const OrderSummary: React.FC = () => {
 	const [openModal, setOpenModal] = useState(false);
+	const [page, setPage] = useState("form")
 
 	// Function to open the modal
 	const openModalHandler = () => {
@@ -23,7 +24,7 @@ const OrderSummary: React.FC = () => {
 	return (
 		<>
 			<Container className="mt-[200px] w-full md:px-20 px-5">
-				<Nav />{" "}
+				<Nav textShowing={!(page == "form")} goBack={() => setPage("form")} />{" "}
 			</Container>
 			<button
 				className="lg:hidden bg-gray-200 block mt-9 w-full text-left py-3 px-5 group"
@@ -42,7 +43,7 @@ const OrderSummary: React.FC = () => {
 			)}
 			<Container className="mb-[5rem] mt-6">
 				<div className="grid lg:grid-cols-2 gap-4 lg:px-20 md:px-10 sm:px-5">
-					<div className="cols-span-1 w-full">{<Form />}</div>
+					<div className="cols-span-1 w-full">{<Form page={page} setPage={setPage} />}</div>
 					<div className="cols-span 1 h-full ml-9 hidden lg:block">
 						<Cart />
 					</div>

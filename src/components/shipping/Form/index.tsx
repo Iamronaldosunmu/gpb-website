@@ -1,9 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+
 import { useMutation } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import axiosInstance from "../../../services/apiClient";
@@ -11,8 +10,6 @@ import useCartStore, { CartItem } from "../../../store/cart";
 import useUserDetailsStore, { UserDetails } from "../../../store/userDetails";
 import { interactionAnimations } from "../../../utils/framer-default-animations";
 import Shipping from "../Pay/shipping";
-
-const stripePromise = loadStripe("pk_test_51NsMsRBCo90vBq7i6bIjf5DE8ITOGlPLpIzYcjHXGUbiVU0rzsiAuYKbnpfKIUNgElOXJ1vQrTNE55DKMoyoXeGK00qCc1RHki");
 
 const schema = z.object({
 	email: z.string().email({ message: "The email format you entered is invalid" }),
@@ -34,10 +31,15 @@ interface CheckoutPayload {
 	productInfo: { colour: CartItem["backgroundColor"]; productId: string; exclusivity: string }[];
 }
 
+type FormProps = {
+	page: string;
+	setPage: Dispatch<SetStateAction<string>>;
+};
+
 type FormData = z.infer<typeof schema>;
 
-const Form = () => {
-	const [page, setPage] = useState("form");
+const Form = ({ page, setPage }: FormProps) => {
+	// const [page, setPage] = useState("form");
 	const { userDetails, setUserDetails } = useUserDetailsStore();
 
 	const {
@@ -100,19 +102,26 @@ const Form = () => {
 			localStorage.removeItem("userDetails");
 		}
 
+		if (isValid) {
+			// reset();
+			setPage("shipping");
+		}
+	};
+
+	const submitData = async () => {
 		const payload = {
-			email: data.email,
+			email: formData.email,
 			customerDetails: {
-				firstName: data.firstName,
-				lastName: data.lastName,
-				companyName: data.companyName,
-				advertisingChannel: data.referral,
-				Country: data.country,
-				zipCode: data.zipCode,
-				state: data.state,
-				City: data.cityName,
-				address: data.address,
-				phoneNumber: data.phone,
+				firstName: formData.firstName,
+				lastName: formData.lastName,
+				companyName: formData.companyName,
+				advertisingChannel: formData.referral,
+				Country: formData.country,
+				zipCode: formData.zipCode,
+				state: formData.state,
+				City: formData.cityName,
+				address: formData.address,
+				phoneNumber: formData.phone,
 			},
 			productInfo: cart?.map((item) => ({
 				colour: item.backgroundColor,
@@ -125,11 +134,6 @@ const Form = () => {
 		const result = await generateClientSecret.mutateAsync(payload);
 		console.log(result);
 		setClientSecret(result.clientSecret);
-
-		if (isValid) {
-			// reset();
-			setPage("shipping");
-		}
 	};
 
 	return (
@@ -248,10 +252,11 @@ const Form = () => {
 							{...register("country")}
 							className="w-full border py-2 px-3 border-black "
 						>
-							<option value="usa"></option>
+							<option value=""></option>
 							<option value="usa">United States</option>
 							<option value="canada">Canada</option>
 							<option value="uk">United Kingdom</option>
+							<option value="nigeria">Nigeria</option>
 							{/* {omo and so on and so forth} */}
 						</select>
 						{errors.country && <p className="text-red-500">{errors.country.message}</p>}
@@ -347,7 +352,7 @@ const Form = () => {
 					</div>
 					<div className="flex justify-end">
 						<button
-							type="submit"
+							// type="submit"
 							className="bg-black text-white px-9 sm:w-1/2 w-full text-sm py-2 text-center hover: cursor-pointer hover:scale-105 transform transition-transform"
 						>
 							{generateClientSecret.isLoading ? "Loading... " : "continue to shipping"}
@@ -356,25 +361,16 @@ const Form = () => {
 				</form>
 			)}
 
-			{page === "shipping" && clientSecret && (
-				<Elements
-					stripe={stripePromise}
-					options={{
-						// passing the client secret obtained in step 3
-						clientSecret,
-						// Fully customizable with appearance API.
-						appearance: {
-							/*...*/
-						},
-					}}
-				>
-					<Shipping
-						goToForm={() => setPage("form")}
-						email={formData.email}
-						address={formData.address}
-						shippingAddressDetails="The items will be delivered digitally via email"
-					/>
-				</Elements>
+			{page === "shipping" && (
+				<Shipping
+					goToForm={() => setPage("form")}
+					email={formData.email}
+					address={formData.address}
+					submitData={submitData}
+					clientSecret={clientSecret}
+					clientSecretLoading={generateClientSecret.isLoading}
+					shippingAddressDetails="The items will be delivered digitally via email"
+				/>
 			)}
 		</div>
 	);
