@@ -32,7 +32,7 @@ const Consultation = () => {
 					</div>
 				</div>
 				<PopupButton
-					url="https://calendly.com/jason-aghedo/consultation-with-aghedo-jason?hide_gdpr_banner=1"
+					url="https://calendly.com/grapes-pattern-bank/gpb-consultation?hide_gdpr_banner=1"
 					rootElement={document.getElementById("root") as HTMLElement}
 					text="Schedule"
 					className="py-[30px] mt-8 bg-[#BE3F00] w-[500px] text-white text-[32px] font-semibold"
