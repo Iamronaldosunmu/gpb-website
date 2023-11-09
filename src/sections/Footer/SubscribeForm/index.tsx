@@ -40,7 +40,6 @@ const SubscribeForm = () => {
 				},
 				onError: (error) => {
 					if ((error as any).response.status === 400) {
-						console.log(error);
 						setFinalMessage("You Are Already In The Loop!");
 					}
 				},

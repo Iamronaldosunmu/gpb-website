@@ -16,7 +16,6 @@ const ShopCollections = () => {
 	const [width] = useSize();
 	const navigate = useNavigate();
 
-	console.log(products);
 	return (
 		<section className="w-full py-[115px] lg:py-[140px] xl:py-[190px]">
 			<Container>
@@ -27,7 +26,7 @@ const ShopCollections = () => {
 				>
 					<TextAnimation
 						text="Shop The Collection"
-						className="text-[24px] lg:text-[40px] font-medium text-center text-[#A34A21]  flex gap-[10px] justify-center"
+						className="text-[24px] lg:text-[34px] xl:text-[36px] font-medium text-center text-[#A34A21]  flex gap-[10px] justify-center"
 					/>
 					<div
 						data-aos="fade-up"

@@ -11,7 +11,6 @@ const TextAnimation: React.FC<TextAnimationProps> = ({ text, className }) => {
 	const isInView = useInView(containerRef, { once: true });
 
 	useEffect(() => {
-		console.log(isInView);
 	}, [isInView]);
 	return (
 		<div

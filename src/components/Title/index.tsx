@@ -16,7 +16,7 @@ const Title: React.FC<TitleProps> = ({ name, index, setRotation, setIndex, textE
 	return (
 		<div
 			onMouseEnter={() => {
-				setRotation(index), console.log("This is working");
+				setRotation(index);
 			}}
 			onMouseLeave={() => {
 				setIndex(-1);

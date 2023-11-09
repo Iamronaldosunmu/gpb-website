@@ -37,7 +37,6 @@ const Client = () => {
 			for (const item of imageRefs.current) {
 				totalContainerWidth += (item as HTMLDivElement | HTMLImageElement).clientWidth;
 			}
-			console.log(totalContainerWidth);
 			setTotalWidth(totalContainerWidth);
 		}, 800);
 	}, [clients, imageRefs, width, renderedImages]);
@@ -82,7 +81,6 @@ const Client = () => {
 						?.find((client) => client?.id == id)
 						?.images.map((image, index: number) => {
 							// if ((clients?.find((client) => client?.id == id)?.images.length || 0) - 1 == index) forceUpdate();
-							console.log;
 							return (
 								<img
 									ref={(el) => ((imageRefs.current as HTMLImageElement[])[index] = el as HTMLImageElement)}

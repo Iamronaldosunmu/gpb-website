@@ -17,7 +17,7 @@ const SectionGrid: React.FC<SectionGridProps> = ({ textSectionHeader, textSectio
 	const [width] = useSize();
 	const navigate = useNavigate();
 	return (
-		<section className="w-full lg:grid grid-cols-1 lg:grid-cols-2 xl:min-h-[640px] grid-flow-dense">
+		<section className="w-full lg:grid grid-cols-1 lg:grid-cols-2 xl:min-h-[540px] grid-flow-dense">
 			<article
 				style={{
 					backgroundColor: textSectionBgColor,
@@ -33,7 +33,7 @@ const SectionGrid: React.FC<SectionGridProps> = ({ textSectionHeader, textSectio
 					<h2
 						data-aos="zoom-in"
 						data-aos-duration="400"
-						className="text-[30px] lg:text-[40px] xl:text-[48px] font-bold text-center lg:text-left "
+						className="text-[30px] lg:text-[40px] xl:text-[44px] font-bold text-center lg:text-left "
 					>
 						{textSectionHeader}
 					</h2>
@@ -42,7 +42,7 @@ const SectionGrid: React.FC<SectionGridProps> = ({ textSectionHeader, textSectio
 						<p
 							data-aos="zoom-in"
 							data-aos-duration="400"
-							className="text-[22px] md:text-[24px] lg:text-[26px] xl:text-[30px] max-w-[500px] text-center lg:text-left"
+							className="text-[22px] md:text-[24px] lg:text-[26px] max-w-[500px] text-center lg:text-left"
 						>
 							{item}
 						</p>
@@ -52,7 +52,7 @@ const SectionGrid: React.FC<SectionGridProps> = ({ textSectionHeader, textSectio
 						{...interactionAnimations}
 						onClick={() => navigate(buttonPath)}
 						data-aos="zoom-in"
-						className={`text-[16px] md:text-[18px] lg:text-[22px] xl:text-[24px] py-[18px] px-[35px] border w-fit  transition-all duration-300 hover:text-[${textSectionBgColor}] uppercase`}
+						className={`text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px] py-[18px] px-[35px] border w-fit  transition-all duration-300 hover:text-[${textSectionBgColor}] uppercase`}
 					>
 						{textSectionCtaButtonText}
 					</motion.button>

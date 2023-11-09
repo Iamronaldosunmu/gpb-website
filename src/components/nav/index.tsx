@@ -44,6 +44,7 @@ const Nav = () => {
 	return (
 		<>
 			<motion.nav
+				style={{ zIndex: 101 }}
 				initial={{ height: 64.8, opacity: 0 }}
 				animate={mobileNavOpen ? { height: "100%", opacity: 1, transition: { duration: 0.3, ease: easeIn, opacity: { duration: 0.3 } } } : { height: 64.8, opacity: 1, transition: { delay: 0.5, opacity: { duration: 0.3 } } }}
 				className="fixed top-0 right-0 left-0 bg-[#FDFDFD] z-[100] flex flex-col"
@@ -56,11 +57,11 @@ const Nav = () => {
 						/>
 						<p>GRAPES PATTERN BANK</p>
 						<div className="hidden lg:flex items-center gap-[7px]">
-							<motion.img
+							{/* <motion.img
 								{...interactionAnimations}
 								className="cursor-pointer"
 								src="/assets/images/person.png"
-							/>
+							/> */}
 							<motion.div
 								{...interactionAnimations}
 								className="relative"
@@ -71,7 +72,7 @@ const Nav = () => {
 									className="cursor-pointer"
 									src="/assets/images/cart.png"
 								/>
-								<p className="min-w-[20px] w-[20px] h-[20px] min-h-[20px] bg-[#AF9E7F] rounded-full absolute top-0 right-0 text-[12px] text-white flex items-center justify-center price">{cart?.length}</p>
+								<p className="min-w-[20px] w-[20px] h-[20px] min-h-[20px] bg-[#AF9E7F] cursor-pointer rounded-full absolute top-0 right-0 text-[12px] text-white flex items-center justify-center price">{cart?.length}</p>
 							</motion.div>
 
 							<motion.div
@@ -84,7 +85,7 @@ const Nav = () => {
 									onClick={() => navigate("/wish-list")}
 									src="/assets/images/favorite.png"
 								/>
-								<p className="min-w-[20px] w-[20px] h-[20px] min-h-[20px] bg-[#AF9E7F] rounded-full absolute top-0 right-0 text-[12px] text-white flex items-center justify-center price">{wishList?.length}</p>
+								<p className="min-w-[20px] w-[20px] h-[20px] min-h-[20px] bg-[#AF9E7F] cursor-pointer rounded-full absolute top-0 right-0 text-[12px] text-white flex items-center justify-center price">{wishList?.length}</p>
 							</motion.div>
 						</div>
 						<motion.div

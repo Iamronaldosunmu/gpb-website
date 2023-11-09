@@ -19,7 +19,7 @@ const Features = () => {
   ];
   return (
     <div className="py-[150px] xl:py-[195px]">
-      <TextAnimation text="This Comfort Is Custom" className="flex overflow-hidden gap-[10px] justify-center font-medium text-[24px] md:text-[28px] lg:text-[34px] xl:text-[40px] text-center mb-[95px]"/>
+      <TextAnimation text="This Comfort Is Custom" className="flex overflow-hidden gap-[10px] justify-center font-medium text-[24px] md:text-[28px] lg:text-[34px] xl:text-[36px] text-center mb-[95px]"/>
         
       <Container className="flex justify-between flex-col gap-[60px] lg:gap-0 lg:flex-row">
         {featureData.map((item) => (

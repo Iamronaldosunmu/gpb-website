@@ -94,7 +94,6 @@ const Form = ({ page, setPage }: FormProps) => {
 		}));
 
 		setUserDetails(data as UserDetails);
-		console.log(userDetails);
 
 		if (saveInfo) {
 			localStorage.setItem("userDetails", JSON.stringify(data));
@@ -129,10 +128,8 @@ const Form = ({ page, setPage }: FormProps) => {
 				exclusivity: item.exclusivity == "YES" ? "true" : "false",
 			})),
 		};
-		console.log(payload);
 
 		const result = await generateClientSecret.mutateAsync(payload);
-		console.log(result);
 		setClientSecret(result.clientSecret);
 	};
 

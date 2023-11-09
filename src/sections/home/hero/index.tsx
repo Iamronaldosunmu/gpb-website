@@ -7,17 +7,17 @@ import ParallaxImage from "../../../components/ParallaxImage";
 const Hero = () => {
 	const navigate = useNavigate();
 	return (
-		<section className="relative mt-[90px] lg:mt-[169px] md:flex">
+		<section className="relative mt-[90px] lg:mt-[169px] md:flex ">
 			<ParallaxImage
-				containerClassName="w-full max-h-[350px] md:max-h-[400px] lg:max-h-[450px] xl:max-h-[600px] h-[600px] object-cover "
+				containerClassName="w-full h-[350px] md:h-[400px] lg:h-[450px] xl:h-[600px] h-[600px] object-cover "
 				src="/assets/images/banner.webp"
 			/>
 			<ParallaxImage
-				containerClassName="w-full max-h-[350px] md:max-h-[400px] lg:max-h-[450px] xl:max-h-[600px] h-[600px] object-cover hidden md:block"
+				containerClassName="w-full h-[350px] md:h-[400px] lg:h-[450px] xl:h-[600px] h-[600px] object-cover hidden md:block"
 				src="/assets/images/banner.webp"
 			/>
 			<ParallaxImage
-				containerClassName="w-full max-h-[350px] md:max-h-[400px] lg:max-h-[450px] xl:max-h-[600px] h-[600px] object-cover hidden lg:block"
+				containerClassName="w-full h-[350px] md:h-[400px] lg:h-[450px] xl:h-[600px] h-[600px] object-cover0 hidden lg:block"
 				src="/assets/images/banner.webp"
 			/>
 

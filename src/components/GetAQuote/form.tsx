@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const schema = z.object({
@@ -18,9 +18,8 @@ const Form = () => {
 		formState: { errors },
 	} = useForm<FormData>({ resolver: zodResolver(schema), mode: "onBlur" });
 
-	const onSubmit = (data: FieldValues) => {
+	const onSubmit = () => {
 		reset();
-		console.log(data);
 	};
 
 	return (

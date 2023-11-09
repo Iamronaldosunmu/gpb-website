@@ -8,7 +8,7 @@ import OnlinePaymentForm from "./OnlinePayment";
 import OrderReview from "./OrderReview";
 import { Stripe, loadStripe } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe("pk_test_51NsMsRBCo90vBq7i6bIjf5DE8ITOGlPLpIzYcjHXGUbiVU0rzsiAuYKbnpfKIUNgElOXJ1vQrTNE55DKMoyoXeGK00qCc1RHki");
+const stripePromise = loadStripe("pk_test_51JRkMsHLbXQTMsY0OuFkt14hfFqMLSO1MOD1w7LskbNpQ1VpfqZ0X84VsTwb7dD5IDwm0igOEvOVQuplxtPN9W0Q00nGfdNcSE");
 
 interface PaymentProps {
 	clientSecret?: string;
