@@ -19,7 +19,7 @@ const Home: React.FC = () => {
 			<Features />
 			<Fabrics />
 			<Clients />
-			<Testimonial />
+			{/* <Testimonial /> */}
 			<FeaturedIn />
 			<SubscribeForm />
 			<BottomFooter />
