@@ -8,7 +8,7 @@ import AboutUs from "../sections/home/aboutus";
 import Features from "../sections/home/features";
 import Hero from "../sections/home/hero";
 import ShopCollections from "../sections/home/shopcollections";
-import Testimonial from "../sections/home/testimonials";
+// import Testimonial from "../sections/home/testimonials";
 
 const Home: React.FC = () => {
 	return (
@@ -19,7 +19,7 @@ const Home: React.FC = () => {
 			<Features />
 			<Fabrics />
 			<Clients />
-			<Testimonial />
+			{/* <Testimonial /> */}
 			<FeaturedIn />
 			<SubscribeForm />
 			<BottomFooter />
