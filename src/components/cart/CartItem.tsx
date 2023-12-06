@@ -41,8 +41,8 @@ const CartItem: FC<Props> = ({ id, productName, backgroundColor, exclusivity, ol
 				<p>COLOUR : {backgroundColor}</p>
 				<p>EXCLUSIVITY: {exclusivity}</p>
 				<div className="flex">
-					<p className="font-lato font-semibold price">{`₦${newPrice}`}</p>
-					{oldPrice && <p className="font-lato font-semibold line-through text-[#5A3522] ml-2 price">{`₦${oldPrice}`}</p>}
+					<p className="font-lato font-semibold price">{`₦${Number(newPrice).toLocaleString()}`}</p>
+					{oldPrice && <p className="font-lato font-semibold line-through text-[#5A3522] ml-2 price">{`₦${Number(oldPrice).toLocaleString()}`}</p>}
 				</div>
 			</div>
 			<button

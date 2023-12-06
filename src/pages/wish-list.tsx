@@ -47,7 +47,7 @@ const WishList = () => {
 					</motion.div>
 					{wishList.length == 0 && (
 						<div className="w-full h-[100px] flex items-center justify-center text-2xl md:text-3xl lg:text-4xl">
-							<p>No Items in the cart</p>
+							<p>No Items in your Wishlist</p>
 						</div>
 					)}
 					{wishList?.length > page * 8 && (

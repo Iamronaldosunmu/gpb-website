@@ -8,9 +8,15 @@ import Container from "../../components/container";
 import useSize from "../../hooks/useSize";
 import useClientStore, { Client } from "../../store/clients";
 import { interactionAnimations } from "../../utils/framer-default-animations";
+import { useClients } from "../../hooks/useClients";
 
 const Clients = () => {
 	const { clients } = useClientStore();
+	const { data: freshClientData } = useClients();
+	const { setClients } = useClientStore();
+	useEffect(() => {
+		setClients(freshClientData);
+	}, [freshClientData, setClients]);
 
 	const clientData = clients?.map((client: Client) => ({
 		image: client.images ? client.images[0] : "",
@@ -18,6 +24,7 @@ const Clients = () => {
 		id: client.id,
 	}));
 
+	console.log(clients, clientData);
 	const [rotationPosition, setRotation] = useState(new Array(clientData?.length).fill(0));
 	const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 	useEffect(() => {
@@ -83,7 +90,6 @@ const Clients = () => {
 					/>
 				</motion.div>
 				<main className="mt-[169px] clients-page">
-
 					<Container className="mb-[200px]">
 						<div className="title-container">
 							{clientData?.map(({ name, id }, index) => (
@@ -115,25 +121,6 @@ const Clients = () => {
 			<PageContainer className="lg:hidden">
 				<div className="w-full mt-[64.8px] bg-[#F2D9D8] pt-[30px]">
 					<Container className="lg:hidden">
-						{/* <div className="flex items-center ">
-							<svg
-								width="14"
-								height="14"
-								viewBox="0 0 24 24"
-								fill="none"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<g id="left arrow">
-									<path
-										id="Vector"
-										d="M8.49922 12.7751L14.1992 18.3639C14.5992 18.7631 15.1992 18.7631 15.5992 18.3639C15.9992 17.9647 15.9992 17.3659 15.5992 16.9667L10.6992 11.9767L15.5992 6.98665C15.9992 6.58744 15.9992 5.98864 15.5992 5.58944C15.3992 5.38984 15.1992 5.29004 14.8992 5.29004C14.5992 5.29004 14.3992 5.38984 14.1992 5.58944L8.49922 11.1783C8.09922 11.6773 8.09922 12.2761 8.49922 12.7751C8.49922 12.6753 8.49922 12.6753 8.49922 12.7751Z"
-										fill="#BE3F00"
-									/>
-								</g>?
-							</svg>
-
-							<span className="text-[14px] lg:text-[23px] font-medium text-[#BE3F00]">clients</span>
-						</div> */}
 						<header className="mt-[28px] pb-[120px] text-center">
 							<h1 className="font-medium text-[24px] mb-[12px]">#GPBCLIENTS</h1>
 							<p className="text-[14px]">In the last five years we have worked with some amazing brands, creating mind blowing prints. The best part of what we do is getting to see the final product and witnessing how it influences various industries.</p>
