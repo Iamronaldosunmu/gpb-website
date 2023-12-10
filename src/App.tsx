@@ -27,6 +27,7 @@ import Receipt from "./pages/receipt";
 import WishList from "./pages/wish-list";
 
 function App() {
+	console.log(process.env.REACT_APP_BACKEND_URL)
 	useEffect(() => {
 		AOS.init({ once: true });
 	}, []);
