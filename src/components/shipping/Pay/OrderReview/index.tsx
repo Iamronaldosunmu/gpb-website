@@ -53,7 +53,7 @@ const OrderReview : React.FC<OrderReviewProps> = ({ submitForm, leftButtonClick,
 			</div>
 
       <Button
-        rightButtonDisabled={!privacyPolicyChecked && !communicationChecked && !stripe}
+        rightButtonDisabled={(!privacyPolicyChecked && !communicationChecked && !stripe) || loading}
 				leftButtonLabel="return to shipping"
 				rightButtonLabel={loading ? "Loading..." : "Place Order"}
 				onLeftButtonClick={leftButtonClick}

@@ -25,7 +25,6 @@
     "@types/locomotive-scroll": "^4.1.1",
     "aos": "^3.0.0-beta.6",
     "axios": "^1.5.0",
-    "dotenv": "^16.3.1",
     "framer-motion": "^10.16.2",
     "locomotive-scroll": "^4.1.4",
     "lodash": "^4.17.21",
@@ -42,6 +41,7 @@
   },
   "devDependencies": {
     "@hookform/resolvers": "^3.3.1",
+    "@types/node": "^20.10.4",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",

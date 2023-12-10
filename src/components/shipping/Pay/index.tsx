@@ -7,13 +7,14 @@ import OfflinePayment from "./OfflinePayment";
 import OnlinePaymentForm from "./OnlinePayment";
 import OrderReview from "./OrderReview";
 import { Stripe, loadStripe } from "@stripe/stripe-js";
+import { useNavigate } from "react-router-dom";
 
-const stripePromise = loadStripe("pk_test_51JRkMsHLbXQTMsY0OuFkt14hfFqMLSO1MOD1w7LskbNpQ1VpfqZ0X84VsTwb7dD5IDwm0igOEvOVQuplxtPN9W0Q00nGfdNcSE");
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK_LIVE);
 
 interface PaymentProps {
 	clientSecret?: string;
 	clientSecretLoading: boolean;
-	submitData: () => void;
+	submitData: (paymentType: "card" | "bank transfer") => void;
 }
 const Payment = ({ clientSecret, clientSecretLoading, submitData }: PaymentProps) => {
 	const [selectedPayment, setSelectedPayment] = useState("");
@@ -28,11 +29,13 @@ const Payment = ({ clientSecret, clientSecretLoading, submitData }: PaymentProps
 	const [errorMessage, setErrorMessage] = useState("");
 	const [loading, setLoading] = useState(false);
 
+	const navigate = useNavigate()
+
 	//@ts-ignore
 	const handleSelectedPayment = async (event: any) => {
 		setSelectedPayment(event.target.value);
 		if (event.target.value == "online" && !clientSecret) {
-			await submitData()
+			await submitData("card");
 		}
 	};
 
@@ -49,32 +52,39 @@ const Payment = ({ clientSecret, clientSecretLoading, submitData }: PaymentProps
 	const handleFormSubmit = async (event: any) => {
 		event.preventDefault();
 
-		if (!stripe || !elements) {
-			// Stripe.js hasn't yet loaded.
-			// Make sure to disable form submission until Stripe.js has loaded.
-			return;
-		}
+		if (selectedPayment === "online") {
+			if (!stripe || !elements) {
+				// Stripe.js hasn't yet loaded.
+				// Make sure to disable form submission until Stripe.js has loaded.
+				return;
+			}
 
-		setLoading(true);
-		setOrder(cart);
-		const { error } = await stripe.confirmPayment({
-			//`Elements` instance that was used to create the Payment Element
-			elements,
-			confirmParams: {
-				return_url: `${window.location.origin}/receipt`,
-			},
-		});
-		setLoading(false);
+			setLoading(true);
+			setOrder(cart);
+			const { error } = await stripe.confirmPayment({
+				//`Elements` instance that was used to create the Payment Element
+				elements,
+				confirmParams: {
+					return_url: `${window.location.origin}/receipt`,
+				},
+			});
+			setLoading(false);
 
-		if (error) {
-			// This point will only be reached if there is an immediate error when
-			// confirming the payment. Show error to your customer (for example, payment
-			// details incomplete)
-			setErrorMessage(error?.message as string);
+			if (error) {
+				// This point will only be reached if there is an immediate error when
+				// confirming the payment. Show error to your customer (for example, payment
+				// details incomplete)
+				setErrorMessage(error?.message as string);
+			} else {
+				// Your customer will be redirected to your `return_url`. For some payment
+				// methods like iDEAL, your customer will be redirected to an intermediate
+				// site first to authorize the payment, then redirected to the `return_url`.
+			}
 		} else {
-			// Your customer will be redirected to your `return_url`. For some payment
-			// methods like iDEAL, your customer will be redirected to an intermediate
-			// site first to authorize the payment, then redirected to the `return_url`.
+			setLoading(true);
+			await submitData("bank transfer");
+			setLoading(false);
+			navigate("/receipt")
 		}
 	};
 
@@ -90,13 +100,13 @@ const Payment = ({ clientSecret, clientSecretLoading, submitData }: PaymentProps
 									<input
 										id="onlinePayment"
 										type="radio"
-										className="mr-2"
+										className="cursor-pointer mr-2"
 										value="online"
 										name="paymentOption"
 										checked={selectedPayment === "online"}
 										onChange={handleSelectedPayment}
 									/>
-									<label htmlFor="onlinePayment">Credit/debit cards</label>
+									<label className="cursor-pointer" htmlFor="onlinePayment">Credit/debit cards</label>
 								</div>
 								<div className="mx-2">
 									<img
@@ -112,13 +122,13 @@ const Payment = ({ clientSecret, clientSecretLoading, submitData }: PaymentProps
 									<input
 										type="radio"
 										id="offlinePayment"
-										className="mr-2"
+										className="cursor-pointer mr-2"
 										value="offline"
 										name="paymentOption"
 										checked={selectedPayment === "offline"}
 										onChange={handleSelectedPayment}
 									/>
-									<label htmlFor="offlinePayment">Offline Payment</label>
+									<label className="cursor-pointer" htmlFor="offlinePayment">Offline Payment  (Bank Transfer) </label>
 								</div>
 								<div className="mx-2">
 									<img
@@ -148,14 +158,17 @@ const Payment = ({ clientSecret, clientSecretLoading, submitData }: PaymentProps
 							},
 						}}
 					>
-						<OnlinePaymentForm setStripe={setStripe} setElements={setElements} />
+						<OnlinePaymentForm
+							setStripe={setStripe}
+							setElements={setElements}
+						/>
 					</Elements>
 				)}
-				{clientSecretLoading && <div className="w-full p-4">
-				<div className="rounded-lg border mb-8 bg-gray-200  sm:p-5 py-10 text-sm">
-					Loading Stripe...
-				</div>
-			</div>}
+				{clientSecretLoading && (
+					<div className="w-full p-4">
+						<div className="rounded-lg border mb-8 bg-gray-200  sm:p-5 py-10 text-sm">Loading Stripe...</div>
+					</div>
+				)}
 				{errorMessage && <div className="text-red-600 text-[14px]">{errorMessage}</div>}
 				{selectedPayment === "offline" && <OfflinePayment />}
 				{showButton && (

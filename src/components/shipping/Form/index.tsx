@@ -107,7 +107,7 @@ const Form = ({ page, setPage }: FormProps) => {
 		}
 	};
 
-	const submitData = async () => {
+	const submitData = async (paymentType: 'card' | 'bank transfer') => {
 		const payload = {
 			email: formData.email,
 			customerDetails: {
@@ -122,6 +122,7 @@ const Form = ({ page, setPage }: FormProps) => {
 				address: formData.address,
 				phoneNumber: formData.phone,
 			},
+			paymentType: paymentType,
 			productInfo: cart?.map((item) => ({
 				colour: item.backgroundColor,
 				productId: item.id,

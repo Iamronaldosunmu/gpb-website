@@ -8,7 +8,7 @@ interface Props {
 	address?: string;
 	shippingAddressDetails?: string;
 	goToForm?: () => void;
-	submitData: () => void;
+	submitData: (paymentType: string) => void;
 	clientSecret?: string;
 	clientSecretLoading: boolean;
 }

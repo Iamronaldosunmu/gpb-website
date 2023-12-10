@@ -27,7 +27,8 @@ import Receipt from "./pages/receipt";
 import WishList from "./pages/wish-list";
 
 function App() {
-	console.log(process.env.REACT_APP_BACKEND_URL)
+	console.log(import.meta.env.VITE_API_URL);
+	console.log(import.meta.env.VITE_PK_LIVE);
 	useEffect(() => {
 		AOS.init({ once: true });
 	}, []);
