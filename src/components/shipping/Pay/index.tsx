@@ -83,6 +83,7 @@ const Payment = ({ clientSecret, clientSecretLoading, submitData }: PaymentProps
 		} else {
 			setLoading(true);
 			await submitData("bank transfer");
+			setOrder(cart);
 			setLoading(false);
 			navigate("/receipt")
 		}
