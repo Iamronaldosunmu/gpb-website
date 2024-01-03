@@ -7,31 +7,24 @@ const OfflinePayment = () => {
       <div className="pt-7 p-4 w-full ">
         <div className="rounded-lg border mb-8 bg-gray-200  w-full md:px-9 sm:px-4 px-2 pt-9 pb-5">
           <div>
-            <p>GRAPEHALL LTD</p>
+            <p>Hello! Having trouble paying online?</p>
           </div>
           <div>
-            <p>DIAMOND BANK</p>
+            <p>Please pay into </p>
           </div>
           <div>
-            <p>0050698843</p>
+            <p> Access(diamond) Bank Grapehall ltd 0050698843 (naira payments only) </p>
           </div>
           <div>
-            <p>(Please indicate if you would prefer a UK or US bank account)</p>
+            <p>Access (diamond) bank Grapehall ltd 1480377181 (dollar payments only) </p>
           </div>
           <div>
             <p>
-              Please send an email to <br />
-              info.grapespatternbank@gmail.com with the following information:{" "}
+              Please send payment receipt to
+              <a href="mailto:info@grapespatternbank.com">info@grapespatternbank.com</a>
             </p>
           </div>
-          <div>
-            <ol>
-              <li>Print name(s)</li>
-              <li>Would you want it to be exclusive to you?</li>
-              <li>Do you wish to change any background color</li>
-            </ol>
-          </div>
-          <p>Or you could send a screen shot of the order summary page</p>
+          <p>Thank you for shopping with us!</p>
         </div>
         {/* <SaveInfo />
         <BillingAddress /> */}
