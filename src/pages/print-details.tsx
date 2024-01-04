@@ -35,10 +35,12 @@ const PrintDetails = () => {
 				<div className="w-full max-w-[502px]">
 					<MiniNav paths={["Home", "Shop Print", "Shine"]} />
 					<Form />
-					<Information
-						title="Details"
-						body="Once you purchase this print you purchase all its available colour variations. Visualizations for one colour variation will be shared with you to help you choose your preferred scale. When you decide on a scale, your print is then Re-adjusted and sent to your mail. If it happens that you fall in love with more than one scaling option, we're happy to offer each scale variation to you for ₦5000/$15/£10."
-					/>
+					{product?.description && (
+						<Information
+							title="Description"
+							body={product?.description}
+						/>
+					)}
 					<Information
 						title="Print information"
 						body="We have over 150 fabrics we can digitally print on, from swimwear fabrics to cottons, polyester, silk, jersey, scuba, velvet silk, chiffon and even suede. Contact us if you are interested in transfering this amazing work of art on any fabric of your choice. Our MOQ is 10 yards per design. Please note that we only send out PDF, TIFF or JPEG formats."
@@ -58,15 +60,7 @@ const PrintDetails = () => {
 						<div className="min-w-[2px]"></div>
 					</section>
 				</div>
-				<div className="hidden lg:flex justify-between items-center">
-					<p className="text-[24px] font-semibold uppercase">Shine</p>
-					<p className="price inline-flex gap-[10px]">
-						<span>N80,000</span>
-						<span className="line-through">N90,000</span>
-					</p>
-				</div>
 				<Form />
-
 			</Container>
 			<Recommended />
 			<Footer />

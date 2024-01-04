@@ -4,14 +4,19 @@ import Container from "../components/container";
 import MiniNav from "../components/shop/MiniNav";
 import ProductGrid from "../components/shop/ProductGrid";
 import { useProducts } from "../hooks/useProducts";
+import { useColourOptions } from "../hooks/useColourOptions";
 import Footer from "../sections/Footer";
 import useProductStore from "../store/products";
+import useColourOptionsStore from "../store/colorOptions";
 
 const Shop = () => {
 	const { data: productData } = useProducts();
 	const { setProducts } = useProductStore();
+	const { data: colourOptionsData } = useColourOptions();
+	const { setColourOptions } = useColourOptionsStore();
 	useEffect(() => {
 		setProducts(productData);
+		setColourOptions(colourOptionsData ? colourOptionsData[0] : undefined);
 	}, [productData]);
 	return (
 		<PageContainer className=" mt-[100px] lg:mt-[200px]">

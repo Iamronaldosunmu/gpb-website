@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export interface CartItem {
 	id: string;
-	backgroundColor: "SATISFIED" | "Change" | "2 Changes" | "3 Changes";
+	backgroundColor: "Satisfied" | "Change" | "2 Changes" | "3 Changes" | string;
 	exclusivity: "YES" | "NO";
 }
 
@@ -29,9 +29,8 @@ const useCartStore = create<CartStore>((set, get) => ({
 	},
 	saveCart: () => localStorage.setItem("cart", JSON.stringify(get().cart)),
 	clearCart: () => {
-		set(() => ({ cart: [] }))
-		
-	}
+		set(() => ({ cart: [] }));
+	},
 }));
 
 export default useCartStore;

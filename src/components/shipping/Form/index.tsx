@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useMutation } from "@tanstack/react-query";
 import { motion } from "framer-motion";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, KeyboardEventHandler, SetStateAction, useEffect, useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import axiosInstance from "../../../services/apiClient";
@@ -22,7 +22,7 @@ const schema = z.object({
 	state: z.string().min(2, { message: "Message field is required" }),
 	cityName: z.string().min(2, { message: "City Name is required" }),
 	address: z.string().min(2, { message: "Your address field is required" }),
-	phone: z.string().min(11, { message: "Phone number should be at least 11 characters" }),
+	phone: z.string().min(7, { message: "Phone number should be at least 7 characters" }),
 });
 
 interface CheckoutPayload {
@@ -73,6 +73,15 @@ const Form = ({ page, setPage }: FormProps) => {
 
 	const [clientSecret, setClientSecret] = useState("");
 
+	const allowOnlyNumbers: KeyboardEventHandler<HTMLInputElement> = (evt) => {
+		const keysAllowed: string[] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+		const keyPressed: string = evt.key;
+
+		if (!keysAllowed.includes(keyPressed)) {
+			evt.preventDefault();
+		}
+	};
+
 	const generateClientSecret = useMutation(checkout, {
 		// onSuccess: (data) => {
 		// 	setClientSecret(data.clientSecret);
@@ -107,7 +116,7 @@ const Form = ({ page, setPage }: FormProps) => {
 		}
 	};
 
-	const submitData = async (paymentType: 'card' | 'bank transfer') => {
+	const submitData = async (paymentType: "card" | "bank transfer") => {
 		const payload = {
 			email: formData.email,
 			customerDetails: {
@@ -143,7 +152,7 @@ const Form = ({ page, setPage }: FormProps) => {
 				>
 					<div className="flex justify-between  mb-5 pb-1">
 						<h2 className="font-bold text-2xl">Contact</h2>
-						<div className="flex">
+						{/* <div className="flex">
 							<label
 								htmlFor="login"
 								className="text-sm"
@@ -156,7 +165,7 @@ const Form = ({ page, setPage }: FormProps) => {
 									value="login"
 								/>
 							</label>
-						</div>
+						</div> */}
 					</div>
 					<div className="mb-6 pb-4">
 						<label
@@ -269,7 +278,8 @@ const Form = ({ page, setPage }: FormProps) => {
 							</label>
 							<input
 								id="zipCode"
-								type="number"
+								onKeyPress={allowOnlyNumbers}
+								type="text"
 								{...register("zipCode")}
 								className="w-full border py-2 px-3 border-black outline-none"
 							/>
@@ -329,6 +339,7 @@ const Form = ({ page, setPage }: FormProps) => {
 							Phone Number
 						</label>
 						<input
+							onKeyPress={allowOnlyNumbers}
 							id="phone"
 							type="text"
 							{...register("phone")}

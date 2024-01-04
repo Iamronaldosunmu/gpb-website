@@ -63,7 +63,7 @@ const Product: React.FC<ProductProps> = ({ name, id, price, discountPrice, image
 				>
 					<motion.button
 						{...interactionAnimations}
-						onClick={() => addToCart({ id, backgroundColor: "SATISFIED", exclusivity: "NO" })}
+						onClick={() => addToCart({ id, backgroundColor: "Satisfied", exclusivity: "NO" })}
 						whileHover={{ scale: 1.05 }}
 						className="outline-0 text-[10px] md:text-[16px] bg-black py-1 px-[10px] md:px-[27px] text-white"
 					>

@@ -58,7 +58,6 @@ const SubscribeForm = () => {
 		<Container className="py-[100px] md:py-[200px] flex flex-col items-center">
 			<h2 className="text-[30px] md:text-[34px] xl:text-[40px] font-semibold">Subscribe Form</h2>
 			<p className="text-[20px] lg:text-[22px] xl:text-[24px] font-semibold">Stay up to date</p>
-
 			<AnimatePresence mode="wait">
 				<>
 					{!finalMessage && (

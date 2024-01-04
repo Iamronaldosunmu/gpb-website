@@ -3,24 +3,49 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useCartStore from "../../../store/cart";
 import useProductStore, { Product } from "../../../store/products";
 import { Link } from "react-router-dom";
+import useColourOptionsStore, { ColourOptions } from "../../../store/colorOptions";
 
 const Cart = ({ closeModal }: { closeModal?: (arg: boolean) => void }) => {
 	const { cart } = useCartStore();
 	const { products } = useProductStore();
+	const { colourOptions } = useColourOptionsStore();
+
+	const getProductPriceInCart = (product: Product) => {
+		const cartItem = cart?.find((item) => {
+			return item?.id == product?.id;
+		});
+		const { price, discountPrice } = product || { price: "", discountPrice: "" };
+		const initialPrice = discountPrice ? parseInt(discountPrice) : parseInt(price);
+		const colourOptionToTextMapping: Record<string, string> = {
+			Satisfied: "satisfied",
+			Change: "change",
+			"2 Changes": "changes2",
+			"3 Changes": "changes3",
+		};
+		let addition = 0;
+
+		if (colourOptions) {
+			if (cartItem?.exclusivity == "YES") {
+				addition = parseInt(colourOptions["exclusivity"]);
+			}
+			addition += parseInt(colourOptions[colourOptionToTextMapping[cartItem?.backgroundColor as string] as keyof ColourOptions]);
+			// console.log(addition)
+		}
+		return initialPrice + addition;
+	};
+
 	const getSubTotal = () => {
 		const productArray = cart.map((item) => products?.find((product) => product.id === item.id));
 		let price = 0;
 		for (const product of productArray) {
-			price += parseInt(product?.discountPrice ? product.discountPrice! : (product?.price as string));
+			price += getProductPriceInCart(product as Product);
 		}
 		return price;
 	};
 	const subTotal = getSubTotal();
 	const totalShippingFee = 0;
-	const taxRate = 0.1;
-	const tax = subTotal * taxRate;
 
-	const totalCost = subTotal + totalShippingFee + tax;
+	const totalCost = subTotal + totalShippingFee;
 
 	return (
 		<div className="flex h-full ">
@@ -63,7 +88,7 @@ const Cart = ({ closeModal }: { closeModal?: (arg: boolean) => void }) => {
 							</div>
 
 							<div className="flex flex-shrink justify-end">
-								<p className="text-sm font-semibold price">₦{parseInt(products?.find((product: Product) => product.id === item.id)?.discountPrice || (products?.find((product: Product) => product.id === item.id)?.price as string)).toLocaleString()}</p>
+								<p className="text-sm font-semibold price">₦{getProductPriceInCart(products?.find((product: Product) => product.id === item.id) as Product).toLocaleString()}</p>
 							</div>
 						</div>
 					))}
@@ -83,12 +108,12 @@ const Cart = ({ closeModal }: { closeModal?: (arg: boolean) => void }) => {
 					<div>
 						<p>SubTotal</p>
 						<p>Shipping</p>
-						<p>Tax</p>
+						{/* <p>Tax</p> */}
 					</div>
 					<div>
 						<p>₦{subTotal.toLocaleString()}</p>
 						<p>{totalShippingFee > 0 ? `N${totalShippingFee}` : "Free"}</p>
-						<p>₦{tax.toLocaleString()}</p>
+						{/* <p>₦{tax.toLocaleString()}</p> */}
 					</div>
 				</div>
 				<div className="border-b mb-7 border-b-black"></div>

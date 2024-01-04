@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
 import { ChangeEvent, useEffect, useState } from "react";
 import useCartStore from "../../store/cart";
-import useProductStore from "../../store/products";
+import useProductStore, { Product } from "../../store/products";
 import { container, interactionAnimations } from "../../utils/framer-default-animations";
 import CartItem from "./CartItem";
 
-const CartList = () => {
+interface CartListProps {
+	getProductPriceInCart: (product: Product) => number;
+}
+
+const CartList = ({ getProductPriceInCart }: CartListProps) => {
 	const { cart, saveCart, removeFromCart } = useCartStore();
 	useEffect(() => {
 		saveCart();
@@ -67,16 +71,19 @@ const CartList = () => {
 			>
 				{cart?.map((cartItem) => (
 					<CartItem
+						getProductPriceInCart={getProductPriceInCart}
 						id={cartItem.id}
+						product={products?.find((product) => product.id === cartItem.id) as Product}
 						productName={products?.find((product) => product.id === cartItem.id)?.name || ""}
 						backgroundColor={cartItem.backgroundColor}
 						exclusivity={cartItem.exclusivity}
-						oldPrice={products?.find((product) => product.id === cartItem.id)?.discountPrice ? products?.find((product) => product.id === cartItem.id)?.price as string : ""}
-						newPrice={products?.find((product) => product.id === cartItem.id)?.discountPrice ? products?.find((product) => product.id === cartItem.id)?.discountPrice as string: products?.find((product) => product.id === cartItem.id)?.price as string}
 						selectItem={(e) => selectItem(e, cartItem.id)}
-						removeItem={() => removeFromCart(cartItem.id)}
+						removeItem={() => {
+							removeFromCart(cartItem.id);
+							setItems(items.filter((item) => item.id !== cartItem.id));
+						}}
 						checked={items.find((a) => a.id === cartItem.id)?.checked || false}
-						image={products?.find((product) => product.id === cartItem.id)?.productImage ? products?.find((product) => product.id === cartItem.id)?.productImage[0].url as string : ""}
+						image={products?.find((product) => product.id === cartItem.id)?.productImage ? (products?.find((product) => product.id === cartItem.id)?.productImage[0].url as string) : ""}
 					/>
 				))}
 				{cart.length == 0 && (

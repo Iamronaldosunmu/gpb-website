@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { z } from "zod";
@@ -8,13 +8,32 @@ import useCartStore from "../../store/cart";
 import useProductStore from "../../store/products";
 import { interactionAnimations } from "../../utils/framer-default-animations";
 import Like from "../like";
+import useColourOptionsStore, { ColourOptions } from "../../store/colorOptions";
+import { useColourOptions } from "../../hooks/useColourOptions";
 
 const Form = () => {
-	const colorOptions = ["SATISFIED", "Change", "2 Changes", "3 Changes"];
+	const colorOptions: string[] = [];
+	const optionToTextMapping: Record<string, string> = {
+		satisfied: "Satisfied",
+		change: "Change",
+		changes2: "2 Changes",
+		changes3: "3 Changes",
+	};
+
+	const { data: colourOptionsData } = useColourOptions();
+	const { setColourOptions } = useColourOptionsStore();
+
+	useEffect(() => {
+		setColourOptions(colourOptionsData ? colourOptionsData[0] : undefined);
+	}, [colourOptionsData]);
+
 	const exclusivityOptions = ["NO", "YES"];
 	const { products } = useProductStore();
 	const { id } = useParams();
 	const product = products?.find((product) => product.id == id);
+	Object.keys(optionToTextMapping)?.forEach((option) => {
+		if (product?.backgroundColourOptions[option]) colorOptions.push(optionToTextMapping[option]);
+	});
 	const { addToCart, cart, saveCart } = useCartStore();
 
 	const schema = z
@@ -24,7 +43,7 @@ const Form = () => {
 		})
 		.required();
 
-	type FormData = { colour: "SATISFIED" | "Change" | "2 Changes" | "3 Changes"; exclusivity: "YES" | "NO" };
+	type FormData = { colour: string; exclusivity: "YES" | "NO" };
 	useEffect(() => {
 		saveCart();
 	}, [cart]);
@@ -39,8 +58,9 @@ const Form = () => {
 	} = useForm<FormData>({ resolver: zodResolver(schema) });
 	useEffect(() => {
 		const cartItem = cart.find((item) => item.id == product?.id);
+		console.log(cartItem?.backgroundColor);
 		if (cartItem) reset({ colour: cartItem.backgroundColor, exclusivity: cartItem.exclusivity });
-		else reset({ colour: "SATISFIED", exclusivity: "NO" });
+		else reset({ colour: colorOptions[0], exclusivity: "NO" });
 	}, [reset]);
 	const colour = watch("colour");
 	const exclusivity = watch("exclusivity");
@@ -49,6 +69,32 @@ const Form = () => {
 		addToCart({ id: product?.id as string, backgroundColor: data.colour, exclusivity: data.exclusivity });
 	};
 	const { price, discountPrice } = product || { price: "", discountPrice: "" };
+	const initialPrice = discountPrice ? parseInt(discountPrice) : parseInt(price);
+	const [calculatedPrice, setCalculatedPrice] = useState(0);
+	const { colourOptions } = useColourOptionsStore();
+
+	useEffect(() => {
+		console.log(colourOptions);
+		let addition = 0;
+		const colourOptionToTextMapping: Record<string, string> = {
+			Satisfied: "satisfied",
+			Change: "change",
+			"2 Changes": "changes2",
+			"3 Changes": "changes3",
+		};
+		if (colourOptions) {
+			if (exclusivity == "YES") {
+				console.log(parseInt(colourOptions["exclusivity"]));
+				addition = parseInt(colourOptions["exclusivity"]);
+			}
+			addition += parseInt(colourOptions[colourOptionToTextMapping[colour] as keyof ColourOptions]);
+			setCalculatedPrice(initialPrice + addition);
+			// console.log(addition)
+		}
+	}, [exclusivity, colour]);
+	useEffect(() => {
+		setCalculatedPrice(initialPrice);
+	}, [initialPrice]);
 	return (
 		<div>
 			<div className="mt-4 flex items-center">
@@ -56,8 +102,8 @@ const Form = () => {
 				<div>
 					{/* <p className="price">₦{discountPrice ? parseInt(discountPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</p>
 					{discountPrice && <p className="hidden md:inline-block font-lato line-through text-[#5A3522] ml-2">₦{parseInt(price)?.toLocaleString()}</p>} */}
-					<span className="text-[#080808] font-semibold font-lato mr-2 price">₦{discountPrice ? parseInt(discountPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</span>
-					{discountPrice && <span className="text-[#BE3F00] font-semibold line-through font-lato price">₦{discountPrice ? parseInt(discountPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</span>}
+					<span className="text-[#080808] font-semibold font-lato mr-2 price">₦{calculatedPrice.toLocaleString()}</span>
+					{/* {discountPrice && <span className="text-[#BE3F00] font-semibold line-through font-lato price">₦{discountPrice ? parseInt(discountPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</span>} */}
 				</div>
 			</div>
 			<form

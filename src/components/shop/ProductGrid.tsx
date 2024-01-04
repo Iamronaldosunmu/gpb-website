@@ -13,16 +13,16 @@ const ProductGrid = () => {
 			<div className="flex self-end w-full justify-between items-center">
 				<div className="font-medium text-[12px] md:text-[18px] md:text-[23px] space-x-2 relative inline-flex items-center">
 					<span className="relative bottom-[3px] ">{products?.length}</span>
-					<span className="">Products</span>
+					<span className="">Prints</span>
 				</div>
-				<div className="flex items-center justify-center py-2 md:py-4 px-3 border border-[#181818] gap-x-1">
+				{/* <div className="flex items-center justify-center py-2 md:py-4 px-3 border border-[#181818] gap-x-1">
 					<span className="text-[12px] md:text-[18px] md:text-xl font-medium">Sort by: featured </span>
 					<img
 						className="w-6 h-6 object-cover"
 						src="/assets/images/chevron-down.svg"
 						alt=""
 					/>
-				</div>
+				</div> */}
 			</div>
 			<motion.section
 				variants={container}

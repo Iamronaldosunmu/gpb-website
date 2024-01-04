@@ -10,6 +10,8 @@ export interface Product {
 		id: number;
 		url: string;
 	}[];
+	backgroundColourOptions: Record<string, boolean>;
+	description: string;
 }
 
 interface ProductStore {
