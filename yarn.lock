@@ -1031,6 +1031,29 @@
   "resolved" "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.531.tgz"
   "version" "1.4.531"
 
+"embla-carousel-autoplay@^8.0.0-rc18":
+  "integrity" "sha512-4TgnvSRlAz6YxyUIOU7w9wkUbqq/iVoJdRIRZ0+QQSWl+giout8HB0/HDqDPKJy23zjtpDNnYdNn3dxdKfGFfQ=="
+  "resolved" "https://registry.npmjs.org/embla-carousel-autoplay/-/embla-carousel-autoplay-8.0.0-rc18.tgz"
+  "version" "8.0.0-rc18"
+
+"embla-carousel-react@^8.0.0-rc18":
+  "integrity" "sha512-sif+zkOnQIJzZJJQdtE/kDBrlxNt7Vm6zI8i17qT6QYv3dnazPVf4EEfXQ2CZdh7J3UPwnIMS3Q55E1a8uxJ/g=="
+  "resolved" "https://registry.npmjs.org/embla-carousel-react/-/embla-carousel-react-8.0.0-rc18.tgz"
+  "version" "8.0.0-rc18"
+  dependencies:
+    "embla-carousel" "8.0.0-rc18"
+    "embla-carousel-reactive-utils" "8.0.0-rc18"
+
+"embla-carousel-reactive-utils@8.0.0-rc18":
+  "integrity" "sha512-VOFfvhkICz4GKXb/huMTspYVR8mx8C4uDf0Kp+jA9iZNUA4lmlfxxYUr++SwIy1xABycpqML/9hP2tV6Nn0AEQ=="
+  "resolved" "https://registry.npmjs.org/embla-carousel-reactive-utils/-/embla-carousel-reactive-utils-8.0.0-rc18.tgz"
+  "version" "8.0.0-rc18"
+
+"embla-carousel@8.0.0-rc18":
+  "integrity" "sha512-MtiatQCt+R/lEKl2D4TyAx2Ba4/gfosQIY+Y/ooZu1yahxTbFLyhGW8aodn0GW2WZ6jO3Qpfx7VuqCPdRV5moQ=="
+  "resolved" "https://registry.npmjs.org/embla-carousel/-/embla-carousel-8.0.0-rc18.tgz"
+  "version" "8.0.0-rc18"
+
 "esbuild@^0.18.10":
   "integrity" "sha512-ceqxoedUrcayh7Y7ZX6NdbbDzGROiyVBgC4PriJThBKSVPWnnFHZAkfI1lJT8QFkOwH4qOS2SJkS4wvpGl8BpA=="
   "resolved" "https://registry.npmjs.org/esbuild/-/esbuild-0.18.20.tgz"

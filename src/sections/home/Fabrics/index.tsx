@@ -1,12 +1,13 @@
 import SectionGrid from "../../../components/sectiongrid";
 import { useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
+import useHomepageImagesStore from "../../../store/homepageImages";
 
 const Fabrics = () => {
 	const container = useRef(null);
 	const { scrollYProgress } = useScroll({ target: container, offset: ["start end", "end start"] });
 	const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
-
+	const { homePageImages } = useHomepageImagesStore();
 	return (
 		<SectionGrid
 			textSectionHeader="#GPBFABRICS"
@@ -26,7 +27,7 @@ const Fabrics = () => {
 					<motion.img
 						style={{ scale }}
 						className="w-full h-full object-cover scale-[1.005]"
-						src="/assets/images/fabrics.png"
+						src={homePageImages?.gpbFabricsSection?.url}
 					/>
 				</div>
 			}

@@ -58,7 +58,7 @@ const ProductGrid = () => {
 						</>
 					))}
 			</motion.section>
-			{!hasSearchResults && products.length > 0 && (
+			{!hasSearchResults && products?.length > 0 && (
 				<motion.div
 					{...interactionAnimations}
 					className="flex w-full justify-center"
@@ -66,7 +66,7 @@ const ProductGrid = () => {
 					<p className="text-[#5A3522] w-[300px] py-4 px-[49px] text-xl font-medium">No Results Found</p>
 				</motion.div>
 			)}
-			{products?.filter((product) => product.name.toLowerCase().includes(searchValue.toLowerCase())).length > page * 8 && (
+			{products?.filter((product) => product?.name.toLowerCase().includes(searchValue.toLowerCase())).length > page * 8 && (
 				<motion.div
 					onClick={() => setPage(page + 1)}
 					{...interactionAnimations}

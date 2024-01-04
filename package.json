@@ -25,6 +25,8 @@
     "@types/locomotive-scroll": "^4.1.1",
     "aos": "^3.0.0-beta.6",
     "axios": "^1.5.0",
+    "embla-carousel-autoplay": "^8.0.0-rc18",
+    "embla-carousel-react": "^8.0.0-rc18",
     "framer-motion": "^10.16.2",
     "locomotive-scroll": "^4.1.4",
     "lodash": "^4.17.21",

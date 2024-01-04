@@ -1,11 +1,14 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import SectionGrid from "../../../components/sectiongrid";
+import useHomepageImagesStore from "../../../store/homepageImages";
 
 const AboutUs = () => {
 	const container = useRef(null);
 	const { scrollYProgress } = useScroll({ target: container, offset: ["start end", "end start"] });
 	const scale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
+
+	const { homePageImages } = useHomepageImagesStore();
 
 	return (
 		<SectionGrid
@@ -22,7 +25,7 @@ const AboutUs = () => {
 					<motion.img
 						style={{ scale }}
 						className="w-full h-full object-cover scale-[1.005]"
-						src="/assets/images/about-us-img.jpg"
+						src={homePageImages?.learnOurStorySection?.url}
 					/>
 				</div>
 			}
