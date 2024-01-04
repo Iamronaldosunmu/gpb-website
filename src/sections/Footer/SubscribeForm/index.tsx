@@ -31,7 +31,6 @@ const SubscribeForm = () => {
 	});
 
 	const onSubscribe = (data: EmailNewsletterPayload["data"]) => {
-
 		subscribeToNewsletterMutation.mutate(
 			{ data: { email: data.email } },
 			{
@@ -64,7 +63,7 @@ const SubscribeForm = () => {
 						<motion.form
 							exit={{ opacity: 0 }}
 							onSubmit={handleSubmit(onSubscribe)}
-							className="w-full max-w-[1000px] mx-auto flex flex-col gap-[60px] mt-[64px]"
+							className="w-full max-w-[1000px] mx-auto flex flex-col space-y-[60px] mt-[64px]"
 						>
 							<div>
 								<input

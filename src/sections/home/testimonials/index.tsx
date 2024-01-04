@@ -33,7 +33,7 @@ const TestimonialGroup = () => {
           See what customers are saying
         </p>
 
-        <div className="w-full flex flex-col lg:grid grid-cols-3 gap-[50px] lg:gap-[27px] mt-[68px] max-w-[450px] lg:max-w-none">
+        <div className="w-full flex flex-col lg:grid grid-cols-3 space-y-[50px] lg:space-y-0 lg:gap-[27px] mt-[68px] max-w-[450px] lg:max-w-none">
           {testimonialData.map((props, index) => (
             <Testimonial key={index} {...props} />
           ))}

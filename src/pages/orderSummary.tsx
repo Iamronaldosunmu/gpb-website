@@ -23,7 +23,7 @@ const OrderSummary: React.FC = () => {
 	};
 	return (
 		<>
-			<Container className="mt-[200px] w-full md:px-20 px-5">
+			<Container className="mt-[80px] lg:mt-[200px] w-full md:px-20 px-5">
 				<Nav textShowing={!(page == "form")} goBack={() => setPage("form")} />{" "}
 			</Container>
 			<button

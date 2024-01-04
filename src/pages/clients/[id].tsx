@@ -51,7 +51,7 @@ const Client = () => {
 				<Container>
 					<motion.p
 						onClick={() => navigate("/clients")}
-						className="flex items-center gap-[8px] lg:gap-[20px] group cursor-pointer"
+						className="flex items-center space-x-[8px] lg:space-x-[20px] group cursor-pointer"
 					>
 						<img
 							className=" w-[10px] lg:w-min group-hover:-translate-x-1 transition-all"

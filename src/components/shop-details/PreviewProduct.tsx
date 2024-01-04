@@ -13,7 +13,7 @@ const PreviewProduct: FC<Props> = () => {
 	const [selectedIndex, setSelectedIndex] = useState(0);
 
 	return (
-		<div className="flex gap-x-[33px]">
+		<div className="flex space-x-[33px]">
 			<div className="flex flex-col justify-end items-center space-y-[31px]">
 				{product?.productImage?.map((image, index) => (
 					<div className="relative">
@@ -36,15 +36,13 @@ const PreviewProduct: FC<Props> = () => {
 			</div>
 			<div className="w-[489px] h-[622px] relative">
 				{product?.productImage?.map((path, index) => (
-			
-						<motion.img
-							key={path.url}
-							animate={{ opacity: selectedIndex == index ? 1 : 0, transition: { duration: 0.3 } }}
-							className="w-full h-full object-cover absolute"
-							src={product?.productImage[index].url}
-							alt=""
-						/>
-				
+					<motion.img
+						key={path.url}
+						animate={{ opacity: selectedIndex == index ? 1 : 0, transition: { duration: 0.3 } }}
+						className="w-full h-full object-cover absolute"
+						src={product?.productImage[index].url}
+						alt=""
+					/>
 				))}
 			</div>
 		</div>

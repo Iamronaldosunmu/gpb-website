@@ -22,7 +22,7 @@ const Testimonial = ({ name, position, url, testimonial }: TestimonialProps) => 
 				<img src="/assets/images/testimonial.svg" />
 			</div>
 			<p className="w-full mt-[27px]">{testimonial}</p>
-			<div className="mt-[27px] flex items-center gap-[5px]">
+			<div className="mt-[27px] flex items-center gap-x-[5px]">
 				<img
 					src={url}
 					className="w-[38px] h-[38px] rounded-full overflow-hidden"

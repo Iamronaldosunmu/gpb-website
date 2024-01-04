@@ -22,7 +22,7 @@ const WishItem: React.FC<Props> = ({ name, id, price, discountPrice, image }) =>
 	return (
 		<div
 			onMouseEnter={() => setIsHovered(true)}
-			// onMouseLeave={() => setIsHovered(false)}
+			onMouseLeave={() => setIsHovered(false)}
 			className="relative z-0 w-full  lg:max-w-[300px] shrink-0 overflow-hidden border border-[#3C3B3B] rounded-sm"
 		>
 			<div
@@ -50,8 +50,8 @@ const WishItem: React.FC<Props> = ({ name, id, price, discountPrice, image }) =>
 					<p className="font-semibold text-[#232323]">{name}</p>
 					<div className="flex">
 						<p className="price">N{discountPrice ? parseInt(discountPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</p>
-						{discountPrice && <p className="hidden md:inline-block font-lato line-through text-[#5A3522] ml-2">N{parseInt(price)?.toLocaleString()}</p>}
-						{/* <span className="font-lato">{`N${newPrice}`}</span>
+						{/* {discountPrice && <p className="hidden md:inline-block font-lato line-through text-[#5A3522] ml-2">N{parseInt(price)?.toLocaleString()}</p>}
+						<span className="font-lato">{`N${newPrice}`}</span>
 						<span className="hidden md:inline-block font-lato line-through text-[#5A3522] ml-2">{`N${oldPrice}`}</span> */}
 					</div>
 				</div>

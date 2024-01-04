@@ -20,7 +20,7 @@ const PrintDetails = () => {
 				<div className="text-center md:text-left text-[24px] md:text-[32px] font-bold bg-white lg:pl-[73px]">Print Details</div>
 				<Link
 					to="/shop"
-					className="flex gap-[7px] md:gap-x-[10px] items-center mt-[13px] lg:mt-[116px]"
+					className="flex space-x-[7px] space-y-[7px] md:space-x-[10px] items-center mt-[13px] lg:mt-[116px]"
 				>
 					<img
 						className="md:w-6 md:h-6 w-[20px] h-[20px] object-cover"
@@ -30,7 +30,7 @@ const PrintDetails = () => {
 					<span className="text-[14px] lg:text-[23px] text-[#3C3B3B] font-medium">Back to Shop</span>
 				</Link>
 			</Container>
-			<Container className="mt-[124px] gap-x-[77px] items-start hidden lg:flex">
+			<Container className="mt-[124px] space-x-[77px] items-start hidden lg:flex">
 				<PreviewProduct />
 				<div className="w-full max-w-[502px]">
 					<MiniNav paths={["Home", "Shop Print", "Shine"]} />

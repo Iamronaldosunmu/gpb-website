@@ -52,7 +52,7 @@ const PrintItem: React.FC<PrintItemProps> = ({ name, price, discountedPrice, ima
 			<div className="mt-[8px] md:mt-[16px] flex justify-between items-center">
 				<div className="text-[13px] md:text-[16px] font-semibold">
 					<p>{name}</p>
-					<div className="flex gap-[7px]">
+					<div className="flex space-x-[7px]">
 						<p className="price">₦{discountedPrice ? parseInt(discountedPrice)?.toLocaleString() : parseInt(price)?.toLocaleString()}</p>
 						{discountedPrice && <p className="line-through price">₦{(parseInt(price))?.toLocaleString()}</p>}
 					</div>

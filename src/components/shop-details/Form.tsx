@@ -108,7 +108,7 @@ const Form = () => {
 			</div>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
-				className="mt-[61px] flex flex-col justify-center gap-[24px] lg:gap-y-[51px] w-full "
+				className="mt-[61px] flex flex-col justify-center space-y-[24px] lg:space-y-[51px] w-full "
 			>
 				<div className="text-xl w-full font-medium overflow-hidden">
 					<label
@@ -155,7 +155,7 @@ const Form = () => {
 					</div>
 					{errors.exclusivity && <p className="text-red-500 mt-1"> {errors.colour && <p className="text-red-500 mt-1">{errors.exclusivity.message}</p>}</p>}
 				</div>
-				<div className="w-full flex items-center gap-x-[21px]">
+				<div className="w-full flex items-center space-x-[21px]">
 					<motion.button
 						{...interactionAnimations}
 						whileHover={{ scale: 1.02 }}

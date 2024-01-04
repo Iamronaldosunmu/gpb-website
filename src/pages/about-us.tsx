@@ -8,8 +8,8 @@ import Footer from "../sections/Footer";
 const AboutUs = () => {
 	return (
 		<PageContainer className="pt-[140px] md:pt-[200px]">
-			<TextContainer className="flex flex-col gap-[80px] text-center lg:text-left">
-				<h1 className="text-center font-medium text-[40px] flex flex-wrap gap-x-[10px] justify-center overflow-hidden">
+			<TextContainer className="flex flex-col space-y-[80px] text-center lg:text-left">
+				<h1 className="text-center font-medium text-[40px] flex flex-wrap space-x-[10px] justify-center overflow-hidden">
 					{"About Grapes Pattern Bank".split(" ").map((word, index) => (
 						<motion.div
 							initial={{ y: 45, opacity: 0 }}
@@ -23,7 +23,7 @@ const AboutUs = () => {
 						</motion.div>
 					))}
 				</h1>
-				<article className="text-[16px] md:text-[24px] gap-[40px] mt-[40px] flex flex-col">
+				<article className="text-[16px] md:text-[24px] space-y-[40px] mt-[40px] flex flex-col">
 					<p
 						data-aos="fade-up"
 						data-aos-duration="700"
@@ -53,32 +53,24 @@ const AboutUs = () => {
 			<Container className="hidden lg:block">
 				<section className="mt-[153px] h-[1000px] grid grid-cols-[0.94fr_1.06fr] gap-[20px]">
 					<div className="w-full h-[1000px]">
-						<ParallaxImage
-							src="/assets/images/about-us-1.png"
-						/>
+						<ParallaxImage src="/assets/images/about-us-1.png" />
 					</div>
 					<div className="grid w-full h-[1000px] gap-[20px]">
 						<div className="w-full h-[490px]">
-							<ParallaxImage
-								src="/assets/images/about-us-img-3.jpg"
-							/>
+							<ParallaxImage src="/assets/images/about-us-img-3.jpg" />
 						</div>
 						<div className="w-full h-[480px] grid grid-cols-[1fr_1fr] gap-[20px]">
 							<div className="w-full h-[485px]">
-								<ParallaxImage
-									src="/assets/images/about-us-img-4.jpg"
-								/>
+								<ParallaxImage src="/assets/images/about-us-img-4.jpg" />
 							</div>
 							<div className="w-full h-[485px]">
-								<ParallaxImage
-									src="/assets/images/about-us-img-5.jpg"
-								/>
+								<ParallaxImage src="/assets/images/about-us-img-5.jpg" />
 							</div>
 						</div>
 					</div>
 				</section>
 			</Container>
-			<TextContainer className="flex flex-col gap-[80px] mt-[80px] md:mt-[100px] lg:mt-[180px] text-center lg:text-left">
+			<TextContainer className="flex flex-col space-y-[80px] mt-[80px] md:mt-[100px] lg:mt-[180px] text-center lg:text-left">
 				<h1
 					className="text-center font-medium text-[40px] mb-[40px]"
 					data-aos="fade-up"
@@ -87,7 +79,7 @@ const AboutUs = () => {
 				>
 					How we work
 				</h1>
-				<article className="text-[16px] md:text-[24px] gap-[40px] mt-[40px] flex flex-col">
+				<article className="text-[16px] md:text-[24px] space-y-[40px] mt-[40px] flex flex-col">
 					<p
 						data-aos="fade-up"
 						data-aos-duration="700"
@@ -120,26 +112,18 @@ const AboutUs = () => {
 			<Container>
 				<section className="mt-[153px] h-[1000px] grid-rows-[0.45fr_0.55fr] grid-cols-1 gap-[32px] hidden lg:grid">
 					<div className="w-full h-[570px]">
-						<ParallaxImage
-							src="/assets/images/about-us-2.jpg"
-						/>
+						<ParallaxImage src="/assets/images/about-us-2.jpg" />
 					</div>
 					<div className="grid w-full h-[480px] gap-[30px] grid-cols-[1.16fr_0.84fr]">
 						<div className="w-full h-[480px]">
-							<ParallaxImage
-								src="/assets/images/about-us-img-6.jpg"
-							/>
+							<ParallaxImage src="/assets/images/about-us-img-6.jpg" />
 						</div>
 						<div className="w-full h-full grid grid-cols-[1fr_1fr] gap-[30px]">
 							<div className="w-full h-full">
-								<ParallaxImage
-									src="/assets/images/about-us-1.png"
-								/>
+								<ParallaxImage src="/assets/images/about-us-1.png" />
 							</div>
 							<div className="w-full h-full">
-								<ParallaxImage
-									src="/assets/images/about-us-1.png"
-								/>
+								<ParallaxImage src="/assets/images/about-us-1.png" />
 							</div>
 						</div>
 					</div>

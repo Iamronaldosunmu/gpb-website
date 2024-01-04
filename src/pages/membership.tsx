@@ -24,11 +24,11 @@ const Membership = () => {
 					<h1 className="text-4xl md:text-[40px] font-semibold">MEMBERSHIP</h1>
 					<p className="mt-4 text-xl md:text-2xl">Choose Your Membership Package</p>
 				</div>
-				<div className="mt-20 md:mt-[150px] xl:mt-[222px] flex flex-col md:flex-row gap-y-20 gap-x-10 lg:gap-x-[100px] mx-5 sm:mx-20 md:mx-0">
+				<div className="mt-20 md:mt-[150px] xl:mt-[222px] flex flex-col md:flex-row gap-y-20 gap-x-10 lg:space-x-[100px] mx-5 sm:mx-20 md:mx-0">
 					{subscriptions.map((plan) => (
 						<div className="w-full px-3 sm:px-12 flex flex-col items-center pt-7 rounded-2xl bg-white bg-opacity-60 shadow-[0px_0px_21px_3px_#00000026] justify-self-center">
 							<span className="text-xl sm:text-[30px] font-semibold">{plan.title}</span>
-							<div className="flex justify-center gap-x-3 md:gap-x-[18px] font-bold mt-3 md:mt-10 lg:mt-[50px]">
+							<div className="flex justify-center gap-x-3 md:space-x-[18px] font-bold mt-3 md:mt-10 lg:mt-[50px]">
 								<span className="text-[28px] lg:text-[40px] mt-5 font-lato">₦</span>
 								<span className="text-[48px] lg:text-[75px] font-lato">{plan.amount}</span>
 							</div>

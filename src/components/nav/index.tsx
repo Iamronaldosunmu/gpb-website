@@ -51,12 +51,14 @@ const Nav = () => {
 			>
 				<div className="w-full py-[8px] border-b border-b-black bg-white">
 					<Container className="flex items-center justify-between font-bold lg:text-[28px] xl:text-[32px]">
-						<img
+						<motion.img
+							whileTap={{scale: 0.95}}
+							onClick={() => navigate("/home")}
 							className="w-[45px] lg:w-[60px]"
 							src="/assets/images/gpb-logo.png"
 						/>
 						<p>GRAPES PATTERN BANK</p>
-						<div className="hidden lg:flex items-center gap-[7px]">
+						<div className="hidden lg:flex items-center space-x-[7px]">
 							{/* <motion.img
 								{...interactionAnimations}
 								className="cursor-pointer"
@@ -108,7 +110,7 @@ const Nav = () => {
 						</motion.div>
 					</Container>
 				</div>
-				<div className="w-full py-[15px] border-b border-b-black hidden lg:flex justify-center gap-[29px] bg-white">
+				<div className="w-full py-[15px] border-b border-b-black hidden lg:flex justify-center space-x-[29px] bg-white">
 					{navItems.map((item: { text: string; to?: string }, index: number) => (
 						<button
 							// onClick={() => setActiveTab(item.text)}
@@ -157,7 +159,7 @@ const Nav = () => {
 					</motion.div>
 				)}
 			</motion.nav>
-			<div className="fixed bottom-[20px] right-[20px] flex gap-[20px] z-40 lg:hidden">
+			<div className="fixed bottom-[20px] right-[20px] flex space-x-[20px] z-40 lg:hidden">
 				{cart.length > 0 && (
 					<motion.div
 						layout

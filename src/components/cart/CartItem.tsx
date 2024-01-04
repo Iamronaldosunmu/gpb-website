@@ -23,7 +23,7 @@ const CartItem: FC<Props> = ({ id, productName, backgroundColor, exclusivity, ch
 	return (
 		<div
 			key={id}
-			className="relative flex gap-x-[9px] md:gap-x-[30px] w-full h-[150px] md:h-[190px] items-center border border-[#181818] rounded-lg px-[15px] md:px-7 py-8"
+			className="relative flex space-x-[9px] md:space-x-[30px] w-full h-[150px] md:h-[190px] items-center border border-[#181818] rounded-lg px-[15px] md:px-7 py-8"
 		>
 			<motion.input
 				{...interactionAnimations}
@@ -55,7 +55,7 @@ const CartItem: FC<Props> = ({ id, productName, backgroundColor, exclusivity, ch
 			</div>
 			<button
 				onClick={removeItem}
-				className="absolute text-[12px] md:text-[16px] self-start right-0 underline underline-offset-8 font-semibold mr-10"
+				className="absolute text-[12px] md:text-[16px] self-start right-[40px] underline underline-offset-8 font-semibold"
 			>
 				remove
 			</button>

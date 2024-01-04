@@ -8,12 +8,10 @@ interface Props {
 	address?: string;
 	shippingAddressDetails?: string;
 	goToForm?: () => void;
-	submitData: (paymentType: 'card' | 'bank transfer') => void;
+	submitData: (paymentType: "card" | "bank transfer") => void;
 	clientSecret?: string;
 	clientSecretLoading: boolean;
 }
-
-
 
 const Shipping = ({ email, shippingAddressDetails, goToForm, submitData, clientSecretLoading, clientSecret }: Props) => {
 	const [showPayment, setShowPayment] = useState(false);
@@ -24,8 +22,7 @@ const Shipping = ({ email, shippingAddressDetails, goToForm, submitData, clientS
 		setPage("form");
 		setShowButton(false);
 	};
-	const handleRightButtonClick =  () => {
-		
+	const handleRightButtonClick = () => {
 		setShowPayment(true);
 		setShowButton(false);
 	};
@@ -35,7 +32,7 @@ const Shipping = ({ email, shippingAddressDetails, goToForm, submitData, clientS
 			{page === "shipping" && (
 				<div className="p-4 ">
 					<div className=" border sm:text-sm text-xs  border-black font-semibold  mb-12 ">
-						<div className="flex justify-between gap-[20px] items-center md:p-4 pt-0 m-2 mt-4">
+						<div className="flex justify-between space-x-[20px] items-center md:p-4 pt-0 m-2 mt-4">
 							{" "}
 							<p className="mr-3">Contact</p>
 							<div className="mr-3">
@@ -51,21 +48,6 @@ const Shipping = ({ email, shippingAddressDetails, goToForm, submitData, clientS
 								<div className="border-b border-black"></div>
 							</div>
 						</div>
-
-						{/* <div className="border-b border-b-black"></div>
-						<div className="flex gap-[20px] md:p-4 pt-0 m-2 justify-between items-center">
-							<p className="mr-2 whitespace-nowrap">ship to</p>
-							<p className="mr-2 text-center">{address}</p>
-							<div>
-								<div
-									className="cursor-pointer"
-									onClick={goToForm}
-								>
-									change
-								</div>
-								<div className="border-b border-black"></div>
-							</div>
-						</div> */}
 					</div>
 					<div className="md:mb-20">
 						<h2 className="text-2xl pb-5 mb-2 font-bold">Shipping Method</h2>
@@ -94,7 +76,11 @@ const Shipping = ({ email, shippingAddressDetails, goToForm, submitData, clientS
 			)}
 
 			{showPayment && (
-				<Payment clientSecret={clientSecret} clientSecretLoading={clientSecretLoading} submitData={submitData} />
+				<Payment
+					clientSecret={clientSecret}
+					clientSecretLoading={clientSecretLoading}
+					submitData={submitData}
+				/>
 			)}
 		</>
 	);

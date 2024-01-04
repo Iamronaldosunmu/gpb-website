@@ -32,7 +32,7 @@ const GetAQuoteForm = () => {
           </p>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="mt-[132px] flex flex-col gap-[60px]"
+            className="mt-[132px] flex flex-col space-y-[60px]"
           >
             <GetAQuoteInput
               placeholder="Name"

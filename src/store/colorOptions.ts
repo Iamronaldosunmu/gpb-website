@@ -27,7 +27,7 @@ const useColourOptionsStore = create<ProductStore>((set) => ({
 		  },
 	setColourOptions: (colourOptions: ColourOptions) => {
 		set({ colourOptions });
-		localStorage.setItem("colourOptions", JSON.stringify(colourOptions));
+		if (colourOptions) localStorage.setItem("colourOptions", JSON.stringify(colourOptions));
 	},
 }));
 

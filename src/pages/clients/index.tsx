@@ -127,7 +127,7 @@ const Clients = () => {
 						</header>
 					</Container>
 				</div>
-				<Container className={`grid ${width > 767 ? "grid-cols-3" : "grid-cols-2"} gap-y-[40px] gap-x-[20px] relative -top-[45px]`}>
+				<Container className={`grid ${width > 767 ? "grid-cols-3" : "grid-cols-2"} gap-y-[40px] space-x-[20px] relative -top-[45px]`}>
 					{clients?.map((client) => (
 						<motion.div
 							{...interactionAnimations}
@@ -135,11 +135,11 @@ const Clients = () => {
 						>
 							<figure className="w-full rounded-[10px] overflow-hidden">
 								<img
-									src={client.images ? (client.images[0] as unknown as string) : ""}
+									src={client.images ? (client.images[0].url) : ""}
 									className="w-full aspect-[0.8] object-cover"
 								/>
 							</figure>
-							<div className="mt-[12px] text-[14px] font-semibold flex gap-x-[20px] items-center">
+							<div className="mt-[12px] text-[14px] font-semibold flex space-x-[20px] items-center">
 								<p>{client?.name}</p>
 								<svg
 									className="min-w-[22px]"

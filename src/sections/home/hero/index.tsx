@@ -27,7 +27,7 @@ const Hero = () => {
 					<motion.button
 						{...interactionAnimations}
 						whileTap={{ scale: 0.98 }}
-						className="bg-white p-[10px] px-[20px] md:px-[30px] text-[14px] md:text-[16px] flex items-center gap-[15px] rounded-full"
+						className="bg-white p-[10px] px-[20px] md:px-[30px] text-[14px] md:text-[16px] flex items-center space-x-[15px] rounded-full"
 					>
 						<span
 							onClick={() => navigate("/shop")}

@@ -8,7 +8,6 @@ import MiniNav from "../components/shop/MiniNav";
 import Footer from "../sections/Footer";
 
 const Cart = () => {
-
 	return (
 		<PageContainer>
 			<Nav />
@@ -19,7 +18,7 @@ const Cart = () => {
 				/>
 				<Link
 					to="/shop"
-					className="flex gap-[7px] md:gap-x-[10px] items-center mt-[13px] lg:mt-[116px]"
+					className="flex space-x-[7px] md:space-x-[10px] items-center mt-[13px] lg:mt-[116px]"
 				>
 					<img
 						className="md:w-6 md:h-6 w-[20px] h-[20px] object-cover"

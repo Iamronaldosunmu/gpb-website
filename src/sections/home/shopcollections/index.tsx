@@ -22,11 +22,11 @@ const ShopCollections = () => {
 				<motion.div
 					onClick={() => navigate("/shop")}
 					whileHover={{ scale: 1.02 }}
-					className="cursor-pointer flex items-center justify-center  gap-[20px] group"
+					className="cursor-pointer flex items-center justify-center  space-x-[20px] group"
 				>
 					<TextAnimation
 						text="Shop The Collection"
-						className="text-[24px] lg:text-[34px] xl:text-[36px] font-medium text-center text-[#A34A21]  flex gap-[10px] justify-center"
+						className="text-[24px] lg:text-[34px] xl:text-[36px] font-medium text-center text-[#A34A21]  flex space-x-[10px] justify-center"
 					/>
 					<div
 						data-aos="fade-up"

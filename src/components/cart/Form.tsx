@@ -54,7 +54,7 @@ const Form = () => {
 
 	return (
 		<Container className="mt-[80px] xl:mt-[105px] mb-6">
-			<div className="flex flex-col lg:flex-row  gap-[70px] xl:gap-x-[127px]">
+			<div className="flex flex-col lg:flex-row  space-y-[70px] xl:space-x-[127px]">
 				<CartList getProductPriceInCart={getProductPriceInCart} />
 				<div className="w-full lg:max-w-[365px] xl:max-w-[500px] mt-3">
 					<h2 className="font-semibold text-[32px] xl:text-[36px] mb-[12px]">Order Summary</h2>

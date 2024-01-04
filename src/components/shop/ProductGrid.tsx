@@ -28,7 +28,7 @@ const ProductGrid = () => {
 				variants={container}
 				initial="hidden"
 				animate="show"
-				className="grid grid-cols-2 gap-x-[12px] lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4 md:gap-x-[50px] lg:gap-x-[30px] gap-y-[20px] md:gap-y-[80px] lg:gap-y-[116px] mt-[51px] mb-[110px] grid-size"
+				className="grid grid-cols-2 space-x-[12px] lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4 md:space-x-[50px] lg:space-x-[30px] gap-y-[20px] md:gap-y-[80px] lg:gap-y-[116px] mt-[51px] mb-[110px] grid-size"
 			>
 				{products?.slice(0, page * 8).map((product, index) => (
 					<>

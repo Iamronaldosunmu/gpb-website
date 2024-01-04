@@ -37,8 +37,8 @@ const WishList = () => {
 									key={index}
 									id={item.id}
 									name={products?.find((product) => product.id === item.id)?.name || ""}
-									price={products?.find((product) => product.id === item.id)?.price || "0"}
-									discountPrice={products?.find((product) => product.id === item.id)?.discountPrice || "0"}
+									price={products?.find((product) => product.id === item.id)?.price}
+									discountPrice={products?.find((product) => product.id === item.id)?.discountPrice}
 									image={products?.find((product) => product.id === item.id)?.productImage ? products?.find((product) => product.id === item.id)?.productImage[0].url as string : ""}
 									quantity={item.quantity}
 								/>

@@ -214,7 +214,7 @@ const Form = ({ page, setPage }: FormProps) => {
 							/>
 							{errors.lastName && <p className="text-red-500">{errors.lastName.message}</p>}
 						</div>
-						<div className="flex flex-col md:flex-row md:justify-between gap-[20px]">
+						<div className="flex flex-col md:flex-row md:justify-between space-x-[20px] space-y-[20px]">
 							<div className="mb-7 pb-7 mr-2 flex-grow">
 								<label
 									htmlFor="companyName"
@@ -268,7 +268,7 @@ const Form = ({ page, setPage }: FormProps) => {
 						</select>
 						{errors.country && <p className="text-red-500">{errors.country.message}</p>}
 					</div>
-					<div className="flex flex-col md:flex-row md:justify-between gap-[20px]">
+					<div className="flex flex-col md:flex-row md:justify-between space-x-[20px] space-y-[20px]">
 						<div className="mb-7 pb-7 mr-2 flex-shrink-0 flex-grow">
 							<label
 								htmlFor="zipCode"

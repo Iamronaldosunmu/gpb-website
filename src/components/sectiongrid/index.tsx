@@ -28,7 +28,7 @@ const SectionGrid: React.FC<SectionGridProps> = ({ textSectionHeader, textSectio
 			>
 				<div
 					style={width < 1023 ? {} : reversed ? { paddingRight: width >= 1023 && width < 1280 ? 40 : "calc((100vw - 1220px)/2)" } : { paddingLeft: width >= 1023 && width < 1280 ? 40 : "calc((100vw - 1220px)/2)" }}
-					className="flex flex-col items-center lg:items-start gap-[36px] text-white px-[40px]"
+					className="flex flex-col items-center lg:items-start space-y-[36px] text-white px-[40px]"
 				>
 					<h2
 						data-aos="zoom-in"
