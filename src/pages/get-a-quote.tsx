@@ -1,5 +1,4 @@
 import Form from "../components/GetAQuote/form";
-import Container from "../components/container";
 import BottomFooter from "../sections/Footer/BottomFooter";
 const GetAquote = () => {
 	return (
