@@ -12,14 +12,14 @@ const BottomFooter = () => {
           <Container className="flex flex-col justify-between space-y-[40px] lg:space-y-0">
             <div className="flex-col flex w-full">
               <p className="font-semibold text-[22px] text-center lg:text-left">GRAPES PATTERN BANK</p>
-              <div className="mt-[30px]">
+              <div className="mt-[30px] mb-[10px]">
                 <div className="text-[16px] md:text-[20px] flex space-y-[48px] md:space-y-[80px] lg:space-y-0 lg:space-x-[48px] flex-col lg:flex-row">
                   <div className="flex flex-col space-y-[5px]">
-                    <p className="">Address: </p>
+                    {/* <p className="">Address: </p> */}
                     <p>Lagos, Nigeria</p>
                   </div>
                   <div className="flex flex-col space-y-[5px]">
-                    <p className="">Email: </p>
+                    {/* <p className="">Email: </p> */}
                     <a
                       href="mailto:info@grapespatternbank.com"
                       className="underline"

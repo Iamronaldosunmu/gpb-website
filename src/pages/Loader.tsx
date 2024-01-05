@@ -1,12 +1,16 @@
 import { useState } from "react";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const Loader = () => {
-	const [finished, setFinished] = useState(false)
-	const navigate = useNavigate()
+	const [finished, setFinished] = useState(false);
+	const navigate = useNavigate();
 	return (
-		<motion.div onAnimationComplete={() => navigate("/home") } animate={finished ? {opacity: 0} : {}} className="bg-[#AF9E7F] text-[#3d5549] fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center text-[54px] font-bold">
+		<motion.div
+			onAnimationComplete={() => navigate("/home")}
+			animate={finished ? { opacity: 0 } : {}}
+			className="bg-[white] text-[rgb(161,58,219)] fixed top-0 right-0 left-0 bottom-0 flex items-center justify-center text-[54px] font-bold"
+		>
 			<motion.div>
 				{"#GPB".split(" ").map((word, index) => {
 					return (
@@ -17,9 +21,14 @@ const Loader = () => {
 							{word.split("").map((letter: string, index: number) => {
 								return (
 									<motion.div
-										onAnimationComplete={index == 2 ? () => setTimeout(() => {
-											setFinished(true)
-										}, 2000) : () => {}}
+										onAnimationComplete={
+											index == 2
+												? () =>
+														setTimeout(() => {
+															setFinished(true);
+														}, 2000)
+												: () => {}
+										}
 										initial={{ y: 90, scale: 0.9 }}
 										animate={{
 											y: 0,

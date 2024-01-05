@@ -8,6 +8,7 @@ import CartList from "./CartList";
 import { useNavigate } from "react-router-dom";
 import { interactionAnimations } from "../../utils/framer-default-animations";
 import { motion } from "framer-motion";
+import countries from "../../data/countries";
 
 const Form = () => {
 	const options = ["Nigeria", "Columbia", "United Kingdom"];
@@ -76,7 +77,8 @@ const Form = () => {
 								className="mt-[22px] py-[9px] px-4 border border-[#181818] w-full"
 								{...register("country", { required: true })}
 							>
-								{options.map((option) => (
+								<option value=""></option>
+								{countries.map((option) => (
 									<option
 										key={option}
 										value={option}

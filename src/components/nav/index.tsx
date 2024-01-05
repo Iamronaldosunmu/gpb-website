@@ -49,12 +49,12 @@ const Nav = () => {
 				animate={mobileNavOpen ? { height: "100%", opacity: 1, transition: { duration: 0.3, ease: easeIn, opacity: { duration: 0.3 } } } : { height: 64.8, opacity: 1, transition: { delay: 0.5, opacity: { duration: 0.3 } } }}
 				className="fixed top-0 right-0 left-0 bg-[#FDFDFD] z-[100] flex flex-col"
 			>
-				<div className="w-full py-[8px] border-b border-b-black bg-white">
+				<div className="w-full py-[8px] lg:py-0 border-b border-b-black bg-white">
 					<Container className="flex items-center justify-between font-bold lg:text-[28px] xl:text-[32px]">
 						<motion.img
 							whileTap={{scale: 0.95}}
 							onClick={() => navigate("/home")}
-							className="w-[45px] lg:w-[60px]"
+							className="w-[52px] lg:w-[78px] cursor-pointer"
 							src="/assets/images/gpb-logo.png"
 						/>
 						<p>GRAPES PATTERN BANK</p>

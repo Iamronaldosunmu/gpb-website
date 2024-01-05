@@ -92,7 +92,7 @@ const Hero = () => {
 						<div className="embla__slide flex-[0_0_100%] px-[10px] rounded-[10px] overflow-hidden relative">
 							<img
 								src={image.url}
-								className="w-full h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px] object-cover hidden lg:block rounded-[10px]"
+								className="w-full h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px] object-cover lg:hidden rounded-[10px]"
 							/>
 							<div className="absolute top-0 left-[10px] right-[10px] bottom-0 bg-gradient-to-b from-[rgba(0,0,0,0)] from-[60.21%] to-[rgba(0,0,0,0.78)] z-10 rounded-[15px]"></div>
 							<div className="absolute bottom-[28px] z-10 left-[10px] right-[10px]">

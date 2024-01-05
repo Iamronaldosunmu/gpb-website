@@ -21,7 +21,7 @@ const Features = () => {
 		<div className="py-[150px] xl:py-[195px]">
 			<TextAnimation
 				text="Unmatched Expertise and Legacy"
-				className="flex flex-wrap overflow-hidden space-x-[10px] justify-center font-medium text-[24px] md:text-[28px] lg:text-[34px] xl:text-[36px] text-center mb-[95px]"
+				className="flex flex-wrap overflow-hidden space-x-[10px] justify-center font-medium px-[20px] text-[24px] md:text-[28px] lg:text-[34px] xl:text-[36px] text-center mb-[95px]"
 			/>
 
 			<Container className="flex justify-between flex-col space-y-[60px] lg:space-y-0 lg:space-x-0 lg:flex-row">

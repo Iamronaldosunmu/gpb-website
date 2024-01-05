@@ -10,6 +10,7 @@ import useCartStore, { CartItem } from "../../../store/cart";
 import useUserDetailsStore, { UserDetails } from "../../../store/userDetails";
 import { interactionAnimations } from "../../../utils/framer-default-animations";
 import Shipping from "../Pay/shipping";
+import countries from "../../../data/countries";
 
 const schema = z.object({
 	email: z.string().email({ message: "The email format you entered is invalid" }),
@@ -260,6 +261,9 @@ const Form = ({ page, setPage }: FormProps) => {
 							className="w-full border py-2 px-3 border-black "
 						>
 							<option value=""></option>
+							{countries?.map((country) => (
+								<option value={country}>{country}</option>
+							))}
 							<option value="usa">United States</option>
 							<option value="canada">Canada</option>
 							<option value="uk">United Kingdom</option>
