@@ -66,11 +66,11 @@ const Nav = () => {
 							/> */}
 							<motion.div
 								{...interactionAnimations}
-								className="relative"
+								className="relative p-[2px]"
 								animate={{ scale: itemJustAdded ? 1.1 : 1 }}
+								onClick={() => navigate("/cart")}
 							>
 								<img
-									onClick={() => navigate("/cart")}
 									className="cursor-pointer"
 									src="/assets/images/cart.png"
 								/>
@@ -79,12 +79,12 @@ const Nav = () => {
 
 							<motion.div
 								{...interactionAnimations}
-								className="relative"
+								className="relative p-[2px]"
 								animate={{ scale: itemJustLiked ? 1.1 : 1 }}
+								onClick={() => navigate("/wish-list")}
 							>
 								<motion.img
 									className="cursor-pointer"
-									onClick={() => navigate("/wish-list")}
 									src="/assets/images/favorite.png"
 								/>
 								<p className="min-w-[20px] w-[20px] h-[20px] min-h-[20px] bg-[#a13adb] cursor-pointer rounded-full absolute top-0 right-0 text-[12px] text-white flex items-center justify-center price">{wishList?.length}</p>

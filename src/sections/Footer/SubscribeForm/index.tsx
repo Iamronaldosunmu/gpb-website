@@ -74,7 +74,7 @@ const SubscribeForm = () => {
 								<p className="text-[red]">{errors.email?.message}</p>
 							</div>
 							<button
-								className="w-full text-center text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] py-[12px] lg:py-[15px] xl:py-[18px] bg-black text-white"
+								className="w-full text-center text-[20px] md:text-[24px] lg:text-[28px] xl:text-[32px] py-[12px] lg:py-[15px] xl:py-[18px] bg-[#7824a7] text-white"
 								type="submit"
 							>
 								{subscribeToNewsletterMutation.isLoading ? (
