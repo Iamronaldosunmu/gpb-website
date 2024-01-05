@@ -11,7 +11,6 @@ import { motion } from "framer-motion";
 import countries from "../../data/countries";
 
 const Form = () => {
-	const options = ["Nigeria", "Columbia", "United Kingdom"];
 	const { register } = useForm();
 	const { cart } = useCartStore();
 	const { products } = useProductStore();
