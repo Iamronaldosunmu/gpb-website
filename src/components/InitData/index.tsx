@@ -19,11 +19,13 @@ const InitData = () => {
 	const { data: homepageImagesData } = useHomepageImages();
 
 	useEffect(() => {
-		setProducts(productData);
+		if (productData) setProducts(productData);
 		setClients(clientData);
-		setColourOptions(colourOptionsData ? colourOptionsData[0] : undefined);
-		setHomePageImages(homepageImagesData);
-		saveHomepageImages();
+		if (colourOptionsData) setColourOptions(colourOptionsData ? colourOptionsData[0] : {});
+		if (homepageImagesData) {
+			setHomePageImages(homepageImagesData);
+			saveHomepageImages();
+		}
 		console.log("colourOptions", colourOptionsData ? colourOptionsData[0] : undefined);
 	}, [productData, clientData, colourOptionsData]);
 	return <></>;
