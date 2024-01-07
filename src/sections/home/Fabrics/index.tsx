@@ -12,7 +12,7 @@ const Fabrics = () => {
 		<SectionGrid
 			textSectionHeader="#GPBFABRICS"
 			buttonPath="/get-a-quote"
-			textSectionBgColor="#A12E2E"
+			textSectionBgColor="#AC94f4"
 			textSectionContent={[
 				`We have over 150 different fabrics that we are able to print on digitally
       Ranging from silks to cottons, swimwear fabrics, polyesters, viscose , suede etc.`,
