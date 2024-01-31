@@ -53,7 +53,7 @@ const Hero = () => {
 				</div>
 			</section> */}
 			<div
-				className="embla overflow-hidden max-w-[1260px] md:max-w-[1220px] mx-auto w-full rounded-[15px] relative mt-[90px] lg:mt-[169px]"
+				className="embla overflow-hidden max-w-[1260px] lg:pb-20 md:pb-10 pb-10 md:max-w-[1220px] mx-auto w-full rounded-[15px] relative mt-[90px] lg:mt-[169px]"
 				ref={emblaRef}
 			>
 				<div className="embla__container  rounded-[8px] hidden lg:flex h-[350px] md:h-[400px] lg:h-[450px] xl:h-[500px]">

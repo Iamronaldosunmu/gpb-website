@@ -24,7 +24,7 @@ const Title: React.FC<TitleProps> = ({ name, index, setRotation, setIndex, textE
 			className="title-item"
 		>
 			<h1
-				onClick={() => navigate(`/clients/${id}`)}
+				onClick={() => navigate(`/events/${id}`)}
 				className="w-fit"
 				onMouseEnter={textEnter}
 				onMouseLeave={textLeave}
