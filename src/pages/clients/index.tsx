@@ -131,7 +131,7 @@ const Clients = () => {
 					{clients?.map((client) => (
 						<motion.div
 							{...interactionAnimations}
-							onClick={() => navigate(`/clients/${client.id}`)}
+							onClick={() => navigate(`/events/${client.id}`)}
 						>
 							<figure className="w-full rounded-[10px] overflow-hidden">
 								<img

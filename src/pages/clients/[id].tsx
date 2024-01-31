@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Marquee from "react-fast-marquee";
 import { useNavigate, useParams } from "react-router-dom";
 import PageContainer from "../../components/PageContainer";
 import Container from "../../components/container";
@@ -13,9 +13,7 @@ const Client = () => {
 	const { id } = useParams<{ id: string }>();
 	const [width] = useSize();
 	const navigate = useNavigate();
-	const infiniteCarouselRef = useRef(null);
-	const [totalWidth, setTotalWidth] = useState(0);
-	const [renderedImages] = useState(false);
+	const [, setTotalWidth] = useState(0);
 	const imageRefs = useRef([]);
 
 	useEffect(() => {
@@ -31,6 +29,7 @@ const Client = () => {
 			return desktop;
 		}
 	};
+
 	useEffect(() => {
 		setTimeout(() => {
 			let totalContainerWidth = 0;
@@ -39,7 +38,7 @@ const Client = () => {
 			}
 			setTotalWidth(totalContainerWidth);
 		}, 800);
-	}, [clients, imageRefs, width, renderedImages]);
+	}, [clients, imageRefs, width]);
 
 	return (
 		<PageContainer
@@ -49,8 +48,8 @@ const Client = () => {
 			<Nav />
 			<div className="bg-[#F2D9D8] pt-[13px] lg:pt-[112px] pb-[70px]">
 				<Container>
-					<motion.p
-						onClick={() => navigate("/clients")}
+					<p
+						onClick={() => navigate("/events")}
 						className="flex items-center space-x-[8px] lg:space-x-[20px] group cursor-pointer"
 					>
 						<img
@@ -58,48 +57,55 @@ const Client = () => {
 							src="/assets/images/backarrow.svg"
 						/>
 						<span className="text-[16px] lg:text-[27px] text-[#BE3F00]">clients</span>
-					</motion.p>
+					</p>
 					<div>
-						<h1
-							className="text-center font-semibold text-[24px] md:text-[32px] lg:text-[40px] mt-[28px]
-                  "
-						>
-							{clients?.find((client) => client?.id == id)?.name}
-						</h1>
+						<h1 className="text-center font-semibold text-[24px] md:text-[32px] lg:text-[40px] mt-[28px]">{clients?.find((client) => client?.id == id)?.name}</h1>
 						<p className="text-[14px] md:text-[14px] lg:text-[24px] mt-[20px] text-center">Prints exclusively designed by GRAPES PATTERN BANK</p>
 					</div>
 				</Container>
 			</div>
-			<div className="w-full overflow-hidden mb-[40px] md:mb-[80px] lg:mb-[129px]">
-				<motion.div
-					initial={{ x: 0 }}
-					animate={{ x: -totalWidth, transition: { duration: totalWidth / 150, repeat: Infinity, ease: "linear" } }}
-					ref={infiniteCarouselRef}
-					className="flex min-w-fit"
+			<div className=" overflow-hidden mb-[40px] md:mb-[80px] lg:mb-[129px]">
+				<Marquee
+					direction="left"
+					speed={200}
+					pauseOnClick={true}
+				
+					style={{ display: "flex", minWidth: "fit-content" }}
 				>
 					{clients
 						?.find((client) => client?.id == id)
-						?.images.map((image, index: number) => {
-							// if ((clients?.find((client) => client?.id == id)?.images.length || 0) - 1 == index) forceUpdate();
-							return (
-								<img
-									ref={(el) => ((imageRefs.current as HTMLImageElement[])[index] = el as HTMLImageElement)}
-									className="h-[350px] min-h-[350px] md:min-h-[450px] md:h-[450px] lg:h-[520px] lg:min-h-[520px]"
-									src={image.url}
-								/>
-							);
-						})}
+						?.images.map((image, index: number) => (
+							<img
+								key={index}
+								ref={(el) => ((imageRefs.current as HTMLImageElement[])[index] = el as HTMLImageElement)}
+								className="h-[350px] min-h-[350px] md:min-h-[450px] md:h-[450px] lg:h-[520px] lg:min-h-[520px]"
+								src={image.url}
+								alt={`Image ${index + 1}`}
+							/>
+						))}
 					{clients
 						?.find((client) => client?.id == id)
-						?.images.map((image) => {
-							return (
-								<img
-									className="h-[350px] min-h-[350px] md:min-h-[450px] md:h-[450px] lg:h-[520px] lg:min-h-[520px]"
-									src={image.url}
-								/>
-							);
-						})}
-				</motion.div>
+						?.images.map((image, index: number) => (
+							<img
+								key={index}
+								ref={(el) => ((imageRefs.current as HTMLImageElement[])[index] = el as HTMLImageElement)}
+								className="h-[350px] min-h-[350px] md:min-h-[450px] md:h-[450px] lg:h-[520px] lg:min-h-[520px]"
+								src={image.url}
+								alt={`Image ${index + 1}`}
+							/>
+						))}
+					{clients
+						?.find((client) => client?.id == id)
+						?.images.map((image, index: number) => (
+							<img
+								key={index + clients.length}
+								className="h-[350px] min-h-[350px] md:min-h-[450px] md:h-[450px] lg:h-[520px] lg:min-h-[520px]"
+								src={image.url}
+								alt={`Image ${index + 1}`}
+							/>
+						))}
+				</Marquee>
+
 			</div>
 			<BottomFooter />
 		</PageContainer>

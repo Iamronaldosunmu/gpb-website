@@ -10,11 +10,11 @@ import useWishListStore from "../../store/wishList";
 const Nav = () => {
 	const navItems = [
 		{ text: "Home", to: "/home" },
-		{ text: "Shop", to: "/shop" },
+		// { text: "Shop", to: "/shop" },
 		{ text: "About Us", to: "/about-us" },
-		{ text: "Book", to: "/consultation" },
+		// { text: "Book", to: "/consultation" },
 		// { text: "Membership", to: "/membership" },
-		{ text: "Clients", to: "/clients" },
+		{ text: "Events", to: "/events" },
 		{ text: "Digital Printing", to: "/get-a-quote" },
 	];
 	const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -57,7 +57,7 @@ const Nav = () => {
 							className="w-[52px] lg:w-[78px] cursor-pointer"
 							src="/assets/images/gpb-logo.png"
 						/>
-						<p>GRAPES PATTERN BANK</p>
+						<p>LET ME TELL YOU SOMETHING</p>
 						<div className="hidden lg:flex items-center space-x-[7px]">
 							{/* <motion.img
 								{...interactionAnimations}

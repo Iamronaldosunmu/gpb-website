@@ -106,11 +106,11 @@ function App() {
 						element={<GetAQuote />}
 					/>
 					<Route
-						path="/clients/:id"
+						path="/events/:id"
 						element={<Client />}
 					/>
 					<Route
-						path="/clients"
+						path="/events"
 						element={<Clients />}
 					/>
 					<Route
